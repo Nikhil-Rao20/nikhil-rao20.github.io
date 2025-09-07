@@ -4,20 +4,20 @@
   <meta charset="utf-8">
   <title>CardioLens | Research Article</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-  <link rel="manifest" href="favicon/manifest.json">
+  <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="../favicon/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   
   <!-- Local CSS -->
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="../css/main.css">
   
   <style>
     body {
@@ -68,16 +68,18 @@
     }
     
     .article-header h1 {
-      font-size: 3.2em;
-      margin-bottom: 15px;
+      font-size: 2.4em;
+      margin-bottom: 12px;
       font-weight: 700;
       font-family: 'Montserrat', sans-serif;
       position: relative;
       z-index: 1;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
     
     .article-header .meta {
-      font-size: 1.2em;
+      font-size: 1em;
       opacity: 0.95;
       margin-bottom: 0;
       position: relative;
@@ -85,9 +87,9 @@
     }
     
     .article-header .authors {
-      font-size: 1.1em;
+      font-size: 0.95em;
       opacity: 0.9;
-      margin: 10px 0 0 0;
+      margin: 8px 0 0 0;
       position: relative;
       z-index: 1;
     }
@@ -168,21 +170,21 @@
     }
     
     .article-section h2 {
-      font-size: 2.2em;
+      font-size: 1.8em;
       color: #2c3e50;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       margin-top: 0;
       font-weight: 700;
       font-family: 'Montserrat', sans-serif;
       border-bottom: 3px solid #667eea;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
     }
     
     .article-section h3 {
-      font-size: 1.5em;
+      font-size: 1.3em;
       color: #495057;
-      margin-bottom: 15px;
-      margin-top: 35px;
+      margin-bottom: 12px;
+      margin-top: 25px;
       font-weight: 600;
       font-family: 'Montserrat', sans-serif;
     }
@@ -356,18 +358,25 @@
     .back-link {
       display: inline-flex;
       align-items: center;
-      margin-bottom: 30px;
-      color: #667eea;
+      color: #fff;
       text-decoration: none;
       font-size: 1.1em;
       font-weight: 600;
       transition: all 0.2s ease;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 2;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.15);
     }
     
     .back-link:hover {
-      color: #5a67d8;
+      color: #fff;
       text-decoration: none;
-      transform: translateX(-5px);
+      transform: translateX(-3px);
+      background: rgba(0,0,0,0.25);
     }
     
     .back-link i {
@@ -430,7 +439,7 @@
   }
 
   .references-section ol li {
-    font-size: 1em;
+    font-size: 11px;
     line-height: 1.6;
     color: #343a40;
     margin-bottom: 10px;
@@ -513,6 +522,9 @@
   <div id="navbar-placeholder" w3-include-html="../navbar.html" style="width:100%"></div>
 
   <div class="article-header">
+    <a href="../projects.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
     <h1>CardioLens - LVEF Analysis Using Intel Optimized Models</h1>
     <div class="meta">Research Article • Published: November 2024</div>
     <div class="authors">Authors: <strong>Nikhileswara Rao Sulake <sup>1</sup></strong>, Sai Manikanta Eswar <sup>1</sup>, Aravind Pyli <sup>2</sup>, Sivalal Kethavath <sup>2</sup></div>
@@ -559,27 +571,45 @@
     
     <!-- Main Content -->
     <main class="article-main">
-      <a href="projects.html" class="back-link">
-        <i class="fas fa-arrow-left"></i> Back to Projects
-      </a>
       
       <div class="tag-list">
         <span class="tag">Computer Vision</span>
         <span class="tag">Deep Learning</span>
-        <span class="tag">Medical AI</span>
-        <span class="tag">Healthcare</span>
-        <span class="tag">Retinal Imaging</span>
+        <span class="tag">Medical Imaging</span>
+        <span class="tag">Echocardiography</span>
       </div>
       
       <section class="article-section" id="abstract">
         <h2>Abstract</h2>
         <p>The manual analysis of echocardiograms, a cornerstone of cardiac diagnostics, is often a time-consuming process prone to inter-observer variability and error. This project, CardioLens, introduces a robust deep learning framework for the automated segmentation of the left ventricle and subsequent calculation of the Left Ventricular Ejection Fraction (LVEF) from echocardiogram videos. Our dual-task pipeline utilizes a high-performing DeepLabV3 model with a ResNet-101 backbone for semantic segmentation and an R(2+1)D video model for LVEF estimation. A key contribution of this work is the systematic optimization of the entire workflow using the Intel® AI software stack. By leveraging the Intel® Extension for PyTorch (IPEX) for accelerated training and the Intel® Distribution of OpenVINO™ Toolkit for inference, we demonstrate a significant performance increase, including a nearly 50% reduction in inference time on standard Intel® CPUs compared to native PyTorch. The final segmentation model achieves a Dice Score of 0.92, providing a highly accurate, efficient, and accessible solution to augment clinical decision-making in cardiology.</p>
-        
+        <section class="article-section" id="gifs">
+          <h3>Project Outcomes</h3>
+          <div class="row">
+            <div class="col-md-4 col-sm-12 text-center">
+              <img src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/imgs/video1.gif" alt="Echocardiography Video" class="img-responsive article-img">
+              <div class="img-caption">Input Raw Echo Video</div>
+            </div>
+            <div class="col-md-4 col-sm-12 text-center">
+              <img src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/imgs/mask1.gif" alt="Segmentation Mask" class="img-responsive article-img">
+              <div class="img-caption">Predicted Mask of Left Ventricle</div>
+            </div>
+            <div class="col-md-4 col-sm-12 text-center">
+              <img src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/imgs/ecg1.gif" alt="ECG" class="img-responsive article-img">
+              <div class="img-caption">Algorithmic ECG video from Mask</div>
+            </div>
+          </div>
+        </section>
       </section>
       
       <section class="article-section" id="introduction">
         <h2>Introduction</h2>
         <p>Cardiovascular Diseases (CVDs) remain the leading cause of mortality worldwide, making accurate and timely diagnosis a critical global health priority. Echocardiography stands as the most widely used non-invasive imaging modality for assessing cardiac function due to its safety and accessibility. A key biomarker derived from these scans is the Left Ventricular Ejection Fraction (LVEF)—the percentage of blood pumped out of the left ventricle with each contraction. LVEF is a fundamental indicator of cardiac health and is crucial for diagnosing and managing conditions like heart failure.</p>
+        <div style="text-align: center;">
+          <img class="article-img" src="../img/projects/heart.png" alt="Heart" style="max-width: 600px; width: 100%; display: inline-block;">
+          <div class="img-caption">Figure 1:  Anatomical Diagram of the Human Heart with Emphasis on the Ventricles</div>
+        </div>
+        <br>
+        <p>The image illustrates the critical role of the left ventricle in systemic circulation. Unlike the right ventricle, which pumps deoxygenated blood to the lungs, the left ventricle is responsible for pumping oxygenated blood to the rest of the body. Due to its vital function, the assessment of the left ventricle's performance is paramount in cardiac diagnostics. The accurate segmentation of this chamber is the foundational step for calculating the Ejection Fraction (EF), a key metric used to evaluate the heart's pumping efficiency and diagnose various cardiovascular conditions.</p>
         <p>Despite its importance, the clinical workflow for LVEF assessment faces significant challenges. The gold standard involves manual or semi-automated tracing of the left ventricular border by a sonographer. This process is inherently time-consuming, requiring significant effort that detracts from time that could be spent on direct patient care. Furthermore, the accuracy of the tracing is highly dependent on the operator's skill and experience, leading to high inter-observer and intra-observer variability. Studies indicate that diagnostic errors in echocardiography are common, with a significant percentage being preventable, often stemming from poor image quality or cognitive biases in interpretation. These inefficiencies create a bottleneck in cardiac care, potentially delaying diagnosis and increasing healthcare costs.</p>
         <p>This project introduces CardioLens, an end-to-end automated framework designed to address these limitations. Our primary contribution is a dual-task AI pipeline that performs both accurate semantic segmentation of the left ventricle and calculates the LVEF from raw echocardiogram videos. We systematically trained and evaluated multiple state-of-the-art deep learning architectures to identify the optimal model for this clinical task. Finally, we demonstrate the critical role of the Intel® AI software stack (IPEX and OpenVINO™) in accelerating both training and inference, making the solution practical for deployment on widely available CPU hardware without compromising accuracy.</p>
       </section>
@@ -593,13 +623,52 @@
         <img class="article-img" src="../img/projects/CardioLens_Arch.png" alt="CardioLens System Architecture">
         <div class="img-caption">Figure 1: The end-to-end architecture of the CardioLens framework, detailing the data flow from input video to the final diagnostic outputs.</div>
         
+
+        <h3>Dataset Information</h3>
+
+        <p>The study utilizes the EchoNet-Dynamic dataset, a comprehensive collection of echocardiogram videos from Stanford University. Our analysis focused on understanding the core characteristics of the dataset before model training.</p>
+
+        <div style="display: flex; align-items: flex-start; gap: 20px; margin: 25px 0;">
+          <div style="flex: 1;">
+            <p>To prepare the data for machine learning, the dataset was partitioned into three distinct subsets: training, validation, and testing. The distribution of this split is detailed in Figure 2. A substantial portion (74.4%) was allocated for training to allow the model to learn the underlying patterns, while the validation (12.8%) and test (12.7%) sets were reserved for hyperparameter tuning and final performance evaluation, respectively. This standard partitioning ensures a robust and unbiased assessment of the model's capabilities.</p>
+          </div>
+          <div style="flex: 0 0 300px; text-align: center;">
+            <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/split.png" alt="Dataset Split Distribution" style="width: 100%; max-width: 200px; margin: 0;">
+            <div class="img-caption" style="font-size: 0.9em; margin-top: 8px;">Figure 2: Dataset split distribution showing the allocation.</div>
+          </div>
+        </div>
+
+        <p>A key clinical parameter in the dataset is the Ejection Fraction (EF), which is a measure of cardiac function. The distribution of EF values across all patient videos is illustrated in Figure 3. The histogram reveals a typical right-skewed distribution, with a significant concentration of EF values between 50% and 70%. This indicates that a large portion of the cases in the dataset falls within the normal to borderline range of cardiac function, which is representative of a real-world clinical population.</p>
+        
+        <div style="text-align: center; margin: 25px 0;">
+          <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/EFvsEDVvsESV.png" alt="Ejection Fraction Distribution" style="max-width: 600px; width: 100%;">
+          <div class="img-caption">Figure 3: Distribution of Ejection Fraction values across the dataset, showing the typical right-skewed distribution with concentration between 50-70%.</div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 20px; margin: 25px 0;">
+          <div style="flex: 0 0 300px; text-align: center;">
+            <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/EJ_dist.png" alt="EF vs EDV/ESV Relationship" style="width: 100%; max-width: 300px; margin: 0;">
+            <div class="img-caption" style="font-size: 0.9em; margin-top: 8px;">Figure 4: Scatter plots showing the relationship between EF and volumetric measurements (EDV/ESV).</div>
+          </div>
+          <div style="flex: 1;">
+            <p>Ejection Fraction is calculated from the End-Diastolic Volume (EDV) and End-Systolic Volume (ESV). To explore the relationship between these volumetric measurements and the resulting EF, a comparative analysis was performed, as shown in the scatter plots in Figure 4. The plots demonstrate the expected inverse correlation between EF and both ESV and EDV. Specifically, as the End-Systolic Volume (the volume of blood remaining in the ventricle after contraction) increases, the Ejection Fraction tends to decrease. This visualization confirms the physiological relationships within the data and highlights the data's integrity across the different splits (Train, Val, Test).</p>
+          </div>
+        </div>
+        
+        
+        
+        
+        
         <h3>Models and Training Details</h3>
         <p>To achieve precise segmentation of the left ventricle, we evaluated three distinct deep learning architectures: the transformer-based Intel DPT-Large model, and two variants of the popular CNN-based DeepLabV3 model, one with a lightweight MobileNetV3-Large backbone and another with a more powerful ResNet-101 backbone. These models were fine-tuned on the EchoNet-Dynamic dataset, and the DeepLabV3 with ResNet-101 architecture was ultimately selected for its superior performance.</p>
         <p>Following segmentation, the Ejection Fraction is calculated using the area-length method on the end-diastolic and end-systolic frames. To handle the temporal nature of the video data for this task, we employed an 18-layer R(2+1)D model, a 3D CNN architecture adept at learning spatio-temporal features. This model processes sequences of frames to accurately estimate the End-Diastolic Volume (EDV) and End-Systolic Volume (ESV), which are then used to calculate the LVEF via the formula: EF = (EDV - ESV) / EDV. The model also generates a corresponding ECG video to visualize the heart's rhythm.</p>
         
         <h3>Intel Technologies</h3>
-        <p>A core objective was to ensure the framework is not only accurate but also computationally efficient. This was achieved through an end-to-end optimization strategy using Intel® technologies. For training, the Intel® Extension for PyTorch (IPEX) was used to optimize PyTorch code with oneAPI and oneDNN primitives, enabling more efficient use of Intel hardware to significantly reduce training time. For deployment, the trained PyTorch models were converted to the OpenVINO™ Intermediate Representation (IR) format. The Intel® Distribution of OpenVINO™ Toolkit optimizes deep learning models for inference on Intel hardware, applying techniques like graph pruning, quantization, and kernel fusion. This resulted in a dramatic reduction in inference latency, making real-time analysis on standard CPUs feasible.</p>
-
+        <p>A core objective was to ensure the framework is not only accurate but also computationally efficient. This was achieved through an end-to-end optimization strategy using Intel® technologies. For training, the Intel® Extension for PyTorch (IPEX) was used to optimize PyTorch code, enabling more efficient use of Intel hardware to significantly reduce training time. For deployment, the trained PyTorch models were converted to the OpenVINO™ Intermediate Representation (IR) format. The Intel® Distribution of OpenVINO™ Toolkit optimizes deep learning models for inference on Intel hardware, applying techniques like graph pruning, quantization, and kernel fusion. This resulted in a dramatic reduction in inference latency, making real-time analysis on standard CPUs feasible.</p>
+        <div style="text-align: center;">
+          <img class="article-img" src="../img/projects/openvino.png" alt="OpenVINO™" style="max-width: 600px; width: 50%; display: inline-block;">
+          <div class="img-caption">Figure 1: Open-source software toolkit for optimizing and deploying deep learning models</div>
+        </div>
 
         <!-- <div class="code-block">
 # Simplified model architecture
@@ -628,7 +697,7 @@ def build_cardiolens_model():
             <thead style="background: #667eea; color: #fff;">
               <tr>
                 <th>Type</th>
-                <th>DPT Model</th>
+                <th>Intel DPT Model</th>
                 <th>DeepLabv3 ResNet101</th>
                 <th>DeepLabv3 MobileNetV3</th>
               </tr>
@@ -668,15 +737,39 @@ def build_cardiolens_model():
           </table>
         </div>
 
+        <p>The performance during the training phase was closely monitored using several key metrics. Figure 5 displays the training results, specifically analyzing the Dice Score and Loss over 40 epochs. The Dice Score, a metric for evaluating the accuracy of image segmentation, was tracked for diastolic frames, systolic frames, and the overall average. The plots show a consistent trend across the models: the Dice Score for all frame types improves rapidly in the initial epochs before stabilizing, indicating that the models are successfully learning to segment the cardiac structures. Concurrently, the training loss decreases, signifying model convergence.</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 25px 0;">
+          <div style="text-align: center;">
+            <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/loss_edv_dice.png" alt="EDV Dice Score vs Epoch" style="width: 100%; max-width: 400px; height: 250px; object-fit: contain;">
+            <div class="img-caption" style="font-size: 0.9em; margin-top: 8px;">(a) EDV Dice Score vs Epoch</div>
+          </div>
+          <div style="text-align: center;">
+            <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/loss_epoch.png" alt="Training Loss vs Epoch" style="width: 100%; max-width: 400px; height: 250px; object-fit: contain;">
+            <div class="img-caption" style="font-size: 0.9em; margin-top: 8px;">(b) Training Loss vs Epoch</div>
+          </div>
+          <div style="text-align: center;">
+            <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/loss_esv_dice.png" alt="ESV Dice Score vs Epoch" style="width: 100%; max-width: 400px; height: 250px; object-fit: contain;">
+            <div class="img-caption" style="font-size: 0.9em; margin-top: 8px;">(c) ESV Dice Score vs Epoch</div>
+          </div>
+          <div style="text-align: center;">
+            <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/loss_overall_dice.png" alt="Overall Dice Score vs Epoch" style="width: 100%; max-width: 400px; height: 250px; object-fit: contain;">
+            <div class="img-caption" style="font-size: 0.9em; margin-top: 8px;">(d) Overall Dice Score vs Epoch</div>
+          </div>
+        </div>
+        <div class="img-caption" >Figure 5: Training metrics over 40 epochs showing (a) EDV Dice Score progression, (b) Training Loss reduction, (c) ESV Dice Score improvement, and (d) Overall Dice Score convergence across all models.</div>
+        <br>
+        
+        
+        
+        <p>The primary performance benchmark was the inference speedup achieved using Intel's optimization tools. The results, visualized in Figure 2 and Figure 3, clearly demonstrate that OpenVINO™ provides a substantial advantage for deployment. For both the segmentation and Ejection Fraction calculation tasks, OpenVINO™ consistently reduces the processing time by nearly half compared to the native PyTorch implementation, a critical achievement for clinical applications where speed is essential. The framework produces a set of intuitive and clinically relevant visualizations for the end-user, as shown in the example output in Figure 4. The entire system is made accessible through a user-friendly web interface, shown in Figure 5, which allows for easy video selection and displays the final generated report.</p>
 
-        <p>The primary performance benchmark was the inference speedup achieved using Intel's optimization tools. The results, visualized in Figure 2 and Figure 3, clearly demonstrate that OpenVINO™ provides a substantial advantage for deployment. For both the segmentation and Ejection Fraction calculation tasks, OpenVINO™ consistently reduces the processing time by nearly half compared to the native PyTorch implementation, a critical achievement for clinical applications where speed is essential.</p>
         <img class="article-img" src="../img/projects/seg.png" alt="Segmentation Inference Time Comparison">
         <div class="img-caption">Figure 2: Inference time comparison for the Segmentation task. OpenVINO™ consistently outperforms both native PyTorch and IPEX-optimized inference.</div>
 
         <img class="article-img" src="../img/projects/ef.png" alt="EF Inference Time Comparison">
         <div class="img-caption">Figure 3: Inference time comparison for the Ejection Fraction calculation task. OpenVINO™ reduces processing time by nearly half compared to PyTorch.</div>
 
-        <p>The framework produces a set of intuitive and clinically relevant visualizations for the end-user, as shown in the example output in Figure 4. The entire system is made accessible through a user-friendly web interface, shown in Figure 5, which allows for easy video selection and displays the final generated report.</p>
         
         <section class="article-section" id="gifs">
           <h2>GIF Demonstrations</h2>
@@ -695,9 +788,9 @@ def build_cardiolens_model():
             </div>
           </div>
         </section>
-
         <div class="img-caption">Figure 4: Example output from the CardioLens system. From left to right: the original input video, the video with the predicted left ventricle segmentation mask overlaid in red, and the generated ECG visualization.</div>
-
+        <br>
+        <h2>Web Portal Interface</h2>
         <img class="article-img" src="../img/projects/cardiolens_web.png" alt="CardioLens Web Portal">
         <div class="img-caption">Figure 5: The web portal for CardioLens, showing the video selection/upload interface and the final generated report. The Web doesn't have the updated ECG option yet.</div>
 
@@ -734,6 +827,14 @@ def build_cardiolens_model():
         <p>
           For detailed technical specifications, implementation code, and extended results, please refer to our comprehensive project documentation.
         </p>
+
+        <div class="contact-section" style="margin-top: 25px;">
+          <h2>Contact</h2>
+          <p>
+            For further information or collaboration opportunities, please contact:<br>
+            <strong>Email:</strong> <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a>
+          </p>
+        </div>
         <a class="download-btn" href="https://drive.google.com/file/d/180zWWF3xryS2JB3naXf1FNXH-BptQSk5/view?usp=sharing" target="_blank">
           <i class="fas fa-download"></i> Report (V1)
         </a>
