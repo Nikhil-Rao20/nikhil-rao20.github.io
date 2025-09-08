@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ZOYA | Research Article</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="../favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  
+  <!-- Google Fonts -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="../css/main.css">
+  
+  <style>
+    body {
+      background: #f8f9fa;
+      font-family: 'Merriweather', serif;
+      line-height: 1.7;
+      color: #2c3e50;
+      /* padding-top: 10px; */
+    }
+    
+    .article-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 60px 0 40px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .article-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .article-header h1 {
+      font-size: 2.4em;
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      z-index: 1;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .article-header .meta {
+      font-size: 1em;
+      opacity: 0.95;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .article-header .authors {
+      font-size: 0.95em;
+      opacity: 0.9;
+      margin: 8px 0 0 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .article-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 60px 20px;
+      display: flex;
+      gap: 50px;
+    }
+    
+    .article-main {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 40px;
+    }
+    
+    .article-sidebar {
+      width: 300px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 90px;
+      height: fit-content;
+    }
+    
+    .sidebar-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+    
+    .sidebar-title {
+      font-size: 1.3em;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #667eea;
+      font-family: 'Montserrat', sans-serif;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 10px;
+    }
+    
+    .sidebar-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .sidebar-nav li {
+      margin-bottom: 12px;
+    }
+    
+    .sidebar-nav a {
+      color: #495057;
+      text-decoration: none;
+      font-size: 0.95em;
+      transition: all 0.2s;
+      display: block;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border-left: 3px solid transparent;
+    }
+    
+    .sidebar-nav a:hover {
+      color: #667eea;
+      background: #f8f9fa;
+      border-left-color: #667eea;
+      text-decoration: none;
+    }
+    
+    .article-section {
+      margin-bottom: 50px;
+    }
+    
+    .article-section h2 {
+      font-size: 1.8em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      margin-top: 0;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 8px;
+    }
+    
+    .article-section h3 {
+      font-size: 1.3em;
+      color: #495057;
+      margin-bottom: 12px;
+      margin-top: 25px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .article-section h4 {
+      font-size: 1.2em;
+      color: #6c757d;
+      margin-bottom: 12px;
+      margin-top: 25px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .article-img {
+      width: 100%;
+      border-radius: 12px;
+      margin: 25px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .article-img:hover {
+      transform: scale(1.02);
+    }
+    
+    .img-caption {
+      text-align: center;
+      font-style: italic;
+      color: #6c757d;
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+    
+    .highlight-box {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 4px solid #667eea;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 25px 0;
+    }
+  
+    
+    .highlight-box h4 {
+      color: #667eea;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    
+    .code-block {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    footer.footer {
+        width: 100%;
+        padding: 20px 0;
+        background-color: #f8f8f8;
+    }
+
+    /* Center content and align social icons */
+    .footer .social-icons li {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    /* Optional: fix container spacing if needed */
+    .content-container {
+        max-width: 1200px; /* same as other pages */
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    .timeline {
+      margin: 0 0 40px 0;
+      padding: 0;
+      list-style: none;
+      border-left: 3px solid #667eea;
+      position: relative;
+    }
+    
+    .timeline-event {
+      position: relative;
+      margin-bottom: 35px;
+      padding-left: 35px;
+    }
+    
+    .timeline-event:last-child {
+      margin-bottom: 0;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: -12px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 4px solid #667eea;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-date {
+      font-size: 1em;
+      color: #667eea;
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .timeline-desc {
+      font-size: 1em;
+      color: #495057;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .stat-label {
+      font-size: 1em;
+      opacity: 0.9;
+    }
+    
+    .download-btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 2;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.15);
+    }
+    
+    .back-link:hover {
+      color: #fff;
+      text-decoration: none;
+      transform: translateX(-3px);
+      background: rgba(0,0,0,0.25);
+    }
+    
+    .back-link i {
+      margin-right: 8px;
+    }
+    
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    .tag {
+      background: #e9ecef;
+      color: #495057;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .tag:hover {
+      background: #667eea;
+      color: #fff;
+    }
+    /* .references-section {
+    background: #f1f3f5;
+    padding: 30px 25px;
+    border-left: 6px solid #667eea;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin: 40px 0;
+  } */
+  .references-section {
+    background: #f1f3f5;
+    padding: 25px 20px;      /* reduced padding for smaller screens */
+    border-left: 6px solid #667eea;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin: 40px 0;
+    overflow-wrap: break-word;   /* ensures long text wraps */
+    word-wrap: break-word;
+    word-break: break-word;      /* ensures links or long words don't overflow */
+  }
+
+  .references-section h2 {
+    color: #495057;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 8px;
+  }
+
+  .references-section ol {
+    padding-left: 20px;
+  }
+
+  .references-section ol li {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #343a40;
+    margin-bottom: 10px;
+  }
+
+  .references-section ol li a {
+    color: #667eea;
+    text-decoration: none;
+  }
+
+  .references-section ol li a:hover {
+    text-decoration: underline;
+  }
+    
+    /* Responsive Design */
+    @media (max-width: 1000px) {
+      .article-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .article-sidebar {
+        width: 100%;
+        position: static;
+      }
+      
+      .article-main {
+        padding: 30px 25px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .article-header h1 {
+        font-size: 2.5em;
+      }
+      
+      .article-container {
+        padding: 20px 15px 40px 15px;
+      }
+      
+      .article-main {
+        padding: 25px 20px;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .article-header h1 {
+        font-size: 2em;
+      }
+      
+      .article-section h2 {
+        font-size: 1.8em;
+      }
+      
+      .article-main {
+        padding: 20px 15px;
+      }
+      .references-section {
+        padding: 20px 15px;   /* smaller padding on mobile */
+        border-left-width: 4px; /* thinner stripe */
+      }
+
+      .references-section h2 {
+        font-size: 1.6em;      /* smaller heading on mobile */
+      }
+
+      .references-section ol li {
+        font-size: 0.95em;     /* slightly smaller text */
+      }
+      
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="navbar-placeholder" w3-include-html="../navbar.html" style="width:100%"></div>
+
+  <div class="article-header">
+    <a href="../projects.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+    <h1>ZOYA: The AI Humanoid Guide Revolutionizing Student Counseling at RGUKT Nuzvid</h1>
+    <div class="meta">Application Article • Published: April 2024</div>
+    <div class="authors">Authors: <strong>Nikhileswara Rao Sulake <sup>1</sup></strong>, Suresh Ratlavath <sup>1</sup>, Samba Siva Rao Kovvuru <sup>2</sup></div>
+    <div class="authors">Affiliation: <sup>1</sup> Dept of CSE, RGUKT Nuzvid, <sup>2</sup> Dept of ECE, RGUKT Nuzvid</div>
+  </div>
+  
+  <div class="article-container">
+    <!-- Sidebar -->
+    <aside class="article-sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-title">Article Navigation</div>
+        <ul class="sidebar-nav">
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#methodology">System Architecture</a></li>
+          <li><a href="#results">The ZOYA Experience</a></li>
+          <li><a href="#discussion">Impact and Recognition</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-card">
+        <div class="sidebar-title">Project Details</div>
+        <p><strong>Duration:</strong> 1 week</p>
+        <p><strong>Team Size:</strong> 3 members</p>
+        <p><strong>Event:</strong> Intel AI Hackathon 2024</p>
+        <p><strong>Position:</strong> Top 3 National Wide</p>
+        <p><strong>Location:</strong>IIT Kharagpur, India</p>
+      </div>
+      
+      <!-- <div class="sidebar-card">
+        <div class="sidebar-title">Quick Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">96.8%</div>
+            <div class="stat-label">Accuracy</div>
+          </div>
+          <div class="stat-number">94.2%</div>
+          <div class="stat-label">Sensitivity</div>
+        </div>
+      </div> -->
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="article-main">
+      
+      <div class="tag-list">
+        <span class="tag">Computer Vision</span>
+        <span class="tag">Deep Learning</span>
+        <span class="tag">Medical Imaging</span>
+        <span class="tag">Echocardiography</span>
+      </div>
+      
+      <section class="article-section" id="abstract">
+        <h2>Abstract</h2>
+        <p>In the complex and often overwhelming landscape of higher education, students frequently face critical decisions about their academic and professional futures with limited access to personalized guidance. This project introduces ZOYA, a pioneering humanoid robot designed to serve as an intelligent, interactive, and ever-available student counselor. Developed at RGUKT Nuzvid, ZOYA integrates a powerful generative AI backend with a Raspberry Pi 4B microcontroller, all housed within an accessible, custom-built physical form. Through a seamless voice-to-voice communication interface, complemented by a visual display, ZOYA engages students in natural conversations, offering tailored advice on branch selection, essential skill development, and career pathways. This initiative, born from a spirit of resourceful innovation ("jugaad"), not only provides a scalable solution to student guidance but also serves as a tangible demonstration of AI's potential within an educational setting. Having garnered significant recognition in both regional and national media, ZOYA stands as a testament to student-led innovation and a blueprint for the future of AI-driven mentorship in academia.</p>
+      </section>
+      <section class="article-section" id="introduction">
+        <h2>Introduction</h2>
+        <p>For any university student, the journey through academia is fraught with pivotal questions: "Which engineering branch aligns with my passions?", "What specific skills will make me competitive in the job market?", "How do I navigate my curriculum to achieve my career goals?". While universities provide counseling services, the sheer scale of the student body often makes it impossible to offer the kind of immediate, personalized, and on-demand guidance that is most needed. This "guidance gap" can lead to uncertainty, anxiety, and suboptimal career choices for students.</p>
+        <div style="text-align: center;">
+          <img class="article-img" src="../img/projects/zoya-working.JPG" alt="ZOYA robot in action" style="max-width: 400px; width: 100%; display: inline-block;">
+          <div class="img-caption">Figure 1: ZOYA humanoid robot engaging with students at RGUKT Nuzvid, demonstrating its interactive counseling capabilities.</div>
+        </div>
+        <br>
+        <p>For any university student, the journey through academia is fraught with pivotal questions: "Which engineering branch aligns with my passions?", "What specific skills will make me competitive in the job market?", "How do I navigate my curriculum to achieve my career goals?". While universities provide counseling services, the sheer scale of the student body often makes it impossible to offer the kind of immediate, personalized, and on-demand guidance that is most needed. This "guidance gap" can lead to uncertainty, anxiety, and suboptimal career choices for students.</p>
+      </section>
+      
+      <section class="article-section" id="methodology">
+        <h2>System Architecture</h2>
+      
+        <p>ZOYA's architecture integrates software intelligence, embedded hardware, and a physical interface into a seamless interactive system. The pipeline begins with user speech input, passes through a powerful generative AI backend for reasoning and response generation, and returns as natural voice and visual output. Each layer has been deliberately designed to ensure responsiveness, accessibility, and relatability for student engagement.</p>        
+      
+        <h3>The Brain: Generative AI Backend</h3>
+        <p>At the intelligence core lies a <strong>LangChain-powered generative AI backend</strong>, enhanced with a Retrieval-Augmented Generation (RAG) framework. The backend combines:</p>
+        <ul>
+          <li><strong>Embeddings & Vector Store:</strong> Input documents are chunked with a <code>RecursiveCharacterTextSplitter</code>, embedded using <code>OpenAIEmbeddings</code>, and indexed with <code>FAISS</code> for efficient semantic retrieval.</li>
+          <li><strong>Knowledge Retrieval:</strong> A <code>RetrievalQA</code> chain ensures queries are grounded in curated event-specific knowledge.</li>
+          <li><strong>Conversational Agent:</strong> Built with LangChain’s <code>ConversationalAgent</code>, <code>LLMChain</code>, and <code>ConversationBufferMemory</code>, enabling contextual, multi-turn interactions with attendees.</li>
+          <li><strong>Integration with Tools:</strong> Through <code>ZapierToolkit</code>, ZOYA extends its abilities by connecting to third-party APIs for event workflows.</li>
+        </ul>
+        
+        <div class="code-block">
+          <pre><code>
+# Core AI setup
+embeddings = OpenAIEmbeddings()
+vectorstore = FAISS.from_texts(texts, embeddings)
+retriever = vectorstore.as_retriever()
+
+qa = RetrievalQA.from_chain_type(
+    llm=ChatOpenAI(temperature=0.3, model="gpt-3.5-turbo-16k"),
+    retriever=retriever
+)
+    </code></pre>
+        </div>
+      
+        <p>This modular design allows ZOYA to respond not just with pre-scripted answers but with dynamically retrieved, contextually aware guidance.</p>
+      
+        <h3>The Heart: Raspberry Pi 4B Controller</h3>
+        <p>At the heart of ZOYA's physical form is the Raspberry Pi 4B. This powerful yet cost-effective single-board computer acts as the central nervous system, orchestrating every aspect of the robot's operation. Its key responsibilities include:</p>
+        <p>The main Python-based application running on the Raspberry Pi 4B is responsible for orchestrating the entire user interaction experience. It manages the core logic for engaging with students, interfaces seamlessly with all peripheral hardware—including the microphone for capturing queries, speakers for delivering responses, and the display screen for visual feedback—and handles the real-time processing pipeline that transforms spoken questions into actionable AI queries and delivers natural, spoken answers. This application integrates both the text-to-speech (TTS) and speech-to-text (STT) engines, enabling fluid, voice-to-voice conversations that feel intuitive and human-like. The deliberate choice of the Raspberry Pi as the central controller reflects the project's commitment to leveraging accessible, open-source hardware to deliver sophisticated, state-of-the-art results, making advanced AI-driven guidance available to a broad audience.</p>
+        <p>The Raspberry Pi 4B serves as the <strong>central orchestration hub</strong>, hosting the Python-based application. It manages the real-time interaction loop:</p>
+        <ol>
+          <li>Captures user voice via <code>speech_recognition</code>.</li>
+          <li>Streams the transcribed query to the LangChain agent.</li>
+          <li>Generates responses using <code>ChatOpenAI</code>.</li>
+          <li>Converts text-to-speech output with <code>pyttsx3</code>.</li>
+          <li>Updates the Tkinter-based GUI with live status feedback.</li>
+        </ol>
+      
+        <div class="code-block">
+<pre><code>def listen(): 
+    with sr.Microphone() as source:
+        r.adjust_for_ambient_noise(source, duration=1)
+        audio = r.listen(source, timeout=2, phrase_time_limit=15)
+        text = r.recognize_google(audio, language="en-in")
+        response = agent_chain({'input': text})
+        engine.say(response['output'])
+        engine.runAndWait()
+</code></pre>
+        </div>
+      
+        <p>This orchestrator ensures seamless end-to-end dialogue between the student and the AI system, while maintaining low latency in speech recognition and response delivery.</p>
+      
+        <h3>The Body and Senses: Multi-Modal Interaction</h3>
+        <p>ZOYA's physical embodiment is a custom-designed humanoid form, intentionally crafted to be both approachable and engaging for students. This tangible presence is essential for fostering a sense of personal connection and making each interaction more memorable than what could be achieved through a standard web or mobile application. The design philosophy centers on accessibility and relatability, ensuring that students feel comfortable seeking guidance and engaging in conversation with ZOYA as they would with a human counselor.</p>
+        <p>Her "senses" are brought to life through a suite of carefully integrated hardware components. A high-fidelity microphone serves as ZOYA's ears, capturing students' voices with clarity and precision, even in noisy environments. Her responses are delivered through a set of speakers, providing clear and natural-sounding speech that makes the AI's guidance feel more lifelike. Complementing this auditory interaction, an integrated display screen acts as a vital second channel of communication, presenting the text of ZOYA's responses in real time as she speaks. This multi-modal approach not only enhances accessibility—allowing students to read along and reinforce their understanding—but also ensures that information is conveyed with maximum clarity and impact.</p>
+        
+        <p>ZOYA’s embodiment completes the interactive cycle by engaging multiple senses:</p>
+        <ul>
+          <li><strong>Ears:</strong> A high-fidelity microphone ensures accurate speech capture even in noisy public settings.</li>
+          <li><strong>Voice:</strong> Natural responses are synthesized through <code>pyttsx3</code>, with adjustable pitch and rate for a lifelike effect.</li>
+          <li><strong>Eyes:</strong> A Tkinter-based full-screen display provides real-time transcription and system status cues, reinforcing accessibility for diverse audiences.</li>
+        </ul>
+        <p>This combination of auditory and visual channels ensures clarity, engagement, and inclusivity in public-facing scenarios such as Teckzite 2024.</p>
+      </section>
+      
+      
+      <section class="article-section" id="results">
+        <h2>The ZOYA Experience</h2>
+      <div class="zoya-experience">
+        <h3 style="margin-top: 30px;">How Does an Interaction with ZOYA Work?</h3>
+        <p>
+          Interacting with ZOYA is designed to be as natural and intuitive as speaking with a human counselor. The entire process, from asking a question to receiving an answer, is a seamless flow of information—powered by advanced AI and thoughtful hardware integration.
+        </p>
+        <div class="zoya-scenario" style="background: #f0f4fa; border-radius: 8px; padding: 20px; margin: 25px 0;">
+          <h4 style="margin-top: 0;"><i class="fas fa-user-graduate" style="color: #667eea;"></i> A Real-World Example</h4>
+          <p>
+            <em>
+              Imagine a first-year student approaching ZOYA, uncertain about their future. The student asks:<br>
+              <span style="color: #764ba2; font-weight: 600;">"Hi ZOYA, I enjoy coding, but I'm also fascinated by machines. Should I choose Computer Science or Mechanical Engineering?"</span>
+            </em>
+          </p>
+        </div>
+        <ol class="zoya-process-list" style="margin-bottom: 30px;">
+          <li>
+            <strong>Voice Capture:</strong>
+            <ul>
+              <li>ZOYA's high-fidelity microphone captures the student's spoken question.</li>
+              <li>An onboard <b>Speech-to-Text (STT)</b> engine transcribes the audio into a text string.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Query to the Cloud:</strong>
+            <ul>
+              <li>The Raspberry Pi sends the transcribed text over the network to the generative AI backend.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>AI Processing:</strong>
+            <ul>
+              <li>The Large Language Model (LLM) analyzes the query, understands the student's dilemma, and formulates a balanced, personalized response.</li>
+              <li>For example, it might outline the key subjects, skill requirements, and typical career outcomes for both Computer Science and Mechanical Engineering, and even suggest interdisciplinary fields like Mechatronics.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Response Delivery:</strong>
+            <ul>
+              <li>The AI backend sends the generated response text back to the Raspberry Pi.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Multi-Modal Output:</strong>
+            <ul>
+              <li>
+                The Raspberry Pi immediately performs two actions in parallel:
+                <ul>
+                  <li>
+                    <b>Visual Output:</b> The complete response is displayed on ZOYA's screen for the student to read.
+                  </li>
+                  <li>
+                    <b>Auditory Output:</b> A <b>Text-to-Speech (TTS)</b> engine converts the response into natural-sounding speech, which is played through the speakers.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <div style="
+          display: flex;
+          justify-content: center;
+          align-items: stretch;
+          gap: 12px;
+          margin: 0 0 24px 0;
+          padding: 0;
+          background: none;
+          flex-wrap: wrap;
+        ">
+          <img
+            class="article-img"
+            src="../img/projects/zoya_pre1.jpg"
+            alt="Featured in Telugu News"
+            style="
+              flex: 1 1 calc(33.333% - 8px);
+              min-width: 200px;
+              max-width: 300px;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+              margin: 0;
+              padding: 0;
+              background: #fff;
+              box-sizing: border-box;
+            "
+          >
+          <img
+            class="article-img"
+            src="../img/projects/zoya_pre2.jpg"
+            alt="Featured in Telugu News"
+            style="
+              flex: 1 1 calc(33.333% - 8px);
+              min-width: 200px;
+              max-width: 300px;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+              margin: 0;
+              padding: 0;
+              background: #fff;
+              box-sizing: border-box;
+            "
+          >
+          <img
+            class="article-img"
+            src="../img/projects/zoya_pre3.jpg"
+            alt="Featured in English News"
+            style="
+              flex: 1 1 calc(33.333% - 8px);
+              min-width: 200px;
+              max-width: 300px;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+              margin: 0;
+              padding: 0;
+              background: #fff;
+              box-sizing: border-box;
+            "
+          >
+        </div>
+        <div class="zoya-summary" style="background: #e9f7ef; border-left: 5px solid #667eea; padding: 18px 22px; border-radius: 6px;">
+          <i class="fas fa-lightbulb" style="color: #764ba2; margin-right: 8px;"></i>
+          <span>
+            The student receives a rich, detailed, and easy-to-digest answer through both sight and sound, allowing for a deeper and more effective understanding. This multi-modal approach ensures that every student, regardless of their preferred learning style, can benefit from ZOYA's guidance.
+          </span>
+        </div>
+      </div>
+      </section>
+      
+      <section class="article-section" id="discussion">
+        <h2>Impact and Recognition: A Campus Sensation</h2>
+        <p>The primary mission of the ZOYA project was to demystify AI and place its power directly in the hands of students. The response from the university community and beyond has been overwhelmingly positive. ZOYA quickly became more than a project; she became a symbol of innovation on campus.</p>
+        <div style="
+          display: flex;
+          justify-content: center;
+          align-items: stretch;
+          gap: 12px;
+          margin: 0 0 24px 0;
+          padding: 0;
+          background: none;
+          flex-wrap: wrap;
+        ">
+          <img
+            class="article-img"
+            src="../img/projects/news1.jpg"
+            alt="Featured in Telugu News"
+            style="
+              flex: 1 1 calc(33.333% - 8px);
+              min-width: 200px;
+              max-width: 300px;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+              margin: 0;
+              padding: 0;
+              background: #fff;
+              box-sizing: border-box;
+            "
+          >
+          <img
+            class="article-img"
+            src="../img/projects/news2.jpg"
+            alt="Featured in Telugu News"
+            style="
+              flex: 1 1 calc(33.333% - 8px);
+              min-width: 200px;
+              max-width: 300px;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+              margin: 0;
+              padding: 0;
+              background: #fff;
+              box-sizing: border-box;
+            "
+          >
+          <img
+            class="article-img"
+            src="../img/projects/news3.jpg"
+            alt="Featured in English News"
+            style="
+              flex: 1 1 calc(33.333% - 8px);
+              min-width: 200px;
+              max-width: 300px;
+              height: 200px;
+              object-fit: cover;
+              border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+              margin: 0;
+              padding: 0;
+              background: #fff;
+              box-sizing: border-box;
+            "
+          >
+        </div>
+
+        <p>This impact was recognized far beyond the university walls. The project was the subject of numerous articles in both regional Telugu newspapers and national English publications. This media attention highlighted not only the technical novelty of creating an AI-powered humanoid but also the inspiring story of student ingenuity. The project received high praise from the university's director, who lauded the team's ability to develop such an advanced piece of technology using minimal resources and a great deal of creative, "jugaad"-style engineering. This recognition has validated our belief that impactful innovation is not always about having the biggest budget, but about having a clear vision and the passion to bring it to life.</p>
+      </section>
+      
+      <section class="article-section" id="conclusion">
+        <h2>Conclusion</h2>
+        <p>ZOYA stands as a successful proof-of-concept, demonstrating that it is possible to build an effective, interactive, and intelligent humanoid guide using accessible and affordable technology. By integrating a powerful generative AI with the versatile Raspberry Pi platform, this project successfully bridged the "guidance gap," offering an on-demand, scalable solution to a persistent challenge in higher education through a spirit of student-led "jugaad" innovation. The enthusiastic reception from students, faculty, and the media has underscored the project's relevance and validated the belief that cutting-edge solutions can be developed to solve real-world community problems. Looking forward, ZOYA is envisioned not as a static project but as a continuously evolving platform. The road ahead involves significant enhancements, including the integration of live university databases for real-time information, the development of personalized student profiles for longitudinal mentorship, and the addition of multilingual capabilities to better serve our diverse community. The ultimate goal is to scale this initiative, creating a network of AI guides across campus that will grow in sophistication, solidifying ZOYA's role as a pioneering blueprint for the future of AI-driven mentorship in academia.</p>
+      </section>
+      
+      <section class="references-section" id="references">
+        <h2>References</h2>
+        <ol>
+          <li>O. Zawacki-Richter, V. I. Marín, M. Bond, and F. Gouverneur, "Systematic review of research on artificial intelligence applications in higher education – where are the editors?," International Journal of Educational Technology in Higher Education, vol. 16, no. 1, art. no. 39, Dec. 2019.</li>
+          <li>A. Vaswani et al., "Attention is all you need," in Advances in Neural Information Processing Systems 30 (NIPS 2017), 2017, pp. 5998–6008.</li>
+          <li>M. A. Adadi, "A survey on artificial intelligence and its applications," in Proceedings of the 2021 International Conference on Information Technology (ICIT), Amman, Jordan, Jul. 2021, pp. 192–199.</li>
+          <li>E. Upton and G. Halfacree, Raspberry Pi User Guide, 4th ed. Hoboken, NJ: John Wiley & Sons, 2016.</li>
+          <li>R. Winkler and M. Söllner, "Unleashing the potential of chatbots in education: A state-of-the-art analysis," in Academy of Management Global Proceedings, paper presented at the conference of the E-Business and E-Government Special Interest Group of the Academy of Management, Surrey, UK, Apr. 2018.</li>
+        </ol>
+      </section>
+      
+      <section class="article-section">
+        <h2>Additional Resources</h2>
+        <p>
+          For detailed technical specifications, please refer to our attached Github Repo Link.
+        </p>
+        <a class="download-btn" href="https://github.com/Nikhil-Rao20/ZOYA" target="_blank" style="margin-left: 10px;">
+          <i class="fab fa-github"></i> Source Code
+        </a>
+      </section>
+
+      <section class="article-section">
+        <h2>Contact</h2>
+        <p>
+          For further information or collaboration opportunities, please contact:<br>
+          <strong>Email:</strong> <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a>
+        </p>
+      </section>
+        
+        
+  
+        
+      </section>
+    </main>
+  </div>
+  
+  <div w3-include-html="../footer.html"></div>
+  
+  <!-- jQuery and Bootstrap JS -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  
+  <!-- W3Data for includes -->
+  <!-- <script src="js/w3data.js"></script>
+  <script>
+    // Ensure the DOM is loaded before calling w3IncludeHTML
+    document.addEventListener('DOMContentLoaded', function() {
+      w3IncludeHTML();
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Active navigation highlighting
+      window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('.article-section');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 100) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
+  </script> -->
+
+  <script>
+  function includeHTML() {
+    var z, i, elmnt, file, xhttp;
+    /* Loop through a collection of all HTML elements: */
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+      elmnt = z[i];
+      /*search for elements with a certain atrribute:*/
+      file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        /* Make an HTTP request using the attribute value as the file name: */
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+            /* Remove the attribute, and call this function once more: */
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
+        }
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        /* Exit the function: */
+        return;
+      }
+    }
+    }
+    includeHTML();
+  </script>
+
+</body>
+</html>
