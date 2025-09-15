@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AI Calculator | Research Article</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="../favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  
+  <!-- Google Fonts -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="../css/main.css">
+  
+  <style>
+    body {
+      background: #f8f9fa;
+      font-family: 'Merriweather', serif;
+      line-height: 1.7;
+      color: #2c3e50;
+      /* padding-top: 10px; */
+    }
+    
+    .article-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 60px 0 40px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .article-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .article-header h1 {
+      font-size: 2.4em;
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      z-index: 1;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .article-header .meta {
+      font-size: 1em;
+      opacity: 0.95;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .article-header .authors {
+      font-size: 0.95em;
+      opacity: 0.9;
+      margin: 8px 0 0 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .article-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 60px 20px;
+      display: flex;
+      gap: 50px;
+    }
+    
+    .article-main {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 40px;
+    }
+    
+    .article-sidebar {
+      width: 300px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 90px;
+      height: fit-content;
+    }
+    
+    .sidebar-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+    
+    .sidebar-title {
+      font-size: 1.3em;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #667eea;
+      font-family: 'Montserrat', sans-serif;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 10px;
+    }
+    
+    .sidebar-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .sidebar-nav li {
+      margin-bottom: 12px;
+    }
+    
+    .sidebar-nav a {
+      color: #495057;
+      text-decoration: none;
+      font-size: 0.95em;
+      transition: all 0.2s;
+      display: block;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border-left: 3px solid transparent;
+    }
+    
+    .sidebar-nav a:hover {
+      color: #667eea;
+      background: #f8f9fa;
+      border-left-color: #667eea;
+      text-decoration: none;
+    }
+    
+    .article-section {
+      margin-bottom: 50px;
+    }
+    
+    .article-section h2 {
+      font-size: 1.8em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      margin-top: 0;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 8px;
+    }
+    
+    .article-section h3 {
+      font-size: 1.3em;
+      color: #495057;
+      margin-bottom: 12px;
+      margin-top: 25px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .article-section h4 {
+      font-size: 1.2em;
+      color: #6c757d;
+      margin-bottom: 12px;
+      margin-top: 25px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .article-img {
+      width: 100%;
+      border-radius: 12px;
+      margin: 25px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .article-img:hover {
+      transform: scale(1.02);
+    }
+    
+    .img-caption {
+      text-align: center;
+      font-style: italic;
+      color: #6c757d;
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+    
+    .highlight-box {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 4px solid #667eea;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 25px 0;
+    }
+  
+    
+    .highlight-box h4 {
+      color: #667eea;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    
+    .code-block {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    footer.footer {
+        width: 100%;
+        padding: 20px 0;
+        background-color: #f8f8f8;
+    }
+
+    /* Center content and align social icons */
+    .footer .social-icons li {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    /* Optional: fix container spacing if needed */
+    .content-container {
+        max-width: 1200px; /* same as other pages */
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    .timeline {
+      margin: 0 0 40px 0;
+      padding: 0;
+      list-style: none;
+      border-left: 3px solid #667eea;
+      position: relative;
+    }
+    
+    .timeline-event {
+      position: relative;
+      margin-bottom: 35px;
+      padding-left: 35px;
+    }
+    
+    .timeline-event:last-child {
+      margin-bottom: 0;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: -12px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 4px solid #667eea;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-date {
+      font-size: 1em;
+      color: #667eea;
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .timeline-desc {
+      font-size: 1em;
+      color: #495057;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .stat-label {
+      font-size: 1em;
+      opacity: 0.9;
+    }
+    
+    .download-btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 2;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.15);
+    }
+    
+    .back-link:hover {
+      color: #fff;
+      text-decoration: none;
+      transform: translateX(-3px);
+      background: rgba(0,0,0,0.25);
+    }
+    
+    .back-link i {
+      margin-right: 8px;
+    }
+    
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    .tag {
+      background: #e9ecef;
+      color: #495057;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .tag:hover {
+      background: #667eea;
+      color: #fff;
+    }
+    /* Additional styles for AI Calculator article */
+    .calculator-demo {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      margin: 40px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .calculator-demo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="calc-grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23calc-grid)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .calculator-demo .content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .vision-statement {
+      background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+      border-left: 5px solid #4caf50;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
+    }
+    
+    .vision-statement h4 {
+      color: #4caf50;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .technology-stack {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      border-left: 5px solid #2196f3;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 4px 15px rgba(33, 150, 243, 0.1);
+    }
+    
+    .technology-stack h3 {
+      color: #2196f3;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    .dual-mode-feature {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      border-left: 5px solid #ff9800;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 4px 15px rgba(255, 152, 0, 0.1);
+    }
+    
+    .dual-mode-feature h3 {
+      color: #ff9800;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+    
+    .mode-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-top: 4px solid #667eea;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .mode-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    
+    .mode-card h4 {
+      color: #667eea;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .ai-mode-card {
+      border-top-color: #4caf50;
+    }
+    
+    .ai-mode-card h4 {
+      color: #4caf50;
+    }
+    
+    .query-examples {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .query-examples h5 {
+      color: #495057;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+    
+    .query-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .query-list li {
+      background: #fff;
+      margin-bottom: 10px;
+      padding: 12px 15px;
+      border-radius: 6px;
+      border-left: 3px solid #667eea;
+      font-style: italic;
+      color: #495057;
+    }
+    
+    .ai-engine-box {
+      background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+      border-left: 5px solid #9c27b0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 4px 15px rgba(156, 39, 176, 0.1);
+    }
+    
+    .ai-engine-box h3 {
+      color: #9c27b0;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    .gemini-integration {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-left: 4px solid #9c27b0;
+    }
+    
+    .gemini-integration h4 {
+      color: #9c27b0;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .feature-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+    
+    .feature-item {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    
+    .feature-item .icon {
+      font-size: 3em;
+      color: #667eea;
+      margin-bottom: 15px;
+    }
+    
+    .feature-item h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    .future-vision {
+      background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+      border-left: 5px solid #009688;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 4px 15px rgba(0, 150, 136, 0.1);
+    }
+    
+    .future-vision h3 {
+      color: #009688;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    .inspiration-box {
+      background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+      border-left: 5px solid #f44336;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 4px 15px rgba(244, 67, 54, 0.1);
+    }
+    
+    .inspiration-box h4 {
+      color: #f44336;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .calculator-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      margin: 20px 10px 20px 0;
+    }
+    
+    .calculator-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    @media (max-width: 768px) {
+      .mode-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .feature-showcase {
+        grid-template-columns: 1fr;
+      }
+      
+      .calculator-demo,
+      .vision-statement,
+      .technology-stack,
+      .dual-mode-feature,
+      .ai-engine-box,
+      .future-vision,
+      .inspiration-box {
+        padding: 20px;
+        margin: 20px 0;
+      }
+    }
+  .references-section {
+    background: #f1f3f5;
+    padding: 25px 20px;      /* reduced padding for smaller screens */
+    border-left: 6px solid #667eea;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin: 40px 0;
+    overflow-wrap: break-word;   /* ensures long text wraps */
+    word-wrap: break-word;
+    word-break: break-word;      /* ensures links or long words don't overflow */
+  }
+
+  .references-section h2 {
+    color: #495057;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 8px;
+  }
+
+  .references-section ol {
+    padding-left: 20px;
+  }
+
+  .references-section ol li {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #343a40;
+    margin-bottom: 10px;
+  }
+
+  .references-section ol li a {
+    color: #667eea;
+    text-decoration: none;
+  }
+
+  .references-section ol li a:hover {
+    text-decoration: underline;
+  }
+    
+    /* Responsive Design */
+    @media (max-width: 1000px) {
+      .article-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .article-sidebar {
+        width: 100%;
+        position: static;
+      }
+      
+      .article-main {
+        padding: 30px 25px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .article-header h1 {
+        font-size: 2.5em;
+      }
+      
+      .article-container {
+        padding: 20px 15px 40px 15px;
+      }
+      
+      .article-main {
+        padding: 25px 20px;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .article-header h1 {
+        font-size: 2em;
+      }
+      
+      .article-section h2 {
+        font-size: 1.8em;
+      }
+      
+      .article-main {
+        padding: 20px 15px;
+      }
+      .references-section {
+        padding: 20px 15px;   /* smaller padding on mobile */
+        border-left-width: 4px; /* thinner stripe */
+      }
+
+      .references-section h2 {
+        font-size: 1.6em;      /* smaller heading on mobile */
+      }
+
+      .references-section ol li {
+        font-size: 0.95em;     /* slightly smaller text */
+      }
+      
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="navbar-placeholder" w3-include-html="../navbar.html" style="width:100%"></div>
+
+  <div class="article-header">
+    <a href="../projects.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+    <h1>The AI Calculator: Fusing Classic Design with Conversational Intelligence</h1>
+    <div class="meta">Web Application • AI-Powered Computing Tool</div>
+    <div class="authors">Authors: <strong>Nikhileswara Rao Sulake</strong></div>
+    <div class="authors">Email: <a href="mailto:nikhil01446@gmail.com" style="color: rgba(255,255,255,0.9);">nikhil01446@gmail.com</a></div>
+  </div>
+  
+  <div class="article-container">
+    <!-- Sidebar -->
+    <aside class="article-sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-title">Article Navigation</div>
+        <ul class="sidebar-nav">
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#architecture">System Architecture</a></li>
+          <li><a href="#frontend">Frontend Interface</a></li>
+          <li><a href="#ai-engine">AI Engine Integration</a></li>
+          <li><a href="#features">Features & UX</a></li>
+          <li><a href="#conclusion">Future Vision</a></li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-card">
+        <div class="sidebar-title">Project Details</div>
+        <p><strong>Type:</strong> Web Application</p>
+        <p><strong>Technology:</strong> HTML, CSS, JavaScript</p>
+        <p><strong>AI Engine:</strong> Google Gemini API</p>
+        <p><strong>Interface:</strong> Dual-Mode Calculator</p>
+        <p><strong>Inspiration:</strong> Apple iPod Calculator</p>
+      </div>
+      
+      <div class="sidebar-card">
+        <div class="sidebar-title">Key Features</div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Operation Modes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">NLP</div>
+            <div class="stat-label">Query Processing</div>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">Real-time</div>
+            <div class="stat-label">AI Responses</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">Responsive</div>
+            <div class="stat-label">Web Design</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="article-main">
+      
+      <div class="tag-list">
+        <span class="tag">AI-Powered Calculator</span>
+        <span class="tag">Natural Language Processing</span>
+        <span class="tag">Web Application</span>
+        <span class="tag">Google Gemini API</span>
+        <span class="tag">User Interface Design</span>
+        <span class="tag">Conversational AI</span>
+      </div>
+      
+      <section class="article-section" id="abstract">
+        <h2>Abstract</h2>
+        <p>The calculator, a tool of unwavering utility, has remained largely unchanged in its core function for decades. This project reimagines its potential by infusing it with the power of modern Large Language Models (LLMs). Inspired by the rumored, unreleased Apple iPod calculator that featured a natural language interface, we developed the <strong>AI Calculator</strong>—a web-based application that seamlessly blends a traditional calculator's familiar interface with an intelligent, conversational AI engine.</p>
+        
+        <p>The system leverages the <strong>Google Gemini API</strong> to process and solve complex mathematical queries posed in plain English, from simple word problems and unit conversions to multi-step financial calculations. This article details the project's architecture, from its minimalist user interface to its robust API integration, and explores how this fusion of classic design and conversational AI creates a tool that is not just for computation, but for intuitive problem-solving.</p>
+        
+        <div style="text-align: center;">
+          <img class="article-img" src="../img/projects/ai-cal.png" alt="AI Calculator Interface" style="max-width: 600px; width: 100%; display: inline-block;">
+          <div class="img-caption">Figure 1: The AI Calculator interface showcasing the dual-mode functionality - traditional calculator buttons alongside natural language query processing powered by Google Gemini AI.</div>
+        </div>
+      </section>
+      
+      <section class="article-section" id="introduction">
+        <h2>1. Introduction: Reimagining a Timeless Utility</h2>
+        <p>In the history of personal computing, few tools are as universal and enduring as the calculator. It is a symbol of precision, logic, and efficiency. Yet, for all its utility, the traditional calculator is constrained by a rigid, syntactic interface; the user must translate their real-world problem into a strict sequence of numbers and operators.</p>
+        
+        <div class="inspiration-box">
+          <h4><i class="fas fa-lightbulb"></i> The Inspiration Challenge</h4>
+          <p>A simple question like, <strong>"What's the tip on a $54.50 bill at 20%?"</strong> requires the user to first perform the mental translation to <code>54.50 * 0.20</code> before a single button is pressed. This cognitive overhead represents a fundamental barrier between human thinking and computational tools.</p>
+        </div>
+        
+        <p>This project was born from a simple yet powerful idea, famously rumored to have been prototyped for an early Apple iPod: <strong>what if a calculator could understand language?</strong> What if you could simply ask it your question, just as you would a person? With the recent explosion in the capabilities of Large Language Models (LLMs), this once-futuristic concept is now achievable.</p>
+        
+        <div class="vision-statement">
+          <h4><i class="fas fa-rocket"></i> Project Vision</h4>
+          <p>The AI Calculator is our realization of this vision. It is a <strong>dual-mode computational tool</strong> that functions as both a standard, reliable calculator and an intelligent assistant that can interpret and solve mathematical problems posed in natural, conversational language. Our goal was to create an application that retains the simplicity and speed of a classic calculator for basic tasks, while unlocking a new dimension of power and accessibility through an integrated AI engine.</p>
+        </div>
+        
+        <div class="calculator-demo">
+          <div class="content">
+            <h3>Experience the Future of Calculation</h3>
+            <p>Instead of translating your thoughts into mathematical syntax, simply ask your question naturally:</p>
+            <div style="margin: 20px 0; font-size: 1.2em; font-style: italic;">
+              "I bought 3 coffees at $4.50 each and a sandwich for $8.75. What was my total bill?"
+            </div>
+            <p>The AI Calculator understands your intent and provides instant, accurate answers.</p>
+          </div>
+        </div>
+      </section>
+      
+      <section class="technology-stack" id="architecture">
+        <h2>2. System Architecture and Technology Stack</h2>
+        <p>The AI Calculator is architected as a modern web application, prioritizing a clean user experience, a lightweight footprint, and a powerful AI backend. The design philosophy was to keep the user-facing components simple and intuitive, while handling the complex language processing on the server side via a robust API.</p>
+        
+        <div class="feature-showcase">
+          <div class="feature-item">
+            <div class="icon"><i class="fab fa-html5"></i></div>
+            <h4>HTML5 Structure</h4>
+            <p>Semantic markup providing accessible and well-structured foundation for the calculator interface.</p>
+          </div>
+          <div class="feature-item">
+            <div class="icon"><i class="fab fa-css3-alt"></i></div>
+            <h4>CSS3 Styling</h4>
+            <p>Modern, responsive design with clean aesthetics and smooth transitions for optimal user experience.</p>
+          </div>
+          <div class="feature-item">
+            <div class="icon"><i class="fab fa-js-square"></i></div>
+            <h4>JavaScript Engine</h4>
+            <p>Dynamic functionality handling user interactions, API calls, and real-time response processing.</p>
+          </div>
+          <div class="feature-item">
+            <div class="icon"><i class="fas fa-brain"></i></div>
+            <h4>Google Gemini API</h4>
+            <p>Advanced language model providing natural language understanding and mathematical reasoning capabilities.</p>
+          </div>
+        </div>
+      </section>
+      
+      <section class="article-section" id="frontend">
+        <h2>2.1. Frontend User Interface</h2>
+        <p>The user interface was developed using a standard and highly effective web technology stack: <strong>HTML, CSS, and JavaScript</strong>. The design is intentionally minimalist and clean, drawing inspiration from the very aesthetic that defines modern, user-centric applications.</p>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-paint-brush"></i> Design Philosophy</h4>
+          <p>The layout is dominated by a clear, readable display and a familiar grid of buttons for standard operations, ensuring that anyone can use it as a conventional calculator without a learning curve. The design prioritizes simplicity while maintaining the sophisticated functionality that users expect from modern applications.</p>
+        </div>
+        
+        <h3>Key Interface Elements</h3>
+        <ul>
+          <li><strong>Clear Display:</strong> Large, readable screen showing both input and AI conversation context</li>
+          <li><strong>Mode Toggle:</strong> Seamless switching between traditional and AI-powered calculation modes</li>
+          <li><strong>Button Grid:</strong> Familiar calculator layout for standard arithmetic operations</li>
+          <li><strong>Text Input:</strong> Natural language query input field for conversational interaction</li>
+          <li><strong>Response Area:</strong> Dedicated space for displaying AI-generated solutions and explanations</li>
+        </ul>
+        
+        <p>A key UI element is the toggle or input mechanism that allows the user to switch into <strong>"AI Mode."</strong> The display is designed to handle both numerical output and the textual, conversational exchange with the AI. When a natural language query is entered, the display shows both the user's question and the AI's calculated response, maintaining the context of the conversation.</p>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-mobile-alt"></i> Responsive Design</h4>
+          <p>The entire frontend is <strong>responsive</strong>, ensuring a seamless experience across desktops, tablets, and mobile devices. The interface adapts intelligently to different screen sizes while maintaining functionality and aesthetic appeal.</p>
+        </div>
+      </section>
+      
+      <section class="ai-engine-box" id="ai-engine">
+        <h2>2.2. The AI Engine: Integration with the Gemini API</h2>
+        <p>The "intelligence" of the AI Calculator is powered by <strong>Google's Gemini API</strong>. When a user submits a query in natural language, the frontend JavaScript captures this text and makes an asynchronous API call to a backend service. This service securely forwards the query to the Gemini LLM.</p>
+        
+        <div class="gemini-integration">
+          <h4><i class="fas fa-cogs"></i> The Magic of Language Understanding</h4>
+          <p>The real magic happens at the intersection of the user's query and the model's processing capabilities. The LLM is prompted not just to understand the question but to act as a <strong>"reasoning calculator."</strong> It must:</p>
+          <ul>
+            <li>Parse the sentence and identify underlying mathematical concepts</li>
+            <li>Extract relevant numbers and operators from natural language</li>
+            <li>Perform necessary calculations in the correct logical order</li>
+            <li>Formulate clear, concise, and accurate answers</li>
+          </ul>
+        </div>
+        
+        <h3>Example Processing Flow</h3>
+        <div class="query-examples">
+          <h5>User Query:</h5>
+          <p><em>"If a train travels at 80 km/h, how long will it take to cover 200 km?"</em></p>
+          
+          <h5>AI Processing:</h5>
+          <ol>
+            <li>Recognizes this as a <strong>time = distance / speed</strong> problem</li>
+            <li>Identifies: distance = 200 km, speed = 80 km/h</li>
+            <li>Performs calculation: 200 ÷ 80 = 2.5</li>
+            <li>Returns formatted result: <strong>"2.5 hours"</strong></li>
+          </ol>
+        </div>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-wrench"></i> Prompt Engineering Excellence</h4>
+          <p>This process of crafting the right instructions for the LLM, known as <strong>prompt engineering</strong>, was a critical part of the development. The prompts were carefully designed to instruct the model to prioritize numerical accuracy and to return the answer directly, without extraneous conversational text, ensuring the output is clean and directly usable.</p>
+        </div>
+      </section>
+      
+      <section class="dual-mode-feature" id="features">
+        <h2>3. Features and User Experience</h2>
+        <p>The AI Calculator is defined by its powerful dual-mode functionality, offering users the best of both worlds—traditional computational efficiency and revolutionary natural language understanding.</p>
+        
+        <div class="mode-grid">
+          <div class="mode-card">
+            <h4><i class="fas fa-calculator"></i> Standard Calculator Mode</h4>
+            <p>In its default state, the application is a fast and familiar calculator. It handles all standard arithmetic operations—addition, subtraction, multiplication, and division—along with percentage calculations and decimal inputs.</p>
+            <ul>
+              <li>Instant numerical computation</li>
+              <li>Familiar button-based interface</li>
+              <li>Traditional mathematical syntax</li>
+              <li>Quick operations for known formulas</li>
+            </ul>
+            <p>The tactile feedback and responsive interface make it a reliable tool for quick, everyday calculations where the user already knows the required formula.</p>
+          </div>
+          
+          <div class="mode-card ai-mode-card">
+            <h4><i class="fas fa-comments"></i> AI-Powered Conversational Mode</h4>
+            <p>The true innovation is unlocked in the AI mode. This feature transforms the calculator from a simple tool into a genuine problem-solving partner. Users are freed from the need to translate their thoughts into mathematical syntax.</p>
+            <ul>
+              <li>Natural language query processing</li>
+              <li>Context-aware problem solving</li>
+              <li>Multi-step calculation handling</li>
+              <li>Conversational response format</li>
+            </ul>
+            <p>Instead, they can ask questions naturally, making complex calculations accessible to users who may not be comfortable with setting up problems mathematically.</p>
+          </div>
+        </div>
+        
+        <h3>AI Mode Capabilities</h3>
+        <div class="query-examples">
+          <h5>Word Problems</h5>
+          <ul class="query-list">
+            <li>"I bought 3 coffees at $4.50 each and a sandwich for $8.75. What was my total bill?"</li>
+            <li>"If I have 100 apples and give away 25, then eat 5, how many do I have left?"</li>
+          </ul>
+          
+          <h5>Unit Conversions</h5>
+          <ul class="query-list">
+            <li>"How many minutes are there in a week?"</li>
+            <li>"Convert 75 degrees Fahrenheit to Celsius"</li>
+          </ul>
+          
+          <h5>Financial Calculations</h5>
+          <ul class="query-list">
+            <li>"What is the 15% service charge on a bill of $120?"</li>
+            <li>"Calculate the compound interest on $5000 at 3% for 2 years"</li>
+          </ul>
+          
+          <h5>Multi-Step Logic</h5>
+          <ul class="query-list">
+            <li>"I earn $50,000 per year. After 25% taxes, how much do I take home monthly?"</li>
+            <li>"A rectangle is 12 meters long and 8 meters wide. What's its area and perimeter?"</li>
+          </ul>
+        </div>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-universal-access"></i> Accessibility Revolution</h4>
+          <p>The AI is capable of handling a vast range of queries, making complex calculations accessible to users who may not be comfortable with setting up the problem mathematically. This dramatically <strong>lowers the barrier to entry</strong> for quantitative reasoning and provides instant, accurate answers to real-world problems.</p>
+        </div>
+      </section>
+      
+      <section class="future-vision" id="conclusion">
+        <h2>4. Conclusion and Future Vision</h2>
+        <p>The AI Calculator project successfully demonstrates that even the most established and seemingly "solved" applications can be profoundly enhanced by the integration of modern AI. By fusing a classic, intuitive interface with the conversational power of the Gemini LLM, we have created a tool that is more accessible, more powerful, and more aligned with how people naturally think and communicate.</p>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-star"></i> Proof of Concept Achievement</h4>
+          <p>It serves as a compelling <strong>proof-of-concept</strong> for a future where our digital tools are not just passive instruments, but intelligent collaborators. The AI Calculator bridges the gap between human intuition and computational precision, making mathematical problem-solving as natural as asking a question.</p>
+        </div>
+        
+        <h3>Future Development Roadmap</h3>
+        <p>The potential for future development is vast. The immediate next steps could include:</p>
+        
+        <div class="feature-showcase">
+          <div class="feature-item">
+            <div class="icon"><i class="fas fa-history"></i></div>
+            <h4>Conversation History</h4>
+            <p>Implementing a history feature to save and recall previous AI conversations, building context over time.</p>
+          </div>
+          <div class="feature-item">
+            <div class="icon"><i class="fas fa-chart-line"></i></div>
+            <h4>Advanced Functions</h4>
+            <p>Expanding AI capabilities to include scientific, statistical, and engineering calculations.</p>
+          </div>
+          <div class="feature-item">
+            <div class="icon"><i class="fas fa-database"></i></div>
+            <h4>Data Integration</h4>
+            <p>Connecting with live data sources for real-time information like exchange rates and stock prices.</p>
+          </div>
+          <div class="feature-item">
+            <div class="icon"><i class="fas fa-chart-pie"></i></div>
+            <h4>Visual Solutions</h4>
+            <p>Adding graphing capabilities and visual representation of mathematical concepts and solutions.</p>
+          </div>
+        </div>
+        
+        <h3>Enhanced Query Examples</h3>
+        <div class="query-examples">
+          <h5>Future Capabilities</h5>
+          <ul class="query-list">
+            <li>"What's the current exchange rate for 500 USD to INR?"</li>
+            <li>"Calculate the trajectory for a projectile launched at 45 degrees with initial velocity 30 m/s"</li>
+            <li>"Show me a graph of the function y = x² + 2x - 3"</li>
+            <li>"What's the statistical correlation between these two data sets?"</li>
+          </ul>
+        </div>
+        
+        <div class="vision-statement">
+          <h4><i class="fas fa-globe"></i> The Bigger Picture</h4>
+          <p>Ultimately, the AI Calculator is more than just a clever application; it is a <strong>glimpse into a future</strong> where the distinction between a query and a calculation dissolves, and any question we can ask, we can also compute. It represents the democratization of mathematical problem-solving, making computational power accessible to anyone who can articulate their thoughts in natural language.</p>
+        </div>
+        
+        <p>This project demonstrates that the future of human-computer interaction lies not in forcing users to adapt to rigid interfaces, but in creating intelligent systems that understand and respond to natural human communication. The AI Calculator is a step toward that future—where technology serves humanity by speaking our language, not the other way around.</p>
+      </section>
+      
+      <section class="article-section">
+        <h2>Technical Implementation</h2>
+        <div class="feature-showcase">
+          <div class="feature-item">
+            <div class="icon"><i class="fas fa-code"></i></div>
+            <h4>Frontend Stack</h4>
+            <p><strong>Languages:</strong> HTML5, CSS3, JavaScript<br>
+            <strong>Features:</strong> Responsive design, intuitive UI<br>
+            <strong>Compatibility:</strong> Cross-platform support</p>
+          </div>
+          <div class="feature-item">
+            <div class="icon"><i class="fas fa-cloud"></i></div>
+            <h4>AI Integration</h4>
+            <p><strong>API:</strong> Google Gemini<br>
+            <strong>Processing:</strong> Natural language understanding<br>
+            <strong>Response:</strong> Mathematical reasoning</p>
+          </div>
+          <div class="feature-item">
+            <div class="icon"><i class="fas fa-shield-alt"></i></div>
+            <h4>Security & Performance</h4>
+            <p><strong>API Security:</strong> Secure token management<br>
+            <strong>Performance:</strong> Asynchronous processing<br>
+            <strong>Reliability:</strong> Error handling & validation</p>
+          </div>
+        </div>
+      </section>
+      
+      <section class="article-section">
+        <h2>Try the AI Calculator</h2>
+        <p>
+          Experience the future of calculation with our AI-powered interface. The calculator demonstrates how natural language processing can transform traditional computational tools into intelligent problem-solving assistants.
+        </p>
+        
+        <div style="margin-top: 25px;">
+          <a class="calculator-button" href="#" target="_blank">
+            <i class="fas fa-calculator"></i> Launch AI Calculator
+          </a>
+          <a class="calculator-button" href="#" target="_blank">
+            <i class="fab fa-github"></i> View Source Code
+          </a>
+          <a class="calculator-button" href="#" target="_blank">
+            <i class="fas fa-file-pdf"></i> Technical Documentation
+          </a>
+        </div>
+      </section>
+
+      <section class="article-section">
+        <h2>Contact</h2>
+        <p>
+          For technical details, collaboration opportunities, or to discuss the implementation of AI-powered user interfaces, please contact:<br>
+          <strong>Email:</strong> <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a><br>
+          <strong>Project:</strong> AI Calculator - Conversational Computing Interface<br>
+          <strong>Technology:</strong> Natural Language Processing + Web Development
+        </p>
+      </section>
+    </main>
+  </div>
+  
+  <div w3-include-html="../footer.html"></div>
+  
+  <!-- jQuery and Bootstrap JS -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  
+  <!-- W3Data for includes -->
+  <!-- <script src="js/w3data.js"></script>
+  <script>
+    // Ensure the DOM is loaded before calling w3IncludeHTML
+    document.addEventListener('DOMContentLoaded', function() {
+      w3IncludeHTML();
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Active navigation highlighting
+      window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('.article-section');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 100) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
+  </script> -->
+
+  <script>
+  function includeHTML() {
+    var z, i, elmnt, file, xhttp;
+    /* Loop through a collection of all HTML elements: */
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+      elmnt = z[i];
+      /*search for elements with a certain atrribute:*/
+      file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        /* Make an HTTP request using the attribute value as the file name: */
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+            /* Remove the attribute, and call this function once more: */
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
+        }
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        /* Exit the function: */
+        return;
+      }
+    }
+    }
+    includeHTML();
+  </script>
+
+</body>
+</html>

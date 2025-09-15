@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Umbra UNet | Research Article</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="../favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  
+  <!-- Google Fonts -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="../css/main.css">
+  
+  <style>
+    body {
+      background: #f8f9fa;
+      font-family: 'Merriweather', serif;
+      line-height: 1.7;
+      color: #2c3e50;
+      /* padding-top: 10px; */
+    }
+    
+    .article-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 60px 0 40px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .article-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .article-header h1 {
+      font-size: 2.4em;
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      z-index: 1;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .article-header .meta {
+      font-size: 1em;
+      opacity: 0.95;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .article-header .authors {
+      font-size: 0.95em;
+      opacity: 0.9;
+      margin: 8px 0 0 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .article-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 60px 20px;
+      display: flex;
+      gap: 50px;
+    }
+    
+    .article-main {
+      flex: 1;
+      min-width: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 40px;
+    }
+    
+    .article-sidebar {
+      width: 300px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 90px;
+      height: fit-content;
+    }
+    
+    .sidebar-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+    
+    .sidebar-title {
+      font-size: 1.3em;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #667eea;
+      font-family: 'Montserrat', sans-serif;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 10px;
+    }
+    
+    .sidebar-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .sidebar-nav li {
+      margin-bottom: 12px;
+    }
+    
+    .sidebar-nav a {
+      color: #495057;
+      text-decoration: none;
+      font-size: 0.95em;
+      transition: all 0.2s;
+      display: block;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border-left: 3px solid transparent;
+    }
+    
+    .sidebar-nav a:hover {
+      color: #667eea;
+      background: #f8f9fa;
+      border-left-color: #667eea;
+      text-decoration: none;
+    }
+    
+    .article-section {
+      margin-bottom: 50px;
+    }
+    
+    .article-section h2 {
+      font-size: 1.8em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      margin-top: 0;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 8px;
+    }
+    
+    .article-section h3 {
+      font-size: 1.3em;
+      color: #495057;
+      margin-bottom: 12px;
+      margin-top: 25px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .article-section h4 {
+      font-size: 1.2em;
+      color: #6c757d;
+      margin-bottom: 12px;
+      margin-top: 25px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .article-img {
+      width: 100%;
+      border-radius: 12px;
+      margin: 25px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .article-img:hover {
+      transform: scale(1.02);
+    }
+    
+    .img-caption {
+      text-align: center;
+      font-style: italic;
+      color: #6c757d;
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+    
+    .highlight-box {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 4px solid #667eea;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 25px 0;
+    }
+  
+    
+    .highlight-box h4 {
+      color: #667eea;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    
+    .code-block {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    footer.footer {
+        width: 100%;
+        padding: 20px 0;
+        background-color: #f8f8f8;
+    }
+
+    /* Center content and align social icons */
+    .footer .social-icons li {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    /* Optional: fix container spacing if needed */
+    .content-container {
+        max-width: 1200px; /* same as other pages */
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    .timeline {
+      margin: 0 0 40px 0;
+      padding: 0;
+      list-style: none;
+      border-left: 3px solid #667eea;
+      position: relative;
+    }
+    
+    .timeline-event {
+      position: relative;
+      margin-bottom: 35px;
+      padding-left: 35px;
+    }
+    
+    .timeline-event:last-child {
+      margin-bottom: 0;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: -12px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 4px solid #667eea;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-date {
+      font-size: 1em;
+      color: #667eea;
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .timeline-desc {
+      font-size: 1em;
+      color: #495057;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .stat-label {
+      font-size: 1em;
+      opacity: 0.9;
+    }
+    
+    .download-btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 2;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.15);
+    }
+    
+    .back-link:hover {
+      color: #fff;
+      text-decoration: none;
+      transform: translateX(-3px);
+      background: rgba(0,0,0,0.25);
+    }
+    
+    .back-link i {
+      margin-right: 8px;
+    }
+    
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    .tag {
+      background: #e9ecef;
+      color: #495057;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .tag:hover {
+      background: #667eea;
+      color: #fff;
+    }
+    /* Additional styles for Umbra UNet article */
+    .method-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 5px solid #28a745;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    
+    .method-section h3 {
+      color: #28a745;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    .architecture-box {
+      background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+      border-left: 5px solid #f39c12;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 25px 0;
+      box-shadow: 0 4px 15px rgba(243, 156, 18, 0.1);
+    }
+    
+    .architecture-box h4 {
+      color: #f39c12;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .loss-function-box {
+      background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
+      border-left: 5px solid #2196f3;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 25px 0;
+      box-shadow: 0 4px 15px rgba(33, 150, 243, 0.1);
+    }
+    
+    .loss-function-box h4 {
+      color: #2196f3;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .component-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-top: 4px solid #667eea;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .component-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    
+    .component-card h4 {
+      color: #667eea;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    .experiment-results {
+      background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%);
+      border-left: 5px solid #8bc34a;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 4px 15px rgba(139, 195, 74, 0.1);
+    }
+    
+    .experiment-results h3 {
+      color: #8bc34a;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    .figure-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+    
+    .figure-container {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    
+    .figure-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .figure-caption {
+      padding: 15px 20px;
+      background: #f8f9fa;
+      font-style: italic;
+      color: #6c757d;
+      font-size: 0.9em;
+      text-align: center;
+    }
+    
+    .comparison-table {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin: 30px 0;
+      overflow: hidden;
+    }
+    
+    .table-responsive {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .table {
+      margin-bottom: 0;
+      background: #fff;
+    }
+    
+    .table thead {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+    }
+    
+    .table thead th {
+      border: none;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      vertical-align: middle;
+      padding: 15px 12px;
+    }
+    
+    .table tbody tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .table tbody td {
+      border: 1px solid #e9ecef;
+      padding: 12px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    
+    .performance-highlight {
+      background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+      font-weight: 600;
+      color: #155724;
+    }
+    
+    .innovation-spotlight {
+      background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+      border-left: 5px solid #e17055;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 6px 20px rgba(225, 112, 85, 0.15);
+    }
+    
+    .innovation-spotlight h3 {
+      color: #e17055;
+      margin-top: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .contribution-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    
+    .contribution-list li {
+      background: #fff;
+      margin-bottom: 15px;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+    
+    .contribution-list li:hover {
+      transform: translateX(5px);
+    }
+    
+    .contribution-list li strong {
+      color: #667eea;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    @media (max-width: 768px) {
+      .figure-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .component-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .method-section,
+      .architecture-box,
+      .loss-function-box,
+      .experiment-results,
+      .innovation-spotlight {
+        padding: 20px;
+        margin: 20px 0;
+      }
+    }
+  .references-section {
+    background: #f1f3f5;
+    padding: 25px 20px;      /* reduced padding for smaller screens */
+    border-left: 6px solid #667eea;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin: 40px 0;
+    overflow-wrap: break-word;   /* ensures long text wraps */
+    word-wrap: break-word;
+    word-break: break-word;      /* ensures links or long words don't overflow */
+  }
+
+  .references-section h2 {
+    color: #495057;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 8px;
+  }
+
+  .references-section ol {
+    padding-left: 20px;
+  }
+
+  .references-section ol li {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #343a40;
+    margin-bottom: 10px;
+  }
+
+  .references-section ol li a {
+    color: #667eea;
+    text-decoration: none;
+  }
+
+  .references-section ol li a:hover {
+    text-decoration: underline;
+  }
+    
+    /* Responsive Design */
+    @media (max-width: 1000px) {
+      .article-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .article-sidebar {
+        width: 100%;
+        position: static;
+      }
+      
+      .article-main {
+        padding: 30px 25px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .article-header h1 {
+        font-size: 2.5em;
+      }
+      
+      .article-container {
+        padding: 20px 15px 40px 15px;
+      }
+      
+      .article-main {
+        padding: 25px 20px;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .article-header h1 {
+        font-size: 2em;
+      }
+      
+      .article-section h2 {
+        font-size: 1.8em;
+      }
+      
+      .article-main {
+        padding: 20px 15px;
+      }
+      .references-section {
+        padding: 20px 15px;   /* smaller padding on mobile */
+        border-left-width: 4px; /* thinner stripe */
+      }
+
+      .references-section h2 {
+        font-size: 1.6em;      /* smaller heading on mobile */
+      }
+
+      .references-section ol li {
+        font-size: 0.95em;     /* slightly smaller text */
+      }
+      
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="navbar-placeholder" w3-include-html="../navbar.html" style="width:100%"></div>
+
+  <div class="article-header">
+    <a href="../projects.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+    <h1>Umbra UNet: A Hybrid Framework for Robust Segmentation of Underrepresented Classes in Satellite Imagery</h1>
+    <div class="meta">Research Article • ISRO Bharatiya Antariksh Hackathon 2025</div>
+    <div class="authors">Authors: <strong>Nikhileswara Rao Sulake</strong></div>
+    <div class="authors">Email: <a href="mailto:nikhil01446@gmail.com" style="color: rgba(255,255,255,0.9);">nikhil01446@gmail.com</a></div>
+  </div>
+  
+  <div class="article-container">
+    <!-- Sidebar -->
+    <aside class="article-sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-title">Article Navigation</div>
+        <ul class="sidebar-nav">
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#methodology">Multi-Faceted Strategy</a></li>
+          <li><a href="#architecture">Umbra UNet Architecture</a></li>
+          <li><a href="#loss-function">Combo Loss Function</a></li>
+          <li><a href="#experiments">Experiments & Results</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-card">
+        <div class="sidebar-title">Project Details</div>
+        <p><strong>Competition:</strong> ISRO Bharatiya Antariksh Hackathon 2025</p>
+        <p><strong>Domain:</strong> Satellite Imagery Segmentation</p>
+        <p><strong>Dataset:</strong> DLRSD (17 Classes)</p>
+        <p><strong>Challenge:</strong> Class Imbalance</p>
+        <p><strong>Mission:</strong> ISRO LISS-IV</p>
+      </div>
+      
+      <div class="sidebar-card">
+        <div class="sidebar-title">Key Innovations</div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Hybrid Branches</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">17</div>
+            <div class="stat-label">Land Cover Classes</div>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">Combo</div>
+            <div class="stat-label">Loss Function</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">AdamW</div>
+            <div class="stat-label">Optimizer</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="article-main">
+      
+      <div class="tag-list">
+        <span class="tag">Satellite Imagery</span>
+        <span class="tag">Semantic Segmentation</span>
+        <span class="tag">Class Imbalance</span>
+        <span class="tag">Hybrid Architecture</span>
+        <span class="tag">Earth Observation</span>
+        <span class="tag">Remote Sensing</span>
+      </div>
+      
+      <section class="article-section" id="abstract">
+        <h2>Abstract</h2>
+        <p>Semantic segmentation of satellite imagery is a cornerstone of modern Earth Observation, yet its accuracy is frequently compromised by severe class imbalance, where critical but rare classes like small water bodies or deforested patches are overshadowed by dominant labels like vegetation. Standard deep learning pipelines, often relying on generic loss functions and optimizers, tend to achieve high overall accuracy at the cost of poor recall on these minority classes. To address this fundamental challenge, we introduce a novel, end-to-end framework engineered specifically for imbalanced remote sensing data.</p>
+        
+        <p>At the core of our solution is the <strong>Umbra UNet</strong>, a cutting-edge hybrid deep learning architecture that integrates state-of-the-art vision blocks—InceptionNeXt, EfficientViT, and ConvNeXtV2—to achieve a superior fusion of local and global features. To complement this architectural innovation, we developed a hybrid "Combo" loss function, a weighted blend of Focal, Dice, and Tversky losses, designed to force the model's attention onto underrepresented classes. Finally, we couple this with a dataset-aware AdamW optimizer for enhanced training stability and generalization.</p>
+        
+        <p>Validated on the challenging DLRSD benchmark, our integrated approach demonstrates a marked improvement in segmenting minority classes compared to baseline methods, offering a robust, stable, and highly accurate solution for real-world geospatial analysis.</p>
+        
+        <div style="text-align: center;">
+          <img class="article-img" src="../img/projects/zeroshot.png" alt="Umbra UNet Framework Overview" style="max-width: 800px; width: 100%; display: inline-block;">
+          <div class="img-caption">Figure 1: Overview of the Umbra UNet framework for robust segmentation of underrepresented classes in satellite imagery, demonstrating the hybrid architecture approach.</div>
+        </div>
+      </section>
+      
+      <section class="article-section" id="introduction">
+        <h2>1. Introduction</h2>
+        <p>The proliferation of high-resolution satellite imagery from missions like ISRO's LISS-IV has unlocked unprecedented opportunities for monitoring our planet's surface. From tracking deforestation and managing water resources to urban planning and disaster response, the ability to automatically generate accurate land cover maps through semantic segmentation is of paramount importance. Deep learning, particularly with architectures like the U-Net [1], has become the state-of-the-art for this task. However, the performance of these models in real-world scenarios is often hindered by a persistent and fundamental problem: <strong>class imbalance</strong>.</p>
+        
+        <p>In nearly all remote sensing datasets, the distribution of land cover classes is heavily skewed. Vast expanses of vegetation, urban areas, or bare soil (the majority classes) dominate the landscape, while smaller, yet often more critical, features like wetlands, isolated water bodies, or new construction sites (the minority or "weaker" classes) are vastly underrepresented. This imbalance poses a significant challenge to standard training paradigms.</p>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-exclamation-triangle"></i> The Class Imbalance Challenge</h4>
+          <p>Deep learning models trained with conventional loss functions, such as cross-entropy, and generic optimizers like Adam are mathematically driven to maximize overall accuracy. This inadvertently biases the model towards the majority classes, as correctly classifying a pixel of vegetation has a much larger impact on the total loss than correctly classifying a rare pixel of a wetland. Consequently, these models often learn to ignore the minority classes entirely, resulting in high overall accuracy but dangerously poor recall on the very targets that are often of greatest interest.</p>
+        </div>
+        
+        <p>This project, undertaken for the <strong>ISRO Bharatiya Antariksh Hackathon 2025</strong>, directly confronts this problem statement. The objective was to move beyond incremental improvements and devise a mathematically motivated, holistic framework to explicitly improve the segmentation of weaker classes in satellite imagery. Our contribution is a comprehensive, three-pronged solution that innovates across the entire deep learning pipeline: a novel model architecture tailored for the task, a custom loss function to redirect the learning process, and an optimized training strategy to ensure robust convergence.</p>
+      </section>
+      
+      <section class="method-section" id="methodology">
+        <h2>2. A Multi-Faceted Strategy for Imbalanced Data</h2>
+        <p>Our approach was to engineer a synergistic system where each component is specifically designed to counteract the effects of class imbalance. The process flow, from data to metrics, represents our end-to-end strategy for addressing this fundamental challenge in remote sensing.</p>
+        
+        <div class="innovation-spotlight">
+          <h3><i class="fas fa-lightbulb"></i> End-to-End Strategy</h3>
+          <p>We begin with the DLRSD dataset, which exhibits the characteristic class imbalance seen in real-world remote sensing data. We then propose our novel <strong>Umbra UNet</strong> as a superior alternative to the baseline UNet. This is coupled with our <strong>Combo Loss</strong>, which is designed to outperform standard Weighted Cross-Entropy. Finally, we employ optimized training strategies to produce accurate segmentation maps, which are evaluated using metrics that prioritize per-class performance like Dice and IoU.</p>
+        </div>
+        
+        <p>This integrated framework addresses class imbalance through three synergistic innovations:</p>
+        
+        <div class="component-grid">
+          <div class="component-card">
+            <h4><i class="fas fa-brain"></i> Novel Architecture</h4>
+            <p>The <strong>Umbra UNet</strong> leverages hybrid vision blocks to capture both local textures and global spatial context, essential for identifying small, dispersed minority class regions in satellite imagery.</p>
+          </div>
+          <div class="component-card">
+            <h4><i class="fas fa-crosshairs"></i> Targeted Loss Function</h4>
+            <p>Our <strong>Combo Loss</strong> strategically combines Focal, Dice, and Tversky losses to force model attention onto underrepresented classes while maintaining overall segmentation quality.</p>
+          </div>
+          <div class="component-card">
+            <h4><i class="fas fa-cogs"></i> Optimized Training</h4>
+            <p>Dataset-aware <strong>AdamW optimization</strong> provides enhanced training stability and improved generalization for the challenging imbalanced data distribution.</p>
+          </div>
+        </div>
+      </section>
+      
+      <section class="article-section" id="architecture">
+        <h2>2.1. A Novel Hybrid Architecture: The Umbra UNet</h2>
+        <p>Standard U-Net architectures, while effective, can sometimes struggle to capture the complex interplay of local textures and global spatial context inherent in high-resolution satellite imagery. To address this, we developed the <strong>Umbra UNet</strong>, a cutting-edge hybrid deep learning architecture meticulously designed for this domain.</p>
+        
+        <div style="text-align: center;">
+          <img class="article-img" src="../img/projects/mlp_mixer.jpeg" alt="Umbra UNet Architecture" style="max-width: 900px; width: 100%; display: inline-block;">
+          <div class="img-caption">Figure 2: Architecture of the proposed solution: UMBRA UNet Framework showing the hybrid encoder design with parallel vision blocks and attention mechanisms.</div>
+        </div>
+        
+        <div class="architecture-box">
+          <h4><i class="fas fa-cube"></i> The Umbra Conv Block Innovation</h4>
+          <p>The primary innovation of the Umbra UNet lies in its encoder's fundamental building block: the <strong>Umbra Conv block</strong>. This is a powerful hybrid module that processes an input tensor through three parallel branches, each leveraging a different state-of-the-art architectural philosophy to create a multi-faceted feature representation.</p>
+        </div>
+        
+        <h3>Parallel Branch Architecture</h3>
+        <p>The Umbra Conv block integrates three cutting-edge vision approaches:</p>
+        
+        <div class="component-grid">
+          <div class="component-card">
+            <h4><i class="fas fa-expand-arrows-alt"></i> InceptionNeXt Branch</h4>
+            <p>The first branch utilizes <strong>InceptionNeXt blocks [2]</strong>, which are adept at capturing multi-scale spatial features through their use of split-depthwise convolutions. This allows the model to analyze features at different resolutions simultaneously, crucial for detecting objects of varying sizes in satellite imagery.</p>
+          </div>
+          <div class="component-card">
+            <h4><i class="fas fa-eye"></i> EfficientViT Branch</h4>
+            <p>The second branch employs an <strong>EfficientViT block [3]</strong>, a lightweight Vision Transformer. This branch is responsible for modeling long-range dependencies and capturing the global context across the image, a crucial capability for understanding large-scale land patterns and spatial relationships.</p>
+          </div>
+          <div class="component-card">
+            <h4><i class="fas fa-layer-group"></i> ConvNeXtV2 Branch</h4>
+            <p>The third branch uses a <strong>ConvNeXtV2 block [4]</strong>, which represents the pinnacle of modern pure-convolutional design, excelling at robust local feature extraction with improved training stability and performance.</p>
+          </div>
+        </div>
+        
+        <h3>Feature Fusion and Integration</h3>
+        <p>The feature maps from these three parallel paths—representing multi-scale local, global, and hierarchical information—are then concatenated. This fused tensor is passed through a final convolutional layer for channel mixing and integration. This entire Umbra Conv block replaces the standard convolutional blocks in the encoder path of a U-Net.</p>
+        
+        <p>The decoder path then leverages these exceptionally rich, fused features to progressively reconstruct the segmentation map with high fidelity, using specialized <strong>Umbra DSD and FuseUp blocks</strong> that incorporate attention mechanisms (MSKA and SA) to further refine the output and maintain focus on minority class regions.</p>
+      </section>
+      
+      <section class="article-section" id="loss-function">
+        <h2>2.2. A Custom Hybrid "Combo" Loss Function</h2>
+        <p>The second pillar of our solution is a novel loss function designed to force the model's attention onto the underrepresented classes. Standard cross-entropy loss treats all pixels equally, which is detrimental in an imbalanced setting. Our <strong>"Combo Loss"</strong> is a carefully weighted sum of three distinct loss functions, each chosen for its specific properties in handling imbalance:</p>
+        
+        <div class="loss-function-box">
+          <h4><i class="fas fa-crosshairs"></i> Focal Loss Component</h4>
+          <p><strong>Focal Loss [5]:</strong> This loss function modifies the standard cross-entropy loss to down-weight the loss assigned to well-classified examples. This prevents the vast number of easy-to-classify majority class pixels from overwhelming the training signal, allowing the model to focus on the harder, minority class examples.</p>
+        </div>
+        
+        <div class="loss-function-box">
+          <h4><i class="fas fa-circle-notch"></i> Dice Loss Component</h4>
+          <p><strong>Dice Loss [6]:</strong> Derived from the Dice Similarity Coefficient, this loss directly optimizes for the overlap between the predicted and ground truth segmentation maps. It is inherently robust to class imbalance because it evaluates the union and intersection of regions, treating each class region as a whole entity.</p>
+        </div>
+        
+        <div class="loss-function-box">
+          <h4><i class="fas fa-balance-scale"></i> Tversky Loss Component</h4>
+          <p><strong>Tversky Loss [7]:</strong> This is a generalization of the Dice loss that introduces two parameters, α and β, to control the weighting of false positives and false negatives. By setting α > β, we can place a higher penalty on false negatives, which is critical for improving the recall of minority classes that the model might otherwise ignore.</p>
+        </div>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-magic"></i> Synergistic Combination</h4>
+          <p>By combining these three components, our <strong>Combo Loss</strong> creates a balanced learning objective that is highly sensitive to the accurate segmentation of rare classes. The weighted combination ensures that the model learns to balance overall accuracy with exceptional performance on minority classes, addressing the core challenge of class imbalance in satellite imagery segmentation.</p>
+        </div>
+      </section>
+      
+      <section class="article-section">
+        <h2>2.3. Advanced and Stable Optimization</h2>
+        <p>The final component of our framework is the optimization strategy. The choice of optimizer can significantly impact training stability and the model's ability to generalize. After experimenting with several modern optimizers, including Sharpness-Aware Minimization (SAM) [8] and AdaBelief [9], we found that a carefully tuned <strong>AdamW [10]</strong> optimizer provided the best results.</p>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-rocket"></i> AdamW Advantages</h4>
+          <p>AdamW improves upon the standard Adam optimizer by decoupling the weight decay from the gradient update, which often leads to better generalization. We adjusted its parameters, such as the learning rate and weight decay, specifically for the DLRSD dataset, resulting in faster convergence and a model that performs more reliably on unseen data.</p>
+        </div>
+      </section>
+      
+      <section class="experiment-results" id="experiments">
+        <h2>3. Experiments and Results</h2>
+        <p>We conducted a series of rigorous experiments on the DLRSD dataset to validate each component of our proposed framework. The DLRSD is a challenging public benchmark with <strong>17 distinct land cover classes</strong> and a severe class imbalance, making it an ideal testbed for our solution.</p>
+        
+        <h3>3.1. Analysis of Optimizers and Loss Functions</h3>
+        <p>Our initial experiments focused on comparing the effectiveness of different optimizers and loss functions using a baseline UNet model.</p>
+        
+        <div class="figure-grid">
+          <div class="figure-container">
+            <img src="../img/projects/seg.png" alt="Dice per Class across Models (Optimizers)">
+            <div class="figure-caption">Figure 3: Per-class Dice score comparison for the UNet model trained with AdamW, SAM, and AdaBelief optimizers.</div>
+          </div>
+          <div class="figure-container">
+            <img src="../img/projects/thyroid.jpg" alt="Dice per Model Type and Loss Function">
+            <div class="figure-caption">Figure 4: Performance comparison of Combo Loss against standard Weighted Cross-Entropy (CE) loss across three model types.</div>
+          </div>
+        </div>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-chart-bar"></i> Key Findings from Optimizer Comparison</h4>
+          <p>The results clearly demonstrate the superiority of our tuned <strong>AdamW optimizer</strong>. It achieved the highest Dice score for nearly every class, and critically, it was the only optimizer that did not completely fail on some of the most challenging minority classes. SAM was competitive but less consistent, while AdaBelief, despite its theoretical advantages, struggled significantly with the imbalanced nature of the data.</p>
+        </div>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-bullseye"></i> Combo Loss Effectiveness</h4>
+          <p>The comparison shows that our <strong>Combo Loss</strong> provided a dramatic and substantial improvement in the overall Dice score across every single model type tested. This confirms that our custom hybrid loss is highly effective at forcing the models to learn more balanced and accurate representations, directly addressing the core problem of class imbalance.</p>
+        </div>
+        
+        <h3>3.2. Comparative Performance of Model Architectures</h3>
+        <p>Having established the best optimizer (AdamW) and loss function (Combo Loss), we conducted a final set of experiments to compare the performance of our proposed Umbra UNet and a simplified, lightweight version against the strong UNet baseline.</p>
+        
+        <div class="figure-grid">
+          <div class="figure-container">
+            <img src="../img/projects/casuality.png" alt="Combo Loss Training and Validation">
+            <div class="figure-caption">Figure 5: Training and validation loss curves for the three models showing stable convergence of Umbra UNet variants.</div>
+          </div>
+          <div class="figure-container">
+            <img src="../img/projects/human-face.png" alt="Dice per Class across Model Architectures">
+            <div class="figure-caption">Figure 6: Final per-class Dice score comparison between UNet baseline and Umbra UNet architectures.</div>
+          </div>
+        </div>
+        
+        <div class="comparison-table">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Model Architecture</th>
+                  <th>Overall Dice</th>
+                  <th>Minority Class Recall</th>
+                  <th>Training Stability</th>
+                  <th>Convergence Speed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>UNet Baseline</td>
+                  <td>0.847</td>
+                  <td>0.623</td>
+                  <td>High</td>
+                  <td>Fast</td>
+                </tr>
+                <tr class="performance-highlight">
+                  <td><strong>Umbra UNet (Full)</strong></td>
+                  <td><strong>0.856</strong></td>
+                  <td><strong>0.701</strong></td>
+                  <td><strong>Very High</strong></td>
+                  <td><strong>Moderate</strong></td>
+                </tr>
+                <tr>
+                  <td>Umbra UNet (Lightweight)</td>
+                  <td>0.851</td>
+                  <td>0.678</td>
+                  <td>High</td>
+                  <td>Fast</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="img-caption">Table 1: Comparative performance analysis of different architectures on the DLRSD dataset.</div>
+        </div>
+        
+        <h3>3.3. Qualitative Results Analysis</h3>
+        <p>Beyond quantitative metrics, we conducted qualitative analysis of segmentation outputs to understand the practical improvements achieved by our framework.</p>
+        
+        <div style="text-align: center;">
+          <img class="article-img" src="../img/projects/recommender.png" alt="Qualitative Results Comparison" style="max-width: 1000px; width: 100%; display: inline-block;">
+          <div class="img-caption">Figure 7: Qualitative comparison of segmentation outputs showing Ground Truth, Umbra UNet results, and UNet baseline. The images visually confirm improved performance on minority classes while maintaining overall segmentation quality.</div>
+        </div>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-eye"></i> Visual Performance Analysis</h4>
+          <p>The qualitative results provide compelling visual evidence of our framework's effectiveness. The Umbra UNet produces clean and accurate segmentation maps that are highly comparable to the ground truth and demonstrate superior performance on minority classes compared to the UNet baseline. Particularly notable is the improved detection of small water bodies, isolated vegetation patches, and boundary regions between different land cover types.</p>
+        </div>
+      </section>
+      
+      <section class="article-section" id="conclusion">
+        <h2>4. Conclusion</h2>
+        <p>In this project, we successfully developed and validated a comprehensive, multi-faceted framework to address the critical problem of class imbalance in satellite imagery segmentation. We have demonstrated that by innovating across the entire deep learning pipeline—from architecture to loss function to optimization—it is possible to build models that are robust, stable, and highly accurate, particularly in the challenging task of identifying underrepresented classes.</p>
+        
+        <div class="innovation-spotlight">
+          <h3><i class="fas fa-trophy"></i> Primary Contributions</h3>
+          <ul class="contribution-list">
+            <li><strong>Umbra UNet Architecture:</strong> A cutting-edge hybrid architecture that effectively fuses local and global features through parallel InceptionNeXt, EfficientViT, and ConvNeXtV2 branches.</li>
+            <li><strong>Combo Loss Function:</strong> A novel hybrid loss combining Focal, Dice, and Tversky losses specifically designed to address class imbalance in remote sensing data.</li>
+            <li><strong>Optimized Training Strategy:</strong> Dataset-aware AdamW optimization providing enhanced stability and generalization for imbalanced data distributions.</li>
+            <li><strong>Comprehensive Validation:</strong> Rigorous experimental validation on the challenging DLRSD benchmark demonstrating consistent improvements over baseline methods.</li>
+          </ul>
+        </div>
+        
+        <p>Our primary contribution is the <strong>Umbra UNet</strong>, a cutting-edge hybrid architecture that effectively fuses local and global features. When combined with our custom <strong>Combo Loss</strong> and a dataset-aware <strong>AdamW optimizer</strong>, this framework provides a powerful and scalable solution. Our thorough validation on the DLRSD dataset confirms the efficacy of our approach, which consistently outperforms standard techniques.</p>
+        
+        <div class="highlight-box">
+          <h4><i class="fas fa-satellite"></i> Real-World Impact</h4>
+          <p>This work provides a robust and computationally efficient prototype that is well-suited for real-world deployment in the next generation of high-resolution remote sensing tasks. The framework offers a clear path toward more equitable and accurate automated analysis of our planet, with particular strength in identifying critical but underrepresented land cover features that are often of greatest scientific and policy interest.</p>
+        </div>
+        
+        <h3>Future Directions</h3>
+        <p>Future work will focus on extending this framework to multi-temporal analysis, incorporating additional sensor modalities, and developing real-time processing capabilities for operational Earth observation systems. The principles established in this research provide a foundation for addressing class imbalance challenges across diverse remote sensing applications.</p>
+      </section>
+      
+      <section class="references-section" id="references">
+        <h2>5. References</h2>
+        <ol>
+          <li>Ronneberger, O., Fischer, P., & Brox, T. (2015). U-Net: Convolutional Networks for Biomedical Image Segmentation. In Medical Image Computing and Computer-Assisted Intervention (MICCAI).</li>
+          <li>Yu, J., et al. (2022). InceptionNeXt: When Inception Meets ConvNeXt. arXiv preprint arXiv:2203.15124.</li>
+          <li>Cai, H., et al. (2022). EfficientViT: Lightweight Multi-Scale Attention for High-Resolution Dense Prediction. arXiv preprint arXiv:2205.14756.</li>
+          <li>Woo, S., et al. (2023). ConvNeXt V2: Co-designing and Scaling ConvNets with Masked Autoencoders. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR).</li>
+          <li>Lin, T. Y., et al. (2017). Focal Loss for Dense Object Detection. In Proceedings of the IEEE International Conference on Computer Vision (ICCV).</li>
+          <li>Milletari, F., Navab, N., & Ahmadi, S. A. (2016). V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation. In Fourth International Conference on 3D Vision (3DV).</li>
+          <li>Salehi, S. S. M., Erdogmus, D., & Gholipour, A. (2017). Tversky loss function for image segmentation using 3D fully convolutional deep networks. In International Workshop on Machine Learning in Medical Imaging.</li>
+          <li>Foret, P., et al. (2020). Sharpness-Aware Minimization for Efficiently Improving Generalization. arXiv preprint arXiv:2010.01412.</li>
+          <li>Zhuang, J., et al. (2020). AdaBelief Optimizer: Adapting Stepsizes by the Belief in Observed Gradients. In Advances in Neural Information Processing Systems (NeurIPS).</li>
+          <li>Loshchilov, I., & Hutter, F. (2017). Decoupled Weight Decay Regularization. arXiv preprint arXiv:1711.05101.</li>
+        </ol>
+      </section>
+      
+      <section class="article-section">
+        <h2>Additional Resources</h2>
+        <p>
+          For detailed technical specifications, implementation details, and access to the experimental frameworks discussed in this paper, please refer to our project resources below.
+        </p>
+        
+        <div style="margin-top: 25px;">
+          <a class="download-btn" href="#" target="_blank">
+            <i class="fas fa-file-pdf"></i> Research Paper (PDF)
+          </a>
+          <a class="download-btn" href="#" target="_blank" style="margin-left: 10px;">
+            <i class="fab fa-github"></i> Source Code
+          </a>
+          <a class="download-btn" href="#" target="_blank" style="margin-left: 10px;">
+            <i class="fas fa-database"></i> DLRSD Dataset
+          </a>
+        </div>
+      </section>
+
+      <section class="article-section">
+        <h2>Contact</h2>
+        <p>
+          For further information, collaboration opportunities, or access to detailed implementation specifications, please contact:<br>
+          <strong>Email:</strong> <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a><br>
+          <strong>Project:</strong> ISRO Bharatiya Antariksh Hackathon 2025
+        </p>
+      </section>
+    </main>
+  </div>
+  
+  <div w3-include-html="../footer.html"></div>
+  
+  <!-- jQuery and Bootstrap JS -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  
+  <!-- W3Data for includes -->
+  <!-- <script src="js/w3data.js"></script>
+  <script>
+    // Ensure the DOM is loaded before calling w3IncludeHTML
+    document.addEventListener('DOMContentLoaded', function() {
+      w3IncludeHTML();
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Active navigation highlighting
+      window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('.article-section');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 100) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
+  </script> -->
+
+  <script>
+  function includeHTML() {
+    var z, i, elmnt, file, xhttp;
+    /* Loop through a collection of all HTML elements: */
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+      elmnt = z[i];
+      /*search for elements with a certain atrribute:*/
+      file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        /* Make an HTTP request using the attribute value as the file name: */
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+            /* Remove the attribute, and call this function once more: */
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
+        }
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        /* Exit the function: */
+        return;
+      }
+    }
+    }
+    includeHTML();
+  </script>
+
+</body>
+</html>
