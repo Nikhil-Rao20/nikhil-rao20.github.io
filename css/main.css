@@ -520,3 +520,139 @@ dd {
   background-color: #1585cf;
   opacity: .8;
 }
+
+/* ===================================================================
+   MOBILE & RESPONSIVE FIXES
+   =================================================================== */
+
+/* --- Tablet & below (< 768px) --- */
+@media (max-width: 767px) {
+
+  /* Reduce heavy global font size on small screens */
+  p, ul, li, dl, dt, dd, blockquote, table, tr, td, th {
+    font-size: 1.35rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  h2, h3 {
+    font-size: 1.7rem;
+  }
+
+  /* Navbar brand – prevent overflow on narrow phones */
+  .navbar-brand {
+    font-size: 1.45rem !important;
+    max-width: 210px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Profile column (index.html) – center everything when stacked */
+  #main-container .col-sm-4 {
+    text-align: center;
+  }
+
+  #main-container .col-sm-4 .img-thumbnail {
+    margin: 0 auto 1.5rem auto;
+  }
+
+  #contact-table {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* News section */
+  .news-container {
+    max-height: 180px;
+  }
+
+  /* Spacer is too tall on mobile */
+  .spacer-div-3 {
+    height: 20px !important;
+  }
+
+  /* Footer: Stack & center properly */
+  footer .col-sm-6 {
+    text-align: center;
+  }
+
+  .social-icons.pull-right,
+  .social-icons {
+    float: none !important;
+    text-align: center;
+    padding-left: 0;
+    margin-top: 0.8rem;
+  }
+
+  .social-icons li {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  /* Back-to-top button: avoid being cut off */
+  #topper {
+    bottom: 20px;
+    right: 0;
+  }
+
+  /* Research page: publication list items */
+  .publications li {
+    margin-left: 0;
+    text-indent: 0;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+  }
+
+  /* Education / work-ex list */
+  #education li,
+  #workex li {
+    font-size: 1.3rem;
+  }
+
+  /* Container side-padding on narrow phones */
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* --- Small phones (< 480px) --- */
+@media (max-width: 480px) {
+
+  p, ul, li, td, th {
+    font-size: 1.25rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2, h3 {
+    font-size: 1.55rem;
+  }
+
+  /* Shrink navbar brand on very small phones */
+  .navbar-brand {
+    font-size: 1.25rem !important;
+    max-width: 175px;
+  }
+
+  #title {
+    font-size: 1.2rem;
+  }
+
+  #contact-table {
+    max-width: 260px;
+    font-size: 1.2rem;
+  }
+
+  /* Make images never overflow their container */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

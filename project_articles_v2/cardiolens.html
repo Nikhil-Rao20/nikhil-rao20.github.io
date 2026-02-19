@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CardioLens | Nikhileswara Rao Sulake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="../favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  <!-- Google Fonts — same as main portfolio -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  <!-- Academicons -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+  <!-- Portfolio main CSS (navbar, footer, typography baseline) -->
+  <link rel="stylesheet" href="../css/main.css">
+
+  <style>
+    /* ───────────────────────────────────────────
+       BASE — override to match portfolio exactly
+    ─────────────────────────────────────────── */
+    body {
+      background: #ffffff;
+      font-family: "Open Sans", Arial, sans-serif;
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: #333;
+    }
+
+    /* ───────────────────────────────────────────
+       HERO SECTION — clean white, full-width
+    ─────────────────────────────────────────── */
+    .article-hero {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e8ed;
+      padding: 48px 20px 36px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #20364c;
+      line-height: 1.22;
+      margin: 0 auto 18px;
+      max-width: 860px;
+    }
+
+    .hero-authors {
+      font-family: "Open Sans", sans-serif;
+      font-size: 1.45rem;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .hero-authors a {
+      color: #1585cf;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dashed transparent;
+      transition: border-color 0.2s;
+    }
+    .hero-authors a:hover { border-bottom-color: #1585cf; }
+    .hero-authors sup { font-size: 0.7em; color: slategray; }
+
+    .hero-affiliations {
+      font-size: 1.3rem;
+      color: slategray;
+      font-family: "Open Sans", sans-serif;
+      margin-bottom: 14px;
+    }
+    .hero-affiliations sup { font-size: 0.7em; }
+
+    .hero-meta {
+      font-size: 1.25rem;
+      color: slategray;
+      font-family: "Open Sans", sans-serif;
+      margin-bottom: 28px;
+    }
+
+    /* Button row — nerfies-inspired */
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #20364c;
+      color: #20364c;
+      background: #ffffff;
+      transition: all 0.2s ease;
+    }
+    .hero-btn:hover {
+      background: #20364c;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .hero-btn.primary {
+      background: #20364c;
+      color: #ffffff;
+    }
+    .hero-btn.primary:hover {
+      background: #1585cf;
+      border-color: #1585cf;
+    }
+
+    /* ───────────────────────────────────────────
+       ARTICLE BODY — single column, paper width
+    ─────────────────────────────────────────── */
+    .article-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    /* Section headings — match portfolio h3 underline style */
+    .article-body h2 {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: #20364c;
+      margin-top: 0;
+      margin-bottom: 16px !important;
+      padding-bottom: 8px;
+      border-bottom: 2px solid slategray;
+      position: relative;
+    }
+
+    .article-body h3 {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: #3d5166;
+      margin-top: 30px;
+      margin-bottom: 10px !important;
+    }
+
+    .article-body h4 {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: slategray;
+      margin-top: 22px;
+      margin-bottom: 8px !important;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .article-section {
+      margin-bottom: 52px;
+    }
+
+    /* Abstract highlighted box */
+    .abstract-box {
+      background: #f4f7fb;
+      border-left: 4px solid #20364c;
+      padding: 22px 26px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 0;
+    }
+    .abstract-box p {
+      margin-bottom: 0;
+      font-size: 1.45rem;
+      color: #2c3e50;
+      line-height: 1.8;
+    }
+
+    /* Tags */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .tag {
+      background: #eaf4fb;
+      color: #1585cf;
+      border: 1px solid #b8ddf5;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      font-family: "Montserrat", sans-serif;
+      transition: all 0.2s;
+    }
+    .tag:hover { background: #1585cf; color: #fff; border-color: #1585cf; }
+
+    /* Images */
+    .article-img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 20px 0 6px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .article-img:hover {
+      transform: scale(1.01);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+    }
+    .img-caption {
+      text-align: center;
+      font-style: italic;
+      color: slategray;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    /* Highlight / callout box */
+    .highlight-box {
+      background: #f4f7fb;
+      border-left: 4px solid #1585cf;
+      padding: 18px 22px;
+      border-radius: 0 8px 8px 0;
+      margin: 22px 0;
+    }
+    .highlight-box h4 {
+      color: #20364c;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 1.4rem;
+      margin-top: 0;
+    }
+
+    /* Table — plain black & white, no colour */
+    .article-body .table thead tr th {
+      background: #ffffff;
+      color: #20364c;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.35rem;
+      border-bottom: 2px solid #20364c;
+    }
+    .article-body .table tbody tr td {
+      font-size: 1.35rem;
+      vertical-align: middle;
+    }
+
+    /* Fix: portfolio main.css h3::after draws a line — override for article h3 */
+    .article-body h3::after {
+      display: none !important;
+      content: none !important;
+    }
+    .article-body h3 span {
+      background: transparent;
+      padding-right: 0;
+    }
+
+    /* Back link — top-left of hero, no full bar */
+    .article-hero {
+      position: relative;
+    }
+    .hero-back-link {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.3rem;
+      color: #1585cf;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .hero-back-link:hover { color: #20364c; text-decoration: none; }
+
+    /* Award inline badge — blue/white, on-theme */
+    .award-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 1.15rem;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+      color: #1585cf;
+      background: #eaf4fb;
+      border: 1px solid #b8ddf5;
+      border-radius: 4px;
+      padding: 3px 10px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* Download/resource buttons */
+    .resource-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 22px;
+      border-radius: 6px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #20364c;
+      color: #20364c;
+      background: #ffffff;
+      transition: all 0.2s ease;
+      margin-right: 8px;
+      margin-top: 10px;
+    }
+    .resource-btn:hover {
+      background: #20364c;
+      color: #fff;
+      text-decoration: none;
+    }
+    .resource-btn.filled {
+      background: #20364c;
+      color: #fff;
+    }
+    .resource-btn.filled:hover {
+      background: #1585cf;
+      border-color: #1585cf;
+    }
+
+    /* References box */
+    .references-section {
+      background: #f4f7fb;
+      padding: 26px 24px;
+      border-left: 5px solid #20364c;
+      border-radius: 0 8px 8px 0;
+      margin: 40px 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .references-section h2 {
+      border-bottom: none;
+      font-size: 1.7rem;
+      padding-bottom: 0;
+      margin-bottom: 16px !important;
+    }
+    .references-section ol { padding-left: 20px; }
+    .references-section ol li {
+      font-size: 1.25rem;
+      line-height: 1.65;
+      color: #3d4147;
+      margin-bottom: 10px;
+    }
+    .references-section ol li a { color: #1585cf; }
+    .references-section ol li a:hover { text-decoration: underline; }
+
+    /* Section divider dot */
+    .section-sep {
+      text-align: center;
+      margin: 48px 0 36px;
+      color: #c8d3de;
+      letter-spacing: 0.5em;
+      font-size: 1.1rem;
+    }
+
+    /* ───────────────────────────────────────────
+       RESPONSIVE
+    ─────────────────────────────────────────── */
+    @media (max-width: 767px) {
+      .hero-back-link { position: static; display: inline-flex; margin-bottom: 16px; }
+      .hero-title { font-size: 2.2rem; }
+      .hero-authors { font-size: 1.35rem; }
+      .article-body h2 { font-size: 1.65rem; }
+      .article-body h3 { font-size: 1.4rem; }
+      .hero-btn { font-size: 1.2rem; padding: 7px 15px; }
+      .article-body { padding: 32px 15px 60px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 1.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Portfolio Navbar -->
+  <div w3-include-html="../navbar.html"></div>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═════════════════════════════════════════════ -->
+  <section class="article-hero">
+
+    <a href="../projects.html" class="hero-back-link">
+      <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+
+    <h1 class="hero-title">CardioLens — LVEF Analysis Using Intel Optimized Models</h1>
+
+    <p class="hero-authors">
+      <a href="https://nikhil-rao20.github.io" target="_blank">Nikhileswara Rao Sulake</a><sup>1</sup>,
+      Sai Manikanta Eswar<sup>1</sup>,
+      Aravind Pyli<sup>2</sup>,
+      Sivalal Kethavath<sup>2</sup>
+    </p>
+
+    <p class="hero-affiliations">
+      <sup>1</sup> Dept. of CSE, RGUKT Nuzvid &nbsp;&nbsp;
+      <sup>2</sup> Dept. of ECE, RGUKT Nuzvid
+    </p>
+
+    <p class="hero-meta">
+      Research Article &nbsp;·&nbsp; November 2024
+      <span class="award-badge"><i class="fas fa-trophy"></i> Top 3 &nbsp;·&nbsp; Intel AI Hackathon 2024, IIT Kharagpur</span>
+    </p>
+
+    <div class="hero-links">
+      <a class="hero-btn primary" href="https://drive.google.com/file/d/180zWWF3xryS2JB3naXf1FNXH-BptQSk5/view?usp=sharing" target="_blank">
+        <i class="fas fa-file-pdf"></i> Report
+      </a>
+      <a class="hero-btn" href="https://docs.google.com/presentation/d/1PnEVrAEdt5EtYE1fIP79S1Vvm_9crvM5/edit?usp=sharing" target="_blank">
+        <i class="fas fa-file-powerpoint"></i> Slides
+      </a>
+      <a class="hero-btn" href="https://github.com/Nikhil-Rao20/Three_of_Hearts" target="_blank">
+        <i class="fab fa-github"></i> Code
+      </a>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ARTICLE BODY
+  ═════════════════════════════════════════════ -->
+  <div class="article-body">
+
+    <!-- Tags -->
+    <div class="tag-list">
+      <span class="tag">Computer Vision</span>
+      <span class="tag">Deep Learning</span>
+      <span class="tag">Medical Imaging</span>
+      <span class="tag">Echocardiography</span>
+      <span class="tag">Intel OpenVINO</span>
+    </div>
+
+    <!-- Abstract -->
+    <div class="article-section" id="abstract">
+      <h2>Abstract</h2>
+      <div class="abstract-box">
+        <p>The manual analysis of echocardiograms, a cornerstone of cardiac diagnostics, is often a time-consuming process prone to inter-observer variability and error. This project, CardioLens, introduces a robust deep learning framework for the automated segmentation of the left ventricle and subsequent calculation of the Left Ventricular Ejection Fraction (LVEF) from echocardiogram videos. Our dual-task pipeline utilizes a high-performing DeepLabV3 model with a ResNet-101 backbone for semantic segmentation and an R(2+1)D video model for LVEF estimation. A key contribution of this work is the systematic optimization of the entire workflow using the Intel® AI software stack. By leveraging the Intel® Extension for PyTorch (IPEX) for accelerated training and the Intel® Distribution of OpenVINO™ Toolkit for inference, we demonstrate a significant performance increase, including a nearly <strong>50% reduction in inference time</strong> on standard Intel® CPUs. The final segmentation model achieves a <strong>Dice Score of 0.92</strong>, providing a highly accurate, efficient, and accessible solution to augment clinical decision-making in cardiology.</p>
+      </div>
+
+      <!-- Project Outcomes GIFs -->
+      <h3 style="margin-top: 32px;">Project Outcomes</h3>
+      <div class="row">
+        <div class="col-md-4 col-sm-12 text-center">
+          <img src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/imgs/video1.gif" alt="Echocardiography Video" class="img-responsive article-img">
+          <div class="img-caption">Input Raw Echo Video</div>
+        </div>
+        <div class="col-md-4 col-sm-12 text-center">
+          <img src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/imgs/mask1.gif" alt="Segmentation Mask" class="img-responsive article-img">
+          <div class="img-caption">Predicted Mask of Left Ventricle</div>
+        </div>
+        <div class="col-md-4 col-sm-12 text-center">
+          <img src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/imgs/ecg1.gif" alt="ECG" class="img-responsive article-img">
+          <div class="img-caption">Algorithmic ECG from Mask</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-sep">• • •</div>
+
+    <!-- Introduction -->
+    <div class="article-section" id="introduction">
+      <h2>Introduction</h2>
+      <p>Cardiovascular Diseases (CVDs) remain the leading cause of mortality worldwide, making accurate and timely diagnosis a critical global health priority. Echocardiography stands as the most widely used non-invasive imaging modality for assessing cardiac function. A key biomarker derived from these scans is the <strong>Left Ventricular Ejection Fraction (LVEF)</strong> — the percentage of blood pumped out of the left ventricle with each contraction. LVEF is a fundamental indicator of cardiac health and is crucial for diagnosing and managing conditions like heart failure.</p>
+
+      <div style="text-align: center;">
+        <img class="article-img" src="../img/projects/heart.png" alt="Heart" style="max-width: 560px; width: 100%; display: inline-block;">
+        <div class="img-caption">Fig. 1 — Anatomical diagram of the human heart, emphasizing the left ventricle's role in systemic circulation.</div>
+      </div>
+
+      <p>Despite its importance, the clinical workflow for LVEF assessment faces significant challenges. Manual tracing by a sonographer is time-consuming and subject to high inter-observer variability. This project introduces <strong>CardioLens</strong>, an end-to-end automated framework designed to address these limitations through a dual-task AI pipeline that performs both accurate semantic segmentation of the left ventricle and direct LVEF estimation from raw echocardiogram videos, optimized with Intel® AI tooling for CPU deployment.</p>
+    </div>
+
+    <!-- Methodology -->
+    <div class="article-section" id="methodology">
+      <h2>Methodology</h2>
+
+      <p>Our methodology is built around a comprehensive pipeline that automates the entire process from video input to diagnostic output, using the <strong>EchoNet-Dynamic Dataset</strong> — a large, publicly available collection of echocardiogram videos with associated LVEF labels and left-ventricle tracings.</p>
+
+      <img class="article-img" src="../img/projects/CardioLens_Arch.png" alt="CardioLens System Architecture">
+      <div class="img-caption">Fig. 2 — End-to-end architecture of CardioLens, detailing the data flow from input video to final diagnostic outputs.</div>
+
+      <h3>Dataset</h3>
+      <p>The EchoNet-Dynamic dataset from Stanford University was partitioned into three subsets for rigorous evaluation. A substantial 74.4% was allocated for training, while the validation (12.8%) and test (12.7%) sets were reserved for hyperparameter tuning and final evaluation respectively.</p>
+
+      <div style="display:flex; align-items:flex-start; gap:24px; margin:24px 0; flex-wrap:wrap;">
+        <div style="flex:1; min-width:220px;">
+          <p>The distribution of Ejection Fraction (EF) values across patient videos shows a typical right-skewed distribution with concentration between 50–70%, representative of a real-world clinical population.</p>
+        </div>
+        <div style="flex:0 0 260px; text-align:center;">
+          <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/split.png" alt="Dataset Split" style="max-width:200px; margin:0 auto;">
+          <div class="img-caption" style="font-size:1.2rem;">Dataset split distribution.</div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin:24px 0;">
+        <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/EFvsEDVvsESV.png" alt="EF Distribution" style="max-width:580px; width:100%;">
+        <div class="img-caption">Fig. 3 — Distribution of Ejection Fraction values; the scatter plots explore the relationship between EF and volumetric measurements (EDV / ESV).</div>
+      </div>
+
+      <h3>Models &amp; Training</h3>
+      <p>Three segmentation architectures were evaluated: the transformer-based Intel DPT-Large model, and two DeepLabV3 variants (MobileNetV3-Large and ResNet-101 backbones). The <strong>DeepLabV3 + ResNet-101</strong> was selected for its superior Dice performance. Following segmentation, LVEF is estimated using an 18-layer <strong>R(2+1)D</strong> video model that learns spatio-temporal features to compute End-Diastolic Volume (EDV) and End-Systolic Volume (ESV):</p>
+
+      <div class="highlight-box">
+        <h4>LVEF Formula</h4>
+        <p style="font-size:1.5rem; text-align:center; margin:0; font-family:'Montserrat',sans-serif; color:#20364c;">
+          EF = (EDV − ESV) / EDV
+        </p>
+      </div>
+
+      <h3>Intel Technologies</h3>
+      <p>Training was accelerated with the <strong>Intel® Extension for PyTorch (IPEX)</strong>. For deployment, models were converted to OpenVINO™ Intermediate Representation (IR) format, applying graph pruning, quantization, and kernel fusion — enabling real-time analysis on standard CPUs without requiring specialized hardware.</p>
+
+      <div style="text-align:center;">
+        <img class="article-img" src="../img/projects/openvino.png" alt="OpenVINO" style="max-width:480px; width:100%; display:inline-block;">
+        <div class="img-caption">Fig. 4 — Intel® OpenVINO™ Toolkit for optimizing and deploying deep learning models at the edge.</div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="article-section" id="results">
+      <h2>Experiments &amp; Results</h2>
+
+      <p>All experiments were conducted on a <strong>12th-Gen Intel® Core™ i7-12650H</strong> CPU using PyTorch, TorchVision, Hugging Face Transformers, OpenCV, and the Intel® AI Analytics Toolkit.</p>
+
+      <h3>Model Comparison</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Intel DPT</th>
+              <th>DeepLabV3 ResNet-101</th>
+              <th>DeepLabV3 MobileNetV3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Loss</td><td>0.1419</td><td><strong>0.0441</strong></td><td>0.053</td></tr>
+            <tr><td>Overall Dice Score</td><td>0.5632</td><td><strong>0.9209</strong></td><td>0.8836</td></tr>
+            <tr><td>Diastolic Dice</td><td>0.5707</td><td><strong>0.9058</strong></td><td>0.8595</td></tr>
+            <tr><td>Systolic Dice</td><td>0.5584</td><td><strong>0.9304</strong></td><td>0.8994</td></tr>
+            <tr><td>Time / Epoch (s)</td><td>223.6</td><td>7.1</td><td><strong>6.6</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Training Curves</h3>
+      <p>The plots below show Dice Score and loss progression over 40 epochs for the selected model. Both EDV and ESV Dice scores improve rapidly before stabilising, confirming successful learning of cardiac structure boundaries.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0;">
+        <div style="text-align:center;">
+          <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/loss_edv_dice.png" alt="EDV Dice" style="height:230px; object-fit:contain; width:100%;">
+          <div class="img-caption" style="font-size:1.2rem;">(a) EDV Dice Score vs Epoch</div>
+        </div>
+        <div style="text-align:center;">
+          <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/loss_epoch.png" alt="Loss" style="height:230px; object-fit:contain; width:100%;">
+          <div class="img-caption" style="font-size:1.2rem;">(b) Training Loss vs Epoch</div>
+        </div>
+        <div style="text-align:center;">
+          <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/loss_esv_dice.png" alt="ESV Dice" style="height:230px; object-fit:contain; width:100%;">
+          <div class="img-caption" style="font-size:1.2rem;">(c) ESV Dice Score vs Epoch</div>
+        </div>
+        <div style="text-align:center;">
+          <img class="article-img" src="https://github.com/Nikhil-Rao20/Three_of_Hearts/raw/main/Model%20Training%20and%20Development/analysis_images/loss_overall_dice.png" alt="Overall Dice" style="height:230px; object-fit:contain; width:100%;">
+          <div class="img-caption" style="font-size:1.2rem;">(d) Overall Dice Score vs Epoch</div>
+        </div>
+      </div>
+      <div class="img-caption">Fig. 5 — Training metrics over 40 epochs showing progressive improvement across all Dice measures and loss convergence.</div>
+
+      <h3>Inference Speedup with OpenVINO™</h3>
+
+      <img class="article-img" src="../img/projects/seg.png" alt="Segmentation Inference Comparison">
+      <div class="img-caption">Fig. 6 — Inference time for the segmentation task. OpenVINO™ consistently outperforms native PyTorch and IPEX-optimized inference.</div>
+
+      <img class="article-img" src="../img/projects/ef.png" alt="EF Inference Comparison">
+      <div class="img-caption">Fig. 7 — Inference time for the LVEF estimation task. OpenVINO™ reduces processing time by nearly half.</div>
+
+      <h3>Demo Outputs</h3>
+      <div class="row">
+        <div class="col-md-4 col-sm-12 text-center">
+          <img src="../img/projects/video2.gif" alt="Echo Video" class="img-responsive article-img">
+          <div class="img-caption">Input Raw Echo Video</div>
+        </div>
+        <div class="col-md-4 col-sm-12 text-center">
+          <img src="../img/projects/mask2.gif" alt="Segmentation Mask" class="img-responsive article-img">
+          <div class="img-caption">Predicted LV Mask</div>
+        </div>
+        <div class="col-md-4 col-sm-12 text-center">
+          <img src="../img/projects/ecg2.gif" alt="ECG" class="img-responsive article-img">
+          <div class="img-caption">Generated ECG Visualization</div>
+        </div>
+      </div>
+      <div class="img-caption">Fig. 8 — End-to-end demo: raw input → segmentation overlay → ECG waveform.</div>
+
+      <h3>Web Portal</h3>
+      <img class="article-img" src="../img/projects/cardiolens_web.png" alt="CardioLens Web Portal">
+      <div class="img-caption">Fig. 9 — The CardioLens web portal for video upload and diagnostic report generation.</div>
+    </div>
+
+    <!-- Discussion -->
+    <div class="article-section" id="discussion">
+      <h2>Discussion</h2>
+      <p>Our experiments confirm that CNN architectures like DeepLabV3 + ResNet-101 can achieve expert-level accuracy in left-ventricle segmentation. More importantly, the ~50% reduction in inference time with OpenVINO™ demonstrates that complex AI analysis can run efficiently on ubiquitous CPU hardware, lowering the barrier to clinical adoption. CardioLens can serve as an automated "second opinion", reducing diagnostic errors, improving inter-operator consistency, and integrating into existing PACS systems.</p>
+      <p>A significant area for future work is extending and validating the framework for <strong>pediatric and infant cardiac data</strong>, which presents unique challenges due to different heart rates and sizes. We also plan to expand to detect other cardiac abnormalities beyond LVEF.</p>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="article-section" id="conclusion">
+      <h2>Conclusion</h2>
+      <p>CardioLens successfully developed and validated an AI-powered framework for automated echocardiogram analysis. By selecting an appropriate deep learning architecture and leveraging hardware-aware optimization with the Intel® Distribution of OpenVINO™, we built a system that is both highly accurate (<strong>Dice 0.92</strong>) and computationally efficient (<strong>~50% inference speedup</strong>). This represents a significant step towards practical AI integration in routine cardiology workflows.</p>
+    </div>
+
+    <div class="section-sep">• • •</div>
+
+    <!-- Resources -->
+    <div class="article-section" id="resources">
+      <h2>Resources</h2>
+      <p>Full technical details, implementation code, and extended results are available below.</p>
+      <div>
+        <a class="resource-btn filled" href="https://drive.google.com/file/d/180zWWF3xryS2JB3naXf1FNXH-BptQSk5/view?usp=sharing" target="_blank">
+          <i class="fas fa-file-pdf"></i> Report (V1)
+        </a>
+        <a class="resource-btn" href="https://docs.google.com/presentation/d/1PnEVrAEdt5EtYE1fIP79S1Vvm_9crvM5/edit?usp=sharing&ouid=116605216350207886936&rtpof=true&sd=true" target="_blank">
+          <i class="fas fa-file-powerpoint"></i> Presentation
+        </a>
+        <a class="resource-btn" href="https://github.com/Nikhil-Rao20/Three_of_Hearts" target="_blank">
+          <i class="fab fa-github"></i> Source Code
+        </a>
+      </div>
+    </div>
+
+    <!-- References -->
+    <div class="references-section" id="references">
+      <h2>References</h2>
+      <ol>
+        <li>Ouyang, D., et al. (2020). Video-based AI for beat-to-beat assessment of cardiac function. <em>Nature</em>, 580(7802), 252–256.</li>
+        <li>Leclerc, S., et al. (2019). Deep learning for segmentation using an open large-scale dataset in 2D echocardiography. <em>IEEE TMI</em>, 38(9), 2198–2210.</li>
+        <li>Chen, L.C., Papandreou, G., Schroff, F., &amp; Adam, H. (2017). Rethinking Atrous Convolution for Semantic Image Segmentation. <em>arXiv:1706.05587</em>.</li>
+        <li>Ronneberger, O., Fischer, P., &amp; Brox, T. (2015). U-Net: Convolutional Networks for Biomedical Image Segmentation. <em>MICCAI</em>.</li>
+        <li>He, K., Zhang, X., Ren, S., &amp; Sun, J. (2016). Deep Residual Learning for Image Recognition. <em>CVPR</em>.</li>
+        <li>Tran, D., et al. (2018). A Closer Look at Spatiotemporal Convolutions for Action Recognition. <em>CVPR Workshops</em>.</li>
+        <li>Dosovitskiy, A., et al. (2020). An Image Is Worth 16×16 Words: Transformers for Image Recognition at Scale. <em>arXiv:2010.11929</em>.</li>
+        <li>Knackstedt, C., et al. (2020). Artificial intelligence in echocardiography. <em>Circ. Cardiovasc. Imaging</em>, 13(3).</li>
+        <li>Intel Corporation. (2024). Intel® Distribution of OpenVINO™ Toolkit. <a href="https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html" target="_blank">intel.com</a></li>
+        <li>Intel Corporation. (2024). Intel® Extension for PyTorch. <a href="https://intel.github.io/intel-extension-for-pytorch/" target="_blank">intel.github.io</a></li>
+      </ol>
+    </div>
+
+    <!-- Contact -->
+    <div class="article-section" id="contact">
+      <h2>Contact</h2>
+      <p>For further information or collaboration opportunities:<br>
+        <strong>Nikhileswara Rao Sulake</strong> —
+        <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a> &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/nikhileswara-rao-sulake/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+        <a href="https://github.com/Nikhil-Rao20" target="_blank">GitHub</a>
+      </p>
+    </div>
+
+  </div><!-- /.article-body -->
+
+  <!-- Back-to-top -->
+  <a role="button" id="topper" data-toggle="tooltip" data-placement="top" title="Top" class="btn scroll-link" href="#top">
+    <i class="fa fa-fw fa-2x fa-caret-up" aria-hidden="true"></i>
+  </a>
+
+  <!-- Footer -->
+  <div w3-include-html="../footer.html"></div>
+
+  <!-- jQuery + Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+  <!-- W3Data for navbar/footer includes -->
+  <script src="../js/w3data.js"></script>
+  <script> w3IncludeHTML(); </script>
+
+  <!-- Portfolio main.js (back-to-top scroll button) -->
+  <script src="../js/main.js"></script>
+
+</body>
+</html>

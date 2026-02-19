@@ -1,0 +1,8 @@
+# Old project articles — superseded by project_articles_v2/
+project_articles/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~

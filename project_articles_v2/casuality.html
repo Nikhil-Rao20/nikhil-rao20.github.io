@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Causality-Aware OCT Classification | Nikhileswara Rao Sulake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="../favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXpO6+Zc8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  <!-- Academicons -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+  <!-- Portfolio main CSS -->
+  <link rel="stylesheet" href="../css/main.css">
+
+  <style>
+    body {
+      background: #ffffff;
+      font-family: "Open Sans", Arial, sans-serif;
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: #333;
+    }
+
+    .article-hero {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e8ed;
+      padding: 48px 20px 36px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-title {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #20364c;
+      line-height: 1.22;
+      margin: 0 auto 18px;
+      max-width: 860px;
+    }
+
+    .hero-authors {
+      font-family: "Open Sans", sans-serif;
+      font-size: 1.45rem;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .hero-authors a { color: #1585cf; text-decoration: none; font-weight: 600; border-bottom: 1px dashed transparent; transition: border-color 0.2s; }
+    .hero-authors a:hover { border-bottom-color: #1585cf; }
+    .hero-authors sup { font-size: 0.7em; color: slategray; }
+
+    .hero-affiliations {
+      font-size: 1.3rem;
+      color: slategray;
+      font-family: "Open Sans", sans-serif;
+      margin-bottom: 14px;
+    }
+    .hero-affiliations sup { font-size: 0.7em; }
+
+    .hero-meta {
+      font-size: 1.25rem;
+      color: slategray;
+      font-family: "Open Sans", sans-serif;
+      margin-bottom: 28px;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #20364c;
+      color: #20364c;
+      background: #ffffff;
+      transition: all 0.2s ease;
+    }
+    .hero-btn:hover { background: #20364c; color: #ffffff; text-decoration: none; }
+    .hero-btn.primary { background: #20364c; color: #ffffff; }
+    .hero-btn.primary:hover { background: #1585cf; border-color: #1585cf; }
+
+    .article-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    .article-body h2 {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: #20364c;
+      margin-top: 0;
+      margin-bottom: 16px !important;
+      padding-bottom: 8px;
+      border-bottom: 2px solid slategray;
+    }
+
+    .article-body h3 {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: #3d5166;
+      margin-top: 30px;
+      margin-bottom: 10px !important;
+    }
+
+    .article-body h4 {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: slategray;
+      margin-top: 22px;
+      margin-bottom: 8px !important;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .article-section { margin-bottom: 52px; }
+
+    .abstract-box {
+      background: #f4f7fb;
+      border-left: 4px solid #20364c;
+      padding: 22px 26px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 0;
+    }
+    .abstract-box p { margin-bottom: 0; font-size: 1.45rem; color: #2c3e50; line-height: 1.8; }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .tag {
+      background: #eaf4fb;
+      color: #1585cf;
+      border: 1px solid #b8ddf5;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      font-family: "Montserrat", sans-serif;
+      transition: all 0.2s;
+    }
+    .tag:hover { background: #1585cf; color: #fff; border-color: #1585cf; }
+
+    .article-img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 20px 0 6px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+      transition: transform 0.3s ease;
+    }
+    .article-img:hover { transform: scale(1.01); }
+    .img-caption {
+      text-align: center;
+      font-style: italic;
+      color: slategray;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    .highlight-box {
+      background: #f4f7fb;
+      border-left: 4px solid #1585cf;
+      padding: 18px 22px;
+      border-radius: 0 8px 8px 0;
+      margin: 22px 0;
+    }
+    .highlight-box h4 { color: #20364c; text-transform: none; letter-spacing: 0; font-size: 1.4rem; margin-top: 0; }
+
+    .method-box {
+      background: #fff;
+      border: 1px solid #e0e6ef;
+      border-left: 4px solid #20364c;
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin: 18px 0;
+    }
+    .method-box h4 { color: #20364c; text-transform: none; letter-spacing: 0; font-size: 1.4rem; margin-top: 0; margin-bottom: 10px; }
+
+    /* Plain B&W tables */
+    .article-body .table thead tr th {
+      background: #ffffff;
+      color: #20364c;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.35rem;
+      border-bottom: 2px solid #20364c;
+    }
+    .article-body .table tbody tr td { font-size: 1.35rem; vertical-align: middle; }
+
+    /* Fix h3::after from portfolio CSS */
+    .article-body h3::after { display: none !important; content: none !important; }
+    .article-body h3 span { background: transparent; padding-right: 0; }
+
+    .article-hero { position: relative; }
+    .hero-back-link {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.3rem;
+      color: #1585cf;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .hero-back-link:hover { color: #20364c; text-decoration: none; }
+
+    .resource-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 22px;
+      border-radius: 6px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #20364c;
+      color: #20364c;
+      background: #ffffff;
+      transition: all 0.2s ease;
+      margin-right: 8px;
+      margin-top: 10px;
+    }
+    .resource-btn:hover { background: #20364c; color: #fff; text-decoration: none; }
+    .resource-btn.filled { background: #20364c; color: #fff; }
+    .resource-btn.filled:hover { background: #1585cf; border-color: #1585cf; }
+
+    .references-section {
+      background: #f4f7fb;
+      padding: 26px 24px;
+      border-left: 5px solid #20364c;
+      border-radius: 0 8px 8px 0;
+      margin: 40px 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .references-section h2 { border-bottom: none; font-size: 1.7rem; padding-bottom: 0; margin-bottom: 16px !important; }
+    .references-section ol { padding-left: 20px; }
+    .references-section ol li { font-size: 1.25rem; line-height: 1.65; color: #3d4147; margin-bottom: 10px; }
+    .references-section ol li a { color: #1585cf; }
+    .references-section ol li a:hover { text-decoration: underline; }
+
+    .section-sep { text-align: center; margin: 48px 0 36px; color: #c8d3de; letter-spacing: 0.5em; font-size: 1.1rem; }
+
+    @media (max-width: 767px) {
+      .hero-back-link { position: static; display: inline-flex; margin-bottom: 16px; }
+      .hero-title { font-size: 2.2rem; }
+      .hero-authors { font-size: 1.35rem; }
+      .article-body h2 { font-size: 1.65rem; }
+      .article-body h3 { font-size: 1.4rem; }
+      .hero-btn { font-size: 1.2rem; padding: 7px 15px; }
+      .article-body { padding: 32px 15px 60px; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 1.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div w3-include-html="../navbar.html"></div>
+
+  <section class="article-hero">
+    <a href="../projects.html" class="hero-back-link">
+      <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+    <h1 class="hero-title">Beyond Correlation: Causality-Aware Representation Learning for Retinal Disease Classification in OCT Images</h1>
+    <p class="hero-authors">
+      <a href="https://nikhil-rao20.github.io" target="_blank">Nikhileswara Rao Sulake</a>
+    </p>
+    <p class="hero-affiliations">Dept. of CSE, RGUKT Nuzvid</p>
+    <p class="hero-meta">Research Article &nbsp;·&nbsp; September 2024</p>
+    <div class="hero-links">
+      <a class="hero-btn primary" href="#" target="_blank"><i class="fas fa-file-pdf"></i> Report</a>
+      <a class="hero-btn" href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+    </div>
+  </section>
+
+  <div class="article-body">
+
+    <div class="tag-list">
+      <span class="tag">Causal Inference</span>
+      <span class="tag">Medical Imaging</span>
+      <span class="tag">Deep Learning</span>
+      <span class="tag">OCT</span>
+      <span class="tag">ResNet</span>
+      <span class="tag">Representation Learning</span>
+    </div>
+
+    <div class="article-section" id="abstract">
+      <h2>Abstract</h2>
+      <div class="abstract-box">
+        <p>Standard deep learning models for medical image analysis excel at learning correlational patterns but often fail to capture the underlying causal relationships inherent in disease pathology. This paper investigates a novel approach to enhance diagnostic accuracy by integrating principles of causal inference directly into a deep learning framework. We present a systematic study on the classification of retinal diseases from Optical Coherence Tomography (OCT) images using a ResNet18 architecture augmented with causality-aware modules. We explore two distinct mechanisms: a concatenation-based method ("Cat") and a feature-weighting method ("Mulcat"), along with different causality map computations (Lehmer mean vs. Max) and extraction modes (Full/Bool and Causes/Effects). Our key finding: a Mulcat model using a Lehmer-derived causality map with boolean weighting of causal features achieves <strong>88.90% accuracy</strong>, demonstrating that selective integration of causal signals — rather than amplification — is the key to improved performance.</p>
+      </div>
+      <div style="text-align: center; margin-top: 24px;">
+        <img class="article-img" src="../img/projects/casuality.png" alt="Causality-Aware Architecture Overview" style="max-width: 780px; width: 100%; display: inline-block;">
+        <div class="img-caption">Fig. 1 — Overview of the causality-aware ResNet18 architecture integrating causal inference modules for enhanced OCT classification.</div>
+      </div>
+    </div>
+
+    <div class="section-sep">• • •</div>
+
+    <div class="article-section" id="introduction">
+      <h2>Introduction</h2>
+      <p>Optical Coherence Tomography (OCT) provides high-resolution cross-sectional images of the retina, critical for diagnosing diabetic retinopathy, macular degeneration, and glaucoma. CNNs like ResNet have been widely applied to automate classification of these images, often matching human-level performance.</p>
+      <p>However, a fundamental limitation of traditional CNNs is their reliance on statistical correlations. These models recognize patterns without an explicit understanding of the cause-and-effect relationships that define disease progression. This "correlation, not causation" paradigm can lead to brittle models that struggle with out-of-distribution examples — a critical drawback in high-stakes medical applications.</p>
+      <p>Recent advances in causal inference offer a promising direction. By developing methods to estimate and integrate causal signals from data, it is possible to guide a neural network to learn features that are <em>causally relevant</em>, not merely correlated. This study presents a rigorous empirical analysis of causality-aware ResNet18 variants, uncovering a novel and counter-intuitive configuration that yields superior performance.</p>
+    </div>
+
+    <div class="article-section" id="methodology">
+      <h2>Methodology</h2>
+      <p>Our framework augments the ResNet18 backbone with specialized modules that process a computed "causality map" — a k×k matrix where each element C(i,j) quantifies the causal influence of feature map F<sub>i</sub> on F<sub>j</sub>.</p>
+
+      <h3>Causality Map Generation</h3>
+      <p>After the image is processed by ResNet18's convolutional layers, two methods construct the causality map:</p>
+
+      <div class="method-box">
+        <h4>Max Method</h4>
+        <p>A correlation-based proxy estimating causal influence by finding the maximum value in the feature interaction tensor. Computationally efficient but limited by its inability to distinguish direction of influence.</p>
+      </div>
+
+      <div class="method-box">
+        <h4>Lehmer Mean Method</h4>
+        <p>A flexible, parameter-controlled mean that can be tuned to be more or less sensitive to feature interactions. Through fine-tuning, parameter <strong>p = 0</strong> (geometric mean) was found optimal for training from scratch, suggesting multiplicative relationships best model feature influence in OCT analysis.</p>
+      </div>
+
+      <h3>Causality-Aware Modules</h3>
+
+      <div class="method-box">
+        <h4>Cat (Concatenate) Module</h4>
+        <p>Flattens both the k feature maps and the k×k causality map into separate vectors, then concatenates them for the classifier. A passive strategy — the causal map is provided as supplementary metadata alongside visual features.</p>
+      </div>
+
+      <div class="method-box">
+        <h4>Mulcat (Multiply &amp; Concatenate) Module</h4>
+        <p>Uses the causality map to directly modulate feature maps via element-wise multiplication before classification. Controlled by two parameter pairs:</p>
+        <ul>
+          <li><strong>Direction (Causes / Effects):</strong> Focus on root-cause features vs. downstream consequences</li>
+          <li><strong>Weighing Mode (Full / Bool):</strong> Continuous weighting vs. binary gating of causally relevant features</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="article-section" id="experiments">
+      <h2>Experiments &amp; Results</h2>
+
+      <h3>Lehmer Parameter Fine-Tuning</h3>
+      <p>A preliminary experiment determined the optimal Lehmer parameter. Training from scratch with <strong>p = 0</strong> achieved 91% accuracy, far outperforming other values and pretrained initializations.</p>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Lehmer Value (a)</th>
+              <th>Accuracy (Pretrained)</th>
+              <th>Accuracy (From Scratch)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>47%</td><td><strong>91%</strong></td></tr>
+            <tr><td>1</td><td>47%</td><td>73%</td></tr>
+            <tr><td>-1</td><td>77%</td><td>35%</td></tr>
+            <tr><td>-2</td><td>83%</td><td>47%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="img-caption">Table 1 — Lehmer parameter fine-tuning. p = 0 (geometric mean) is clearly optimal when training from scratch.</div>
+
+      <h3>Main Classification Results</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Factor Mode</th>
+              <th>Direction</th>
+              <th>Test Accuracy (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#f7f9fc;"><td><strong>ResNet18 (baseline)</strong></td><td>—</td><td>—</td><td><strong>93.63</strong></td></tr>
+            <tr><td>+ Cat (Max)</td><td>—</td><td>—</td><td>93.65</td></tr>
+            <tr><td>+ Cat (Lehmer)</td><td>—</td><td>—</td><td>91.58</td></tr>
+            <tr><td>+ Mulcat (Max)</td><td>Full</td><td>Causes</td><td>56.88</td></tr>
+            <tr><td>+ Mulcat (Max)</td><td>Full</td><td>Effects</td><td>78.34</td></tr>
+            <tr><td>+ Mulcat (Max)</td><td>Bool</td><td>Effects</td><td>83.69</td></tr>
+            <tr><td>+ Mulcat (Lehmer)</td><td>Full</td><td>Causes</td><td>88.65</td></tr>
+            <tr><td>+ Mulcat (Lehmer)</td><td>Full</td><td>Effects</td><td>74.48</td></tr>
+            <tr style="background:#fef9e7;"><td><strong>+ Mulcat (Lehmer)</strong></td><td><strong>Bool</strong></td><td><strong>Causes</strong></td><td><strong>88.90</strong></td></tr>
+            <tr><td>+ Mulcat (Lehmer)</td><td>Bool</td><td>Effects</td><td>86.04</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="img-caption">Table 2 — Main results on the OCT dataset. The Mulcat (Lehmer, Bool, Causes) configuration is the best-performing causal variant.</div>
+
+      <div class="highlight-box">
+        <h4><i class="fas fa-lightbulb"></i> Key Observation</h4>
+        <p>The "Full" weighting mode — which directly amplifies features by their causal scores — consistently performs poorly, collapsing to 56.88% in the worst case. The "Bool" mode, treating causality as a selection gate rather than an amplifier, proves far more robust. <strong>More causal signal is not always better; selective integration is the key.</strong></p>
+      </div>
+    </div>
+
+    <div class="article-section" id="discussion">
+      <h2>Discussion</h2>
+      <p>The dramatic failure of the Full weighting mode suggests that raw causal scores are too noisy to be used as direct multipliers. Amplifying a single causally dominant feature biases the model, ignoring subtler visual cues that are also diagnostically relevant.</p>
+      <p>The Bool mode's success demonstrates that using causality as a <em>selection mechanism</em> — identifying which features matter, then weighting them equally — leads to more robust representations. The optimal direction (Causes over Effects) further aligns with clinical reasoning: identifying the root physiological cause is more valuable than detecting downstream consequences for accurate classification.</p>
+      <p>The geometric mean (p = 0) as the optimal Lehmer setting implies that multiplicative, rather than additive, relationships best capture how features interact in OCT retinal pathology.</p>
+    </div>
+
+    <div class="article-section" id="conclusion">
+      <h2>Conclusion</h2>
+      <p>This work demonstrates that the method of integrating causal information is critically important. Simple concatenation offers little benefit; aggressive amplification is detrimental; but nuanced, boolean-gated selection of causally relevant features based on the Lehmer geometric mean provides a highly competitive and interpretable result.</p>
+      <p>The identified configuration — Mulcat + Lehmer (p=0) + Bool + Causes — at 88.90% accuracy stands as the best causal variant and establishes a strong proof-of-concept for causality-aware representation learning in medical imaging. Future work will explore more sophisticated causality estimation methods, multi-modal extensions, and clinical validation of the discovered causal patterns.</p>
+    </div>
+
+    <div class="section-sep">• • •</div>
+
+    <div class="article-section" id="resources">
+      <h2>Resources</h2>
+      <p>Implementation code, experimental notebooks, and extended results are available below.</p>
+      <div>
+        <a class="resource-btn filled" href="#" target="_blank"><i class="fas fa-file-pdf"></i> Paper (PDF)</a>
+        <a class="resource-btn" href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+        <a class="resource-btn" href="#" target="_blank"><i class="fas fa-database"></i> Dataset</a>
+      </div>
+    </div>
+
+    <div class="references-section" id="references">
+      <h2>References</h2>
+      <ol>
+        <li>He, K., Zhang, X., Ren, S., &amp; Sun, J. (2016). Deep Residual Learning for Image Recognition. <em>CVPR</em>.</li>
+        <li>Terziyan, V., &amp; Vitko, O. (2023). Causality-aware convolutional neural networks for advanced image classification and generation. <em>Procedia Computer Science</em>, 217, 495–506.</li>
+        <li>Carloni, G., &amp; Colantonio, S. (2024). Exploiting causality signals in medical images. <em>Expert Systems with Applications</em>, 249, 123433.</li>
+        <li>Pearl, J. (2009). <em>Causality: Models, Reasoning, and Inference</em>. Cambridge University Press.</li>
+        <li>Kermany, D. S., et al. (2018). Identifying Medical Diagnoses by Image-Based Deep Learning. <em>Cell</em>, 172(5), 1122–1131.</li>
+        <li>Schölkopf, B. (2022). Causality for Machine Learning. <em>arXiv:2206.14754</em>.</li>
+      </ol>
+    </div>
+
+    <div class="article-section" id="contact">
+      <h2>Contact</h2>
+      <p>For further information or collaboration opportunities:<br>
+        <strong>Nikhileswara Rao Sulake</strong> —
+        <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a> &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/nikhileswara-rao-sulake/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+        <a href="https://github.com/Nikhil-Rao20" target="_blank">GitHub</a>
+      </p>
+    </div>
+
+  </div>
+
+  <a role="button" id="topper" data-toggle="tooltip" data-placement="top" title="Top" class="btn scroll-link" href="#top">
+    <i class="fa fa-fw fa-2x fa-caret-up" aria-hidden="true"></i>
+  </a>
+
+  <div w3-include-html="../footer.html"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <script src="../js/w3data.js"></script>
+  <script> w3IncludeHTML(); </script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>

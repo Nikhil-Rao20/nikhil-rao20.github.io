@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ZOYA: AI Humanoid Student Counselor | Nikhileswara Rao Sulake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="../favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXpO6+Zc8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+
+  <style>
+    body { background:#fff; font-family:"Open Sans",Arial,sans-serif; font-size:15.5px; line-height:1.75; color:#333; }
+    .article-hero { background:#ffffff; border-bottom:1px solid #e5e8ed; padding:48px 20px 36px; text-align:center; position:relative; }
+    .hero-title { font-family:"Montserrat",Helvetica,sans-serif; font-size:3rem; font-weight:700; color:#20364c; line-height:1.22; margin:0 auto 18px; max-width:860px; }
+    .hero-authors { font-family:"Open Sans",sans-serif; font-size:1.45rem; color:#333; margin-bottom:6px; }
+    .hero-authors a { color:#1585cf; text-decoration:none; font-weight:600; border-bottom:1px dashed transparent; transition:border-color 0.2s; }
+    .hero-authors a:hover { border-bottom-color:#1585cf; }
+    .hero-authors sup { font-size:0.7em; color:slategray; }
+    .hero-affiliations { font-size:1.3rem; color:slategray; font-family:"Open Sans",sans-serif; margin-bottom:14px; }
+    .hero-affiliations sup { font-size:0.7em; }
+    .hero-meta { font-size:1.25rem; color:slategray; font-family:"Open Sans",sans-serif; margin-bottom:14px; }
+    .award-badge { display:inline-block; background:#eaf4fb; color:#1585cf; border:1px solid #b8ddf5; padding:5px 16px; border-radius:20px; font-family:"Montserrat",sans-serif; font-size:1.3rem; font-weight:600; margin-bottom:18px; }
+    .award-badge i { margin-right:5px; }
+    .hero-links { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:8px; }
+    .hero-btn { display:inline-flex; align-items:center; gap:7px; padding:8px 20px; border-radius:6px; font-family:"Montserrat",sans-serif; font-size:1.3rem; font-weight:600; text-decoration:none; border:2px solid #20364c; color:#20364c; background:#ffffff; transition:all 0.2s ease; }
+    .hero-btn:hover { background:#20364c; color:#ffffff; text-decoration:none; }
+    .hero-btn.primary { background:#20364c; color:#ffffff; }
+    .hero-btn.primary:hover { background:#1585cf; border-color:#1585cf; }
+    .article-body { max-width:860px; margin:0 auto; padding:48px 20px 72px; }
+    .article-body h2 { font-family:"Montserrat",Helvetica,sans-serif; font-size:1.9rem; font-weight:600; color:#20364c; margin-top:0; margin-bottom:16px !important; padding-bottom:8px; border-bottom:2px solid slategray; }
+    .article-body h3 { font-family:"Montserrat",Helvetica,sans-serif; font-size:1.55rem; font-weight:600; color:#3d5166; margin-top:30px; margin-bottom:10px !important; }
+    .article-body h3::after { display:none !important; content:none !important; }
+    .article-body h3 span { background:transparent; padding-right:0; }
+    .article-body h4 { font-family:"Montserrat",Helvetica,sans-serif; font-size:1.35rem; font-weight:600; color:slategray; margin-top:22px; margin-bottom:8px !important; text-transform:uppercase; letter-spacing:0.04em; }
+    .article-section { margin-bottom:52px; }
+    .abstract-box { background:#f4f7fb; border-left:4px solid #20364c; padding:22px 26px; border-radius:0 8px 8px 0; }
+    .abstract-box p { margin-bottom:0; font-size:1.45rem; color:#2c3e50; line-height:1.8; }
+    .tag-list { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:36px; }
+    .tag { background:#eaf4fb; color:#1585cf; border:1px solid #b8ddf5; padding:4px 14px; border-radius:20px; font-size:1.2rem; font-weight:500; font-family:"Montserrat",sans-serif; }
+    .article-img { width:100%; border-radius:8px; margin:20px 0 6px; box-shadow:0 2px 12px rgba(0,0,0,0.09); }
+    .img-caption { text-align:center; font-style:italic; color:slategray; font-size:1.3rem; margin-bottom:20px; }
+    .highlight-box { background:#f4f7fb; border-left:4px solid #1585cf; padding:18px 22px; border-radius:0 8px 8px 0; margin:22px 0; }
+    .highlight-box h4 { color:#20364c; text-transform:none; letter-spacing:0; font-size:1.4rem; margin-top:0; }
+    .code-block { background:#1c2636; color:#e8eaf0; font-family:"Courier New",Courier,monospace; font-size:1.3rem; padding:22px 24px; border-radius:8px; margin:22px 0; overflow-x:auto; line-height:1.6; }
+    .code-block .comment { color:#6b8caa; }
+    .code-block .keyword { color:#7ec8e3; }
+    .code-block .string { color:#a8d8a0; }
+    .hero-back-link { position:absolute; top:18px; left:20px; display:inline-flex; align-items:center; gap:6px; font-size:1.3rem; color:#1585cf; font-family:"Montserrat",sans-serif; font-weight:500; text-decoration:none; transition:color 0.2s; }
+    .hero-back-link:hover { color:#20364c; text-decoration:none; }
+    .resource-btn { display:inline-flex; align-items:center; gap:7px; padding:9px 22px; border-radius:6px; font-family:"Montserrat",sans-serif; font-size:1.3rem; font-weight:600; text-decoration:none; border:2px solid #20364c; color:#20364c; background:#ffffff; transition:all 0.2s ease; margin-right:8px; margin-top:10px; }
+    .resource-btn:hover { background:#20364c; color:#fff; text-decoration:none; }
+    .resource-btn.filled { background:#20364c; color:#fff; }
+    .resource-btn.filled:hover { background:#1585cf; border-color:#1585cf; }
+    .photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:22px 0; }
+    .photo-grid img { width:100%; border-radius:6px; box-shadow:0 1px 8px rgba(0,0,0,0.1); object-fit:cover; aspect-ratio:4/3; }
+    .references-section { background:#f4f7fb; padding:26px 24px; border-left:5px solid #20364c; border-radius:0 8px 8px 0; margin:40px 0; overflow-wrap:break-word; word-break:break-word; }
+    .references-section h2 { border-bottom:none; font-size:1.7rem; padding-bottom:0; margin-bottom:16px !important; }
+    .references-section ol { padding-left:20px; }
+    .references-section ol li { font-size:1.25rem; line-height:1.65; color:#3d4147; margin-bottom:10px; }
+    .references-section ol li a { color:#1585cf; }
+    .section-sep { text-align:center; margin:48px 0 36px; color:#c8d3de; letter-spacing:0.5em; font-size:1.1rem; }
+    @media (max-width:767px) { .hero-back-link{position:static;display:inline-flex;margin-bottom:16px;} .hero-title{font-size:2.2rem;} .article-body h2{font-size:1.65rem;} .article-body h3{font-size:1.4rem;} .hero-btn{font-size:1.2rem;padding:7px 15px;} .article-body{padding:32px 15px 60px;} .photo-grid{grid-template-columns:1fr 1fr;} }
+    @media (max-width:480px) { .hero-title{font-size:1.85rem;} .photo-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+
+  <div w3-include-html="../navbar.html"></div>
+
+  <section class="article-hero">
+    <a href="../projects.html" class="hero-back-link">
+      <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+    <h1 class="hero-title">ZOYA: The AI Humanoid Guide Revolutionizing Student Counseling at RGUKT Nuzvid</h1>
+    <p class="hero-authors">
+      <a href="https://nikhil-rao20.github.io" target="_blank">Nikhileswara Rao Sulake</a><sup>1</sup>,
+      Suresh Ratlavath<sup>1</sup>,
+      Samba Siva Rao Kovvuru<sup>2</sup>
+    </p>
+    <p class="hero-affiliations">
+      <sup>1</sup> Dept. of CSE, RGUKT Nuzvid &nbsp;&nbsp;
+      <sup>2</sup> Dept. of ECE, RGUKT Nuzvid
+    </p>
+    <p class="hero-meta">Project Report &nbsp;·&nbsp; April 2024</p>
+    <div style="margin-bottom:14px;">
+      <span class="award-badge"><i class="fas fa-trophy"></i> Top 3 Nationally &mdash; Intel AI Hackathon 2024, IIT Kharagpur</span>
+    </div>
+    <div class="hero-links">
+      <a class="hero-btn primary" href="https://github.com/Nikhil-Rao20/ZOYA" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+  </section>
+
+  <div class="article-body">
+
+    <div class="tag-list">
+      <span class="tag">AI Humanoid Robot</span>
+      <span class="tag">LLM</span>
+      <span class="tag">Retrieval-Augmented Generation</span>
+      <span class="tag">Raspberry Pi</span>
+      <span class="tag">Educational Technology</span>
+      <span class="tag">Intel AI Hackathon</span>
+    </div>
+
+    <div class="article-section" id="abstract">
+      <h2>Abstract</h2>
+      <div class="abstract-box">
+        <p>ZOYA is a physical AI humanoid counselor deployed at RGUKT Nuzvid to address the unmet demand for student academic and administrative guidance. Built on a Raspberry Pi 4B hardware core, ZOYA uses a Retrieval-Augmented Generation (RAG) pipeline powered by LangChain, FAISS, and OpenAI to deliver accurate, institution-specific responses to student queries — entirely through natural voice-to-voice interaction. Presented at the Intel AI Hackathon 2024 at IIT Kharagpur, ZOYA placed in the Top 3 nationally among hundreds of competing teams and has since received extensive media coverage as a novel application of LLM technology to campus student services.</p>
+      </div>
+      <div style="text-align:center; margin-top:24px;">
+        <img class="article-img" src="../img/projects/zoya-working.JPG" alt="ZOYA in operation at RGUKT Nuzvid" style="max-width:720px; display:inline-block;">
+        <div class="img-caption">Fig. 1 — ZOYA in active operation at RGUKT Nuzvid, engaging with students via voice interface.</div>
+      </div>
+    </div>
+
+    <div class="section-sep">• • •</div>
+
+    <div class="article-section" id="introduction">
+      <h2>Introduction</h2>
+      <p>RGUKT (Rajiv Gandhi University of Knowledge Technologies) Nuzvid serves a large student population, the majority of whom are first-generation college students from rural Andhra Pradesh. Orientation to university systems — enrollment procedures, scholarship applications, academic regulations, hostel rules — is overwhelming for many entering students, and the counseling staff-to-student ratio makes one-on-one guidance impractical at scale.</p>
+      <p>ZOYA was conceived as a persistent, patient, and always-available alternative: a humanoid robot that students could approach for guidance at any time, in natural spoken Telugu or English, and receive accurate institution-specific answers. The key technical challenge was not building a general-purpose chatbot, but grounding the conversational AI in verified institutional knowledge to prevent hallucination — a critical requirement in a guidance context where wrong information can have real consequences.</p>
+    </div>
+
+    <div class="article-section" id="system">
+      <h2>System Architecture</h2>
+
+      <h3>Hardware</h3>
+      <p>ZOYA's physical form is a custom-fabricated humanoid frame. The computational core is a <strong>Raspberry Pi 4B</strong> (4GB RAM), chosen for its balance of processing capability, energy efficiency, and community support. Audio input is handled by a directional USB microphone optimized for noisy environments; output via a speaker system integrated into the humanoid chassis.</p>
+
+      <h3>RAG Pipeline</h3>
+      <p>The intelligence core of ZOYA is a Retrieval-Augmented Generation (RAG) pipeline that grounds all responses in a curated institutional knowledge base:</p>
+      <ol>
+        <li><strong>Knowledge Ingestion:</strong> RGUKT administrative documents, academic regulations, scholarship guidelines, and FAQs are chunked and embedded using OpenAI's text-embedding-ada-002 model into a <strong>FAISS</strong> vector store.</li>
+        <li><strong>Retrieval:</strong> Student queries are embedded at query time and the top-k most semantically similar document chunks are retrieved from FAISS.</li>
+        <li><strong>Generation:</strong> Retrieved context plus conversation history are passed to the LLM (OpenAI GPT) via LangChain's <strong>RetrievalQA</strong> chain. <strong>ConversationBufferMemory</strong> maintains multi-turn context across a counseling session.</li>
+      </ol>
+
+      <div class="code-block">
+<span class="comment"># Knowledge base setup — embedding and storing institutional documents</span>
+<span class="keyword">from</span> langchain.embeddings <span class="keyword">import</span> OpenAIEmbeddings
+<span class="keyword">from</span> langchain.vectorstores <span class="keyword">import</span> FAISS
+<span class="keyword">from</span> langchain.chains <span class="keyword">import</span> RetrievalQA
+<span class="keyword">from</span> langchain.memory <span class="keyword">import</span> ConversationBufferMemory
+
+embeddings = OpenAIEmbeddings()
+vectorstore = FAISS.from_documents(chunks, embeddings)
+retriever = vectorstore.as_retriever(search_kwargs={<span class="string">"k"</span>: 4})
+
+memory = ConversationBufferMemory(
+    memory_key=<span class="string">"chat_history"</span>, return_messages=<span class="keyword">True</span>
+)
+qa_chain = RetrievalQA.from_chain_type(
+    llm=llm, retriever=retriever, memory=memory
+)</div>
+
+      <h3>Voice Interface</h3>
+      <p>ZOYA listens continuously using Python's <code>speech_recognition</code> library, transcribes detected speech to text, passes it through the RAG pipeline, and speaks the response using <code>pyttsx3</code> text-to-speech. A Tkinter GUI displays the active conversation for the benefit of nearby observers and for accessibility.</p>
+
+      <div class="code-block">
+<span class="keyword">def</span> listen():
+    r = sr.Recognizer()
+    <span class="keyword">with</span> sr.Microphone() <span class="keyword">as</span> source:
+        r.adjust_for_ambient_noise(source, duration=<span class="string">0.5</span>)
+        audio = r.listen(source, timeout=<span class="string">5</span>, phrase_time_limit=<span class="string">10</span>)
+    <span class="keyword">try</span>:
+        <span class="keyword">return</span> r.recognize_google(audio, language=<span class="string">"en-IN"</span>)
+    <span class="keyword">except</span> sr.UnknownValueError:
+        <span class="keyword">return</span> <span class="string">""</span></div>
+    </div>
+
+    <div class="article-section" id="impact">
+      <h2>Impact &amp; Reception</h2>
+      <p>ZOYA's deployment at RGUKT Nuzvid generated immediate institutional and media interest. The project demonstrates, in operational rather than experimental conditions, that RAG-grounded LLMs can deliver reliable, institution-specific guidance at scale — overcoming the hallucination concern that often limits LLM deployment in high-stakes advisory roles.</p>
+
+      <div class="highlight-box">
+        <h4><i class="fas fa-trophy"></i> Intel AI Hackathon 2024 — Top 3 Nationally</h4>
+        <p>ZOYA was recognized as a Top 3 national finalist at the Intel AI Hackathon 2024, hosted at IIT Kharagpur, competing against hundreds of teams from institutions across India. The recognition validates both the technical novelty of the RAG-humanoid integration and the real-world impact potential of the deployment.</p>
+      </div>
+
+      <p>Following the hackathon, ZOYA received media coverage from regional and national outlets, highlighting it as a model for AI deployment in resource-constrained educational institutions.</p>
+
+      <div class="photo-grid">
+        <img src="../img/projects/zoya_pre1.jpg" alt="ZOYA presentation at Intel Hackathon" onerror="this.style.display='none'">
+        <img src="../img/projects/zoya_pre2.jpg" alt="ZOYA team at IIT Kharagpur" onerror="this.style.display='none'">
+        <img src="../img/projects/zoya_pre3.jpg" alt="ZOYA hardware demonstration" onerror="this.style.display='none'">
+      </div>
+      <div class="img-caption">Presentation and demo at the Intel AI Hackathon 2024, IIT Kharagpur.</div>
+
+      <div class="photo-grid">
+        <img src="../img/projects/news1.jpg" alt="ZOYA media coverage" onerror="this.style.display='none'">
+        <img src="../img/projects/news2.jpg" alt="ZOYA in the news" onerror="this.style.display='none'">
+        <img src="../img/projects/news3.jpg" alt="Media coverage of ZOYA" onerror="this.style.display='none'">
+      </div>
+      <div class="img-caption">Media coverage following ZOYA's deployment at RGUKT Nuzvid.</div>
+    </div>
+
+    <div class="article-section" id="conclusion">
+      <h2>Conclusion</h2>
+      <p>ZOYA demonstrates that the combination of retrieval-augmented generation and accessible edge hardware (Raspberry Pi) is sufficient to deploy a viable, trustworthy AI counselor in a real institutional setting. The project addresses a genuine access gap in student services, leverages modern LLM capabilities responsibly through knowledge grounding, and demonstrates that impactful AI deployment does not require datacenter-scale infrastructure. Future development will focus on multilingual support (Telugu, Hindi), expanded institutional knowledge bases covering detailed course advising, and integration with the university's existing student information systems.</p>
+    </div>
+
+    <div class="section-sep">• • •</div>
+
+    <div class="article-section" id="resources">
+      <h2>Resources</h2>
+      <div>
+        <a class="resource-btn filled" href="https://github.com/Nikhil-Rao20/ZOYA" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+      </div>
+    </div>
+
+    <div class="references-section" id="references">
+      <h2>References</h2>
+      <ol>
+        <li>Zawacki-Richter, O., et al. (2019). Systematic review of research on artificial intelligence applications in higher education. <em>International Journal of Educational Technology in Higher Education</em>, 16(1), 39.</li>
+        <li>Vaswani, A., et al. (2017). Attention Is All You Need. <em>NeurIPS</em>.</li>
+        <li>Adadi, A. (2021). A Survey on Data-Efficient Algorithms in Deep Learning. <em>IEEE Access</em>.</li>
+        <li>Upton, E., &amp; Halfacree, G. (2016). <em>Raspberry Pi User Guide</em>. Wiley.</li>
+        <li>Winkler, R., &amp; Söllner, M. (2018). Unleashing the Potential of Chatbots in Education. <em>AIM Pre-ICIS Workshop</em>.</li>
+      </ol>
+    </div>
+
+    <div class="article-section" id="contact">
+      <h2>Contact</h2>
+      <p>
+        <strong>Nikhileswara Rao Sulake</strong> —
+        <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a> &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/nikhileswara-rao-sulake/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+        <a href="https://github.com/Nikhil-Rao20" target="_blank">GitHub</a>
+      </p>
+    </div>
+
+  </div>
+
+  <a role="button" id="topper" data-toggle="tooltip" data-placement="top" title="Top" class="btn scroll-link" href="#top">
+    <i class="fa fa-fw fa-2x fa-caret-up" aria-hidden="true"></i>
+  </a>
+
+  <div w3-include-html="../footer.html"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <script src="../js/w3data.js"></script>
+  <script> w3IncludeHTML(); </script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>

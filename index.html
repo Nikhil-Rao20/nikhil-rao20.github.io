@@ -99,6 +99,40 @@
       margin: 0;
       padding-left: 20px;
     }
+
+    /* Mobile: center the profile column when stacked */
+    @media (max-width: 767px) {
+      #main-container .col-sm-4 {
+        text-align: center;
+      }
+
+      #main-container .col-sm-4 .img-thumbnail {
+        margin-bottom: 1.5rem;
+      }
+
+      #contact-table {
+        margin: 0 auto;
+        max-width: 280px;
+      }
+
+      #main-container .col-sm-8 {
+        text-align: left;
+      }
+
+      .news-container {
+        max-height: 160px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #main-container .col-sm-4 .img-thumbnail {
+        max-width: 180px;
+      }
+
+      #contact-table td {
+        font-size: 1.2rem;
+      }
+    }
   </style>
 
 </head>
@@ -155,7 +189,7 @@
             </tr>
             <tr>
               <td><i class="fas fa-file-pdf"></i></td>
-              <td><a href="vitae.html">CV</a></td>
+              <td><a href="Nikhil_Rao_CV.pdf" target="_blank">CV</a></td>
             </tr>
           </tbody>
         </table>

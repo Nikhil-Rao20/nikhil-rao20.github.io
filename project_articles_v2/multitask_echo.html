@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>3D Left Ventricular Analysis | Nikhileswara Rao Sulake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="../favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXpO6+Zc8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+
+  <style>
+    body { background:#fff; font-family:"Open Sans",Arial,sans-serif; font-size:15.5px; line-height:1.75; color:#333; }
+    .article-hero { background:#ffffff; border-bottom:1px solid #e5e8ed; padding:48px 20px 36px; text-align:center; position:relative; }
+    .hero-title { font-family:"Montserrat",Helvetica,sans-serif; font-size:3rem; font-weight:700; color:#20364c; line-height:1.22; margin:0 auto 18px; max-width:860px; }
+    .hero-authors { font-family:"Open Sans",sans-serif; font-size:1.45rem; color:#333; margin-bottom:6px; }
+    .hero-authors a { color:#1585cf; text-decoration:none; font-weight:600; border-bottom:1px dashed transparent; transition:border-color 0.2s; }
+    .hero-authors a:hover { border-bottom-color:#1585cf; }
+    .hero-meta { font-size:1.25rem; color:slategray; font-family:"Open Sans",sans-serif; margin-bottom:28px; }
+    .hero-links { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:8px; }
+    .hero-btn { display:inline-flex; align-items:center; gap:7px; padding:8px 20px; border-radius:6px; font-family:"Montserrat",sans-serif; font-size:1.3rem; font-weight:600; text-decoration:none; border:2px solid #20364c; color:#20364c; background:#ffffff; transition:all 0.2s ease; }
+    .hero-btn:hover { background:#20364c; color:#ffffff; text-decoration:none; }
+    .hero-btn.primary { background:#20364c; color:#ffffff; }
+    .hero-btn.primary:hover { background:#1585cf; border-color:#1585cf; }
+    .article-body { max-width:860px; margin:0 auto; padding:48px 20px 72px; }
+    .article-body h2 { font-family:"Montserrat",Helvetica,sans-serif; font-size:1.9rem; font-weight:600; color:#20364c; margin-top:0; margin-bottom:16px !important; padding-bottom:8px; border-bottom:2px solid slategray; }
+    .article-body h3 { font-family:"Montserrat",Helvetica,sans-serif; font-size:1.55rem; font-weight:600; color:#3d5166; margin-top:30px; margin-bottom:10px !important; }
+    .article-body h3::after { display:none !important; content:none !important; }
+    .article-body h3 span { background:transparent; padding-right:0; }
+    .article-body h4 { font-family:"Montserrat",Helvetica,sans-serif; font-size:1.35rem; font-weight:600; color:slategray; margin-top:22px; margin-bottom:8px !important; text-transform:uppercase; letter-spacing:0.04em; }
+    .article-section { margin-bottom:52px; }
+    .abstract-box { background:#f4f7fb; border-left:4px solid #20364c; padding:22px 26px; border-radius:0 8px 8px 0; }
+    .abstract-box p { margin-bottom:0; font-size:1.45rem; color:#2c3e50; line-height:1.8; }
+    .tag-list { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:36px; }
+    .tag { background:#eaf4fb; color:#1585cf; border:1px solid #b8ddf5; padding:4px 14px; border-radius:20px; font-size:1.2rem; font-weight:500; font-family:"Montserrat",sans-serif; }
+    .article-img { width:100%; border-radius:8px; margin:20px 0 6px; box-shadow:0 2px 12px rgba(0,0,0,0.09); }
+    .img-caption { text-align:center; font-style:italic; color:slategray; font-size:1.3rem; margin-bottom:20px; }
+    .highlight-box { background:#f4f7fb; border-left:4px solid #1585cf; padding:18px 22px; border-radius:0 8px 8px 0; margin:22px 0; }
+    .highlight-box h4 { color:#20364c; text-transform:none; letter-spacing:0; font-size:1.4rem; margin-top:0; }
+    .phase-card { border:1px solid #e0e6ef; border-left:5px solid #20364c; border-radius:0 8px 8px 0; padding:20px 24px; margin:20px 0; background:#fff; }
+    .phase-card h4 { color:#20364c; text-transform:none; letter-spacing:0; font-size:1.5rem; margin-top:0; margin-bottom:10px; font-family:"Montserrat",sans-serif; }
+    .article-body .table thead tr th { background:#ffffff; color:#20364c; font-family:"Montserrat",sans-serif; font-size:1.3rem; border-bottom:2px solid #20364c; }
+    .article-body .table tbody tr td { font-size:1.3rem; vertical-align:middle; }
+    .hero-back-link { position:absolute; top:18px; left:20px; display:inline-flex; align-items:center; gap:6px; font-size:1.3rem; color:#1585cf; font-family:"Montserrat",sans-serif; font-weight:500; text-decoration:none; transition:color 0.2s; }
+    .hero-back-link:hover { color:#20364c; text-decoration:none; }
+    .resource-btn { display:inline-flex; align-items:center; gap:7px; padding:9px 22px; border-radius:6px; font-family:"Montserrat",sans-serif; font-size:1.3rem; font-weight:600; text-decoration:none; border:2px solid #20364c; color:#20364c; background:#ffffff; transition:all 0.2s ease; margin-right:8px; margin-top:10px; }
+    .resource-btn:hover { background:#20364c; color:#fff; text-decoration:none; }
+    .resource-btn.filled { background:#20364c; color:#fff; }
+    .resource-btn.filled:hover { background:#1585cf; border-color:#1585cf; }
+    .references-section { background:#f4f7fb; padding:26px 24px; border-left:5px solid #20364c; border-radius:0 8px 8px 0; margin:40px 0; overflow-wrap:break-word; word-break:break-word; }
+    .references-section h2 { border-bottom:none; font-size:1.7rem; padding-bottom:0; margin-bottom:16px !important; }
+    .references-section ol { padding-left:20px; }
+    .references-section ol li { font-size:1.25rem; line-height:1.65; color:#3d4147; margin-bottom:10px; }
+    .references-section ol li a { color:#1585cf; }
+    .section-sep { text-align:center; margin:48px 0 36px; color:#c8d3de; letter-spacing:0.5em; font-size:1.1rem; }
+    @media (max-width:767px) { .hero-back-link{position:static;display:inline-flex;margin-bottom:16px;} .hero-title{font-size:2.2rem;} .article-body h2{font-size:1.65rem;} .article-body h3{font-size:1.4rem;} .hero-btn{font-size:1.2rem;padding:7px 15px;} .article-body{padding:32px 15px 60px;} }
+    @media (max-width:480px) { .hero-title{font-size:1.85rem;} }
+  </style>
+</head>
+<body>
+
+  <div w3-include-html="../navbar.html"></div>
+
+  <section class="article-hero">
+    <a href="../projects.html" class="hero-back-link">
+      <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+    <h1 class="hero-title">A Two-Phase Framework for 3D Left Ventricular Analysis: From Synthetic Data Generation to Real-World Clinical Validation</h1>
+    <p class="hero-authors">
+      <a href="https://nikhil-rao20.github.io" target="_blank">Nikhileswara Rao Sulake</a>
+    </p>
+    <p class="hero-meta">Research Article &nbsp;·&nbsp; September 2024</p>
+    <div class="hero-links">
+      <a class="hero-btn primary" href="#" target="_blank"><i class="fas fa-file-pdf"></i> Report</a>
+      <a class="hero-btn" href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+    </div>
+  </section>
+
+  <div class="article-body">
+
+    <div class="tag-list">
+      <span class="tag">3D Medical Imaging</span>
+      <span class="tag">Echocardiography</span>
+      <span class="tag">Multitask Learning</span>
+      <span class="tag">Synthetic Data</span>
+      <span class="tag">Domain Gap</span>
+      <span class="tag">Left Ventricle</span>
+    </div>
+
+    <div class="article-section" id="abstract">
+      <h2>Abstract</h2>
+      <div class="abstract-box">
+        <p>Automated 3D analysis of the left ventricle (LV) from echocardiography is clinically valuable but challenging due to the scarcity of annotated 3D data. This paper presents a two-phase research framework addressing this challenge. Phase 1 proposes generating synthetic 3D echocardiographic volumes from an ensemble of 2D segmentation models, then training a lightweight multitask model on this synthetic data; the best configuration achieves a Dice score of <strong>0.9701</strong>. Phase 2 transitions to real-world evaluation, using the MITEA dataset to expose a critical <strong>domain gap</strong> (Dice drops from 0.97 to 0.6782), motivating the development of Umbra UNet — a hybrid architecture for improved generalization. The full pipeline results in a deployment-ready model of <strong>4.73 MB</strong> with <strong>0.62 s</strong> single-volume inference time.</p>
+      </div>
+    </div>
+
+    <div class="section-sep">• • •</div>
+
+    <div class="article-section" id="introduction">
+      <h2>Introduction</h2>
+      <p>Left ventricular performance is a primary indicator of cardiac health. Key metrics — ejection fraction (EF), end-diastolic volume (EDV), and end-systolic volume (ESV) — are derived from precise volumetric analysis. While 3D echocardiography provides all necessary spatial information, manual annotation of 3D scans is time-consuming and operator-dependent.</p>
+      <p>Deep learning has dramatically advanced 2D cardiac segmentation. The challenge in 3D is data scarcity: large, annotated 3D echo datasets are rare and expensive to produce. This work proposes a pragmatic two-phase approach: first, leverage abundant 2D models to synthesize 3D training data, then confront the inevitable gap between synthetic and real 3D data with a more capable architecture.</p>
+    </div>
+
+    <div class="article-section" id="phase1">
+      <h2>Phase 1: Synthetic 3D Data Generation &amp; Multitask Learning</h2>
+
+      <div class="phase-card">
+        <h4>Phase 1 Goal</h4>
+        <p>Build a high-performing, lightweight multitask model for simultaneous 3D LV segmentation and ejection fraction regression, trained entirely on synthetically generated 3D volumes derived from 2D model ensembles.</p>
+      </div>
+
+      <div style="text-align:center;">
+        <img class="article-img" src="../img/projects/university.gif" alt="Synthetic 3D Volume Generation Process" style="max-width:680px; display:inline-block;">
+        <div class="img-caption">Fig. 1 — Illustration of the synthetic 3D volume generation process using ensemble 2D segmentation predictions.</div>
+      </div>
+
+      <h3>Synthetic Data Pipeline</h3>
+      <p>Ten diverse 2D segmentation architectures — including standard UNet variants, FCN-ResNet50, DeepLabV3, DoubleUNet, and attention-based models — were trained on 2D echocardiographic frames. For each patient, predictions from these models across temporal frames were stacked and interpolated to reconstruct pseudo-3D volumes. This provides a training signal for the downstream 3D model without requiring manual 3D annotations.</p>
+
+      <h3>Multitask Model Design</h3>
+      <p>The target model is a 3D multitask network accepting volumetric inputs. The segmentation branch outputs a 3D LV mask; the regression branch estimates ejection fraction simultaneously. A joint loss balances Dice loss (segmentation) and MSE (EF regression). The model was explicitly designed for deployment: <strong>4.73 MB</strong> total size, <strong>0.62 s</strong> inference per volume on standard hardware.</p>
+
+      <h3>Phase 1 Results</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Generator Model</th>
+              <th>Dice Score ↑</th>
+              <th>EF MSE ↓</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>FCN-ResNet50</td><td><strong>0.9701</strong></td><td>189.2</td><td>Best segmentation</td></tr>
+            <tr><td>DoubleUNet</td><td>0.9649</td><td><strong>163.93</strong></td><td>Best EF estimation</td></tr>
+            <tr><td>Standard UNet</td><td>0.9622</td><td>192.8</td><td>Baseline reference</td></tr>
+            <tr><td>DeepLabV3+</td><td>0.9598</td><td>201.4</td><td></td></tr>
+            <tr><td>Attention UNet</td><td>0.9644</td><td>175.6</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="img-caption">Table 1 — Phase 1 segmentation and EF results by synthetic data generator. Best configurations shown.</div>
+
+      <div class="highlight-box">
+        <h4><i class="fas fa-info-circle"></i> Phase 1 Summary</h4>
+        <p>A Dice score of 0.9701 on synthetically generated 3D volumes confirms the viability of the proposed data generation strategy. The FCN-ResNet50-based generator produces the most consistent 3D reconstructions, while DoubleUNet yields superior EF estimation — a non-trivial divergence that underscores the importance of generator choice based on downstream metric priority.</p>
+      </div>
+    </div>
+
+    <div class="article-section" id="phase2">
+      <h2>Phase 2: Real-World Validation &amp; Domain Gap Exposure</h2>
+
+      <div class="phase-card">
+        <h4>Phase 2 Goal</h4>
+        <p>Evaluate Phase 1 models on the real MITEA 3D echocardiography dataset, quantify the domain gap, and develop improved architectures that generalize beyond synthetic training data.</p>
+      </div>
+
+      <div style="text-align:center;">
+        <img class="article-img" src="../img/projects/staws.gif" alt="Domain Gap Visualization" style="max-width:680px; display:inline-block;">
+        <div class="img-caption">Fig. 2 — Qualitative comparison of Phase 1 model predictions on synthetic vs. real MITEA data, illustrating the domain gap.</div>
+      </div>
+
+      <h3>The Domain Gap Problem</h3>
+      <p>Direct evaluation of the Phase 1 model on the MITEA dataset reveals a severe performance degradation: Dice drops from <strong>0.9701 → 0.6782</strong>. This confirms a significant domain gap between synthetically generated volumes and real clinical 3D echocardiograms, driven by differences in noise characteristics, spatial resolution, and artifact patterns.</p>
+
+      <h3>2D Baseline on MITEA</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Dice (MITEA 2D slices)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>UNet</td><td>0.8241</td></tr>
+            <tr><td>Attention UNet</td><td>0.8397</td></tr>
+            <tr><td>FCN-ResNet50</td><td>0.8502</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="img-caption">Table 2 — 2D baseline segmentation performance on MITEA 2D slices.</div>
+
+      <h3>MITEA 3D Results</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Dice Score (MITEA 3D)</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Phase 1 Model (direct transfer)</td><td>0.6782</td><td>Domain gap exposed</td></tr>
+            <tr><td>Umbra UNet (Phase 2)</td><td>0.7941</td><td>Improved, but overfits</td></tr>
+            <tr><td>Standard 3D UNet (MITEA fine-tune)</td><td><strong>0.8464</strong></td><td>Best generalization</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="img-caption">Table 3 — 3D segmentation results on the MITEA dataset. Standard 3D UNet fine-tuned on MITEA achieves best generalization.</div>
+
+      <h3>Umbra UNet</h3>
+      <p>Umbra UNet is a hybrid architecture developed in Phase 2 to bridge the domain gap. It combines parallel encoding branches with hierarchical feature fusion, designed to extract multi-scale representations robust to the distributional differences between synthetic and real echocardiographic data. While it achieves a significant improvement over direct transfer (0.7941 vs. 0.6782), overfitting on the limited MITEA training split prevents it from surpassing the fine-tuned 3D UNet baseline. Umbra UNet's architecture is further developed and validated in the subsequent satellite imagery segmentation work.</p>
+
+      <div class="highlight-box">
+        <h4><i class="fas fa-exclamation-triangle"></i> Phase 2 Key Insight</h4>
+        <p>High synthetic-domain performance (<em>Dice 0.97</em>) does not guarantee real-world clinical performance. The 0.27 Dice gap between synthetic and real evaluation is a critical finding that motivates domain-adaptive architectures. <strong>Standard 3D UNet fine-tuned on MITEA remains the most reliable choice</strong> until a larger annotated corpus enables more robust domain adaptation.</p>
+      </div>
+    </div>
+
+    <div class="article-section" id="discussion">
+      <h2>Discussion</h2>
+      <p>This work demonstrates both the promise and the limits of synthetic data generation for 3D cardiac analysis. The synthetic approach achieves near-perfect Dice scores within-distribution, verifying that 2D-to-3D reconstruction is a viable data augmentation strategy. However, the sobering Phase 2 results reinforce a fundamental principle: models must ultimately be validated on the data distribution they will encounter in deployment.</p>
+      <p>The gap between FCN-ResNet50 (best Dice generator) and DoubleUNet (best EF generator) highlights a critical practical trade-off: the metric that matters most should guide generator selection. EF accuracy often carries higher clinical weight than raw segmentation Dice, as EF directly informs treatment decisions.</p>
+      <p>The development of Umbra UNet, while not yet surpassing the fine-tuned 3D UNet, demonstrates a productive architectural direction. Its hybrid parallel encoding design is conceptually transferable to other domains where underrepresented class segmentation is the primary challenge.</p>
+    </div>
+
+    <div class="article-section" id="conclusion">
+      <h2>Conclusion</h2>
+      <p>This paper presents a complete research arc from synthetic data generation (Phase 1, Dice 0.9701) through real-world validation and domain gap quantification (Phase 2, Dice 0.6782 → 0.8464) to the initial development of Umbra UNet. The findings establish a 4.73 MB deployment-ready model for 3D LV analysis and provide clear guidance for future work: larger annotated 3D datasets are essential for generalizable models, and domain gap mitigation must be an explicit design objective — not an afterthought.</p>
+    </div>
+
+    <div class="section-sep">• • •</div>
+
+    <div class="article-section" id="resources">
+      <h2>Resources</h2>
+      <div>
+        <a class="resource-btn filled" href="#" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a class="resource-btn" href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+      </div>
+    </div>
+
+    <div class="references-section" id="references">
+      <h2>References</h2>
+      <ol>
+        <li>Ronneberger, O., Fischer, P., &amp; Brox, T. (2015). U-Net: Convolutional Networks for Biomedical Image Segmentation. <em>MICCAI</em>.</li>
+        <li>Chen, L.-C., et al. (2017). DeepLab: Semantic Image Segmentation with Deep Convolutional Nets. <em>TPAMI</em>.</li>
+        <li>He, K., Zhang, X., Ren, S., &amp; Sun, J. (2016). Deep Residual Learning for Image Recognition. <em>CVPR</em>.</li>
+        <li>Simantiris, G., &amp; Tziritas, G. (2020). Cardiac MRI Segmentation with a Novel Attention U-Net. <em>IEEE JSTSP</em>.</li>
+        <li>Jha, D., et al. (2020). DoubleU-Net: A Deep Convolutional Neural Network for Medical Image Segmentation. <em>CBMS</em>.</li>
+        <li>Leclerc, S., et al. (2019). Deep Learning for Segmentation Using an Open Large-Scale Dataset in 2D Echocardiography. <em>IEEE TMI</em>.</li>
+        <li>Stojanovski, D., et al. (2023). MITEA: A Dataset for Machine Learning Segmentation of the Left Ventricle in 3D Echocardiography. <em>Frontiers in Cardiovascular Medicine</em>.</li>
+        <li>Zhang, J., et al. (2021). 3D Left Ventricular Segmentation from 3D Echocardiography. <em>MICCAI</em>.</li>
+        <li>Oktay, O., et al. (2018). Attention U-Net: Learning Where to Look for the Pancreas. <em>MIDL</em>.</li>
+        <li>Milletari, F., Navab, N., &amp; Ahmadi, S.-A. (2016). V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation. <em>3DV</em>.</li>
+      </ol>
+    </div>
+
+    <div class="article-section" id="contact">
+      <h2>Contact</h2>
+      <p>
+        <strong>Nikhileswara Rao Sulake</strong> —
+        <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a> &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/nikhileswara-rao-sulake/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+        <a href="https://github.com/Nikhil-Rao20" target="_blank">GitHub</a>
+      </p>
+    </div>
+
+  </div>
+
+  <a role="button" id="topper" data-toggle="tooltip" data-placement="top" title="Top" class="btn scroll-link" href="#top">
+    <i class="fa fa-fw fa-2x fa-caret-up" aria-hidden="true"></i>
+  </a>
+
+  <div w3-include-html="../footer.html"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <script src="../js/w3data.js"></script>
+  <script> w3IncludeHTML(); </script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>
