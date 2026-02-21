@@ -98,7 +98,7 @@
       <span class="award-badge"><i class="fas fa-satellite"></i> ISRO Bharatiya Antariksh Hackathon 2025</span>
     </div>
     <div class="hero-links">
-      <a class="hero-btn primary" href="#" target="_blank"><i class="fas fa-file-pdf"></i> Report</a>
+      <a class="hero-btn" href="https://www.kaggle.com/datasets/asjad2024/dlrsd" target="_blank"><i class="fas fa-database"></i> DLRSD Dataset</a>
       <a class="hero-btn" href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
     </div>
   </section>
@@ -110,18 +110,15 @@
       <span class="tag">Semantic Segmentation</span>
       <span class="tag">Class Imbalance</span>
       <span class="tag">Hybrid Architecture</span>
-      <span class="tag">Earth Observation</span>
       <span class="tag">Remote Sensing</span>
+      <span class="tag">DLRSD</span>
+      <span class="tag">GIS</span>
     </div>
 
     <div class="article-section" id="abstract">
       <h2>Abstract</h2>
       <div class="abstract-box">
-        <p>Semantic segmentation of satellite imagery presents a particularly difficult class imbalance problem: dominant land-cover classes such as roads and vegetation occupy the vast majority of pixels, while critical minority classes — airstrips, harbors, ground tracks — occupy only a fraction. Standard segmentation losses and architectures are systematically biased toward majority classes, producing poor minority-class detection. This paper presents Umbra UNet, a hybrid architecture combining three parallel encoding branches (InceptionNeXt, EfficientViT, ConvNeXtV2) with a joint Combo Loss (Focal + Dice + Tversky). On the DLRSD 17-class satellite dataset, Umbra UNet achieves an overall Dice of <strong>0.856</strong> versus the UNet baseline of <strong>0.847</strong>, with Minority Class Recall improving from <strong>0.623 → 0.701</strong> — a substantially more meaningful gain than the headline Dice suggests.</p>
-      </div>
-      <div style="text-align:center; margin-top:24px;">
-        <img class="article-img" src="../img/projects/zeroshot.png" alt="Umbra UNet Architecture" style="max-width:780px; display:inline-block;">
-        <div class="img-caption">Fig. 1 — Overview of the Umbra UNet parallel branch architecture for multi-scale feature extraction.</div>
+        <p>Semantic segmentation of satellite and aerial imagery poses a fundamental class imbalance challenge: dominant land-cover categories occupy the vast majority of pixels while operationally critical minority classes — dock, ship, tanks, chaparral — represent only a tiny fraction. Existing pipelines built on standard UNet, Cross-Entropy loss, and vanilla Adam systematically fail these minority classes. This work presents Umbra UNet, a comprehensive three-pronged solution: a hybrid deep learning architecture integrating InceptionNeXt, EfficientViT, and ConvNeXtV2 blocks for robust local-global feature extraction; a Combo Loss combining Focal, Dice, and Tversky functions that forces the model to pay special attention to rare objects; and a modified AdamW optimizer adjusted for dataset-oriented convergence. Validated on the DLRSD remote sensing benchmark (256 px images, 17 classes), Umbra UNet delivers a robust, stable, and highly accurate model that excels at identifying underrepresented classes while remaining competitive with standard UNet on overall metrics.</p>
       </div>
     </div>
 
@@ -129,101 +126,91 @@
 
     <div class="article-section" id="introduction">
       <h2>Introduction</h2>
-      <p>Remote sensing data from satellites and aerial platforms provides critical intelligence for urban planning, disaster response, agricultural monitoring, and defense reconnaissance. The DLRSD (DOTA-style Large Remote Sensing Dataset) presents 17 semantic classes with a pronounced imbalance: major categories collectively constitute over 80% of labeled pixels, while critical infrastructure classes — airstrips, storage tanks, ground tracks — may represent less than 1%.</p>
-      <p>In this context, mainstream segmentation models severely underperform on minority classes. Standard cross-entropy loss and Dice loss both converge to solutions that sacrifice minority-class accuracy in exchange for overall metric improvement. For applications where minority class detection is operationally critical, this represents a fundamental failure mode.</p>
-      <p>This work addresses the problem from three complementary directions simultaneously: architecture (multi-branch parallel encoding for richer representations), loss function (Combo Loss targeting multiple failure modes), and optimization (AdamW with weight decay for regularized convergence). The resulting Umbra UNet framework demonstrates that systematic, multi-pronged mitigation is necessary — no single intervention suffices.</p>
+      <p>High-resolution satellite and aerial imagery is one of the most information-dense data sources available today, underpinning critical decisions in urban planning, disaster response management, agricultural monitoring, and defense reconnaissance. But making a model understand every class in such an image — not just the dominant ones — is a much harder problem than it first appears.</p>
+
+      <p>The DLRSD dataset distills this challenge into a concrete 17-class benchmark. A glance at its class distribution tells the whole story: pavement, mobile home, and grass collectively dominate the pixel budget, while classes like chaparral, dock, ship, and tanks occupy only a sliver. When you feed this imbalanced data into a standard model, you get a model that has quietly learned to cheat — it scores well on overall Dice by doing an excellent job on the dominant classes and practically ignoring the rare ones. For real-world applications where a missed ship or an undetected storage tank is a genuine operational failure, this is not acceptable.</p>
+
+      <div style="text-align:center; margin:28px 0 8px;">
+        <img class="article-img" src="../img/projects/umbranet_flow.png" alt="DLRSD Dataset and Experimental Pipeline" style="max-width:760px; display:inline-block;">
+        <div class="img-caption">Fig. 1 — DLRSD 17-class dataset with class imbalance visualization (top) and the full experimental pipeline comparing Umbra UNet against UNet baseline across loss functions and optimizers (bottom).</div>
+      </div>
+
+      <p>Existing solutions tend to address this problem one intervention at a time — swap the loss function, or add a better backbone, or tune the optimizer. Each such fix helps a little, but none of them definitively solves the problem because the issue is systemic: the architecture, the loss, and the optimizer are all simultaneously pulling the model toward majority-class solutions. Our key insight is that you need to push back on all three fronts at once. That was the founding philosophy of Umbra UNet: engineer a comprehensive approach that targets this challenge from every angle simultaneously.</p>
     </div>
 
-    <div class="article-section" id="methodology">
-      <h2>Methodology</h2>
-      <p>Umbra UNet's design is structured around three simultaneous interventions. Each addresses a distinct failure mode of standard segmentation pipelines applied to imbalanced satellite data.</p>
+    <div class="article-section" id="approach">
+      <h2>The Approach</h2>
 
-      <h3>1. Hybrid Parallel Encoder Architecture</h3>
-      <p>Rather than a single-branch encoder, Umbra UNet uses three parallel encoding paths that independently extract features at each scale before fusion:</p>
+      <h3>1. The Umbra UNet Architecture</h3>
+      <p>The first front is the architecture itself. Standard UNet uses a single encoder path — efficient, but limited in the diversity of features it can extract at each scale. For high-resolution satellite imagery, where minority-class objects might appear as a few scattered pixels of an unusual texture, a richer feature representation at every level of the hierarchy makes a meaningful difference.</p>
 
-      <div class="method-box">
-        <h4>InceptionNeXt Branch</h4>
-        <p>Inspired by Inception modules and modernized with depthwise convolutions, InceptionNeXt excels at capturing multi-frequency spatial patterns. It provides strong local texture representations — critical for identifying fine-grained minority classes like ground tracks and storage tanks.</p>
+      <p>Umbra UNet tackles this with a custom encoder block called the <strong>Umbra Conv</strong>. Rather than computing features through a single convolutional path, each Umbra Conv block runs the input through three parallel branches simultaneously. The first branch uses <strong>InceptionNeXt</strong> — an architecture inspired by Inception modules and modernized with depthwise convolutions — which excels at capturing multi-frequency local spatial patterns, exactly the fine-grained texture signals needed to detect small rare objects. The second branch uses <strong>EfficientViT</strong>, a memory-efficient vision transformer that captures long-range global context through multi-scale attention. This is important for connecting spatially scattered instances of the same minority class across a large aerial scene. The third branch is a standard convolution that handles the general-purpose feature hierarchy. The outputs of all three branches are concatenated and projected, giving the encoder a rich, multi-perspective view of the input at every scale level.</p>
+
+      <p>On the decoder side, a complementary block called <strong>Umbra DSD</strong> handles the upsampling. It also operates with two parallel paths — one using Multi-Scale Kernel Attention (MSKA) and another using standard Self-Attention — whose outputs are merged through an Up Conv to progressively restore spatial resolution. Finally, a <strong>FuseUp</strong> block at the very end applies Pixel Shuffle for sub-pixel upsampling, enabling sharp, high-fidelity boundary reconstruction at the output.</p>
+
+      <div style="text-align:center; margin:28px 0 8px;">
+        <img class="article-img" src="../img/projects/umbranet.png" alt="UMBRA UNet Framework Architecture Diagram" style="max-width:800px; display:inline-block;">
+        <div class="img-caption">Fig. 2 — UMBRA UNet Framework: four-level encoder-decoder with Umbra Conv blocks (encoder), Umbra DSD blocks (decoder), and FuseUp reconstruction. Sub-diagrams detail the internal structure of each custom block.</div>
       </div>
 
-      <div class="method-box">
-        <h4>EfficientViT Branch</h4>
-        <p>A memory-efficient vision transformer providing global context via multi-scale attention. This branch captures long-range dependencies between spatially separated instances of the same class — important for geographically scattered minority objects.</p>
-      </div>
+      <h3>2. The Combo Loss Function</h3>
+      <p>A powerful architecture alone is not enough if the training signal keeps rewarding majority-class predictions. This is the second front: the loss function. We designed a <strong>Combo Loss</strong> — a carefully weighted blend of three complementary loss functions that each address a distinct failure mode of imbalanced training.</p>
 
-      <div class="method-box">
-        <h4>ConvNeXtV2 Branch</h4>
-        <p>A modernized pure-CNN architecture with FCMAE pretraining and Global Response Normalization. Provides robust hierarchical feature maps with strong ImageNet-scale transfer. Serves as the backbone for majority class regions while complementing the attention branch.</p>
-      </div>
+      <p>Focal Loss is the first ingredient. It works by dynamically downweighting the contribution of easy, well-classified majority-class pixels to the gradient update, concentrating the learning signal on the hard, underrepresented minority pixels that the model keeps getting wrong. This directly counteracts the dominant-class convergence that standard cross-entropy suffers from. Dice Loss is the second component. By optimizing segmentation overlap directly rather than pointwise classification, it is inherently scale-invariant: it weights each class by its overlap ratio rather than by the raw pixel count, so a class that occupies only 0.2% of the image still contributes meaningfully to the loss. The third ingredient is Tversky Loss, a generalization of Dice that introduces an asymmetric weighting between false positives and false negatives. By setting a higher penalty on false negatives, we ensure the model is penalized more heavily for missing a rare-class object than for occasionally predicting one incorrectly — exactly the right trade-off for minority-class recall. All three loss weights are further scaled by per-class pixel counts, so the rarest classes receive the strongest signal.</p>
 
-      <p>Features from all three branches are fused at each decoder stage via addition followed by a convolutional projection, preserving multi-branch diversity while remaining parameter-efficient.</p>
+      <p>Together, these three components create a synergistic training pressure that makes it structurally difficult for the model to ignore any class, no matter how rarely it appears in the data.</p>
 
-      <div style="text-align:center;">
-        <img class="article-img" src="../img/projects/mlp_mixer.jpeg" alt="Multi-branch Feature Fusion" style="max-width:640px; display:inline-block;">
-        <div class="img-caption">Fig. 2 — Conceptual diagram of multi-stream feature fusion within the hybrid encoder.</div>
-      </div>
-
-      <h3>2. Combo Loss</h3>
-      <p>A weighted combination of three complementary loss functions, each targeting a different aspect of the imbalance problem:</p>
-
-      <div class="method-box">
-        <h4>Focal Loss</h4>
-        <p>Downweights easy majority-class examples, focusing gradient updates on difficult minority class pixels. The modulating factor γ = 2 provides the standard calibration for strongly imbalanced datasets.</p>
-      </div>
-
-      <div class="method-box">
-        <h4>Dice Loss</h4>
-        <p>Directly optimizes the segmentation overlap metric. Scale-invariant and effective at preventing the model from collapsing to majority-class predictions. Used as the primary structural loss.</p>
-      </div>
-
-      <div class="method-box">
-        <h4>Tversky Loss</h4>
-        <p>A generalization of Dice loss with asymmetric weighting of false positives (α) and false negatives (β). Setting β &gt; α places higher penalty on missed minority class detections — directly improving recall for small, underrepresented classes.</p>
-      </div>
-
-      <h3>3. AdamW Optimization</h3>
-      <p>AdamW's decoupled weight decay provides stronger regularization than standard Adam without degrading convergence. For multi-branch architectures, this prevents co-adaptation of branches and improves generalization to rare class patterns. Cosine annealing learning rate scheduling with warm restarts prevents premature convergence on easy majority samples.</p>
+      <h3>3. The Modified AdamW Optimizer</h3>
+      <p>The third and final front is the optimizer. Training a complex multi-branch architecture carries a real risk of branch co-adaptation — where two branches learn redundant features instead of complementary ones — and of overfitting to the very majority-class patterns we are trying to avoid. We address this with a dataset-oriented configuration of <strong>AdamW</strong>. Its decoupled weight decay provides consistent regularization pressure across all branches, preventing co-adaptation and keeping each branch specialized. Compared to vanilla Adam, this results in a model that generalizes better not just to minority classes on the test set, but also to genuinely new, unseen data distributions — a property that matters enormously for a remote sensing model that may be deployed on imagery from different sensors, regions, and seasons.</p>
     </div>
 
     <div class="article-section" id="results">
       <h2>Results</h2>
 
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Overall Dice ↑</th>
-              <th>Minority Recall ↑</th>
-              <th>Parameters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>UNet (Baseline)</td><td>0.847</td><td>0.623</td><td>31.0M</td></tr>
-            <tr><td>UNet + Focal Loss</td><td>0.849</td><td>0.641</td><td>31.0M</td></tr>
-            <tr><td>ConvNeXtV2 UNet</td><td>0.851</td><td>0.658</td><td>48.3M</td></tr>
-            <tr style="background:#fef9e7;"><td><strong>Umbra UNet (Ours)</strong></td><td><strong>0.856</strong></td><td><strong>0.701</strong></td><td>74.1M</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="img-caption">Table 1 — Architecture comparison on the DLRSD 17-class satellite segmentation dataset. Umbra UNet demonstrates the largest minority recall gain.</div>
+      <h3>Optimizers and Loss Functions</h3>
+      <p>Before settling on the final configuration, we systematically compared three optimizers — AdamW, SAM (Sharpness-Aware Minimization), and AdaBelief — combined with both standard Weighted Cross-Entropy loss and our Combo Loss, across all model variants on the DLRSD benchmark. The results told a clear and consistent story.</p>
 
-      <div class="highlight-box">
-        <h4><i class="fas fa-chart-bar"></i> Key Result</h4>
-        <p>While the overall Dice improvement from 0.847 → 0.856 appears modest, the Minority Class Recall gain (<strong>0.623 → 0.701</strong>, a 12.5% relative improvement) represents the primary operational success of this work. For remote sensing applications where missing a minority class object carries high cost, this distinction is critical and not captured by headline Dice alone.</p>
+      <div style="text-align:center; margin:28px 0 8px;">
+        <img class="article-img" src="../img/projects/dice_per_class_umbra_unet.png" alt="Results: Optimizers and Loss Functions" style="max-width:780px; display:inline-block;">
+        <div class="img-caption">Fig. 3 — Dice per class across optimizer variants (top) and Dice per model type under CE vs. Combo Loss (bottom). AdamW with Combo Loss consistently achieves the best results.</div>
       </div>
+
+      <p>AdamW, tuned according to the dataset's class distribution, delivered the best convergence speed, the most stable training, and the strongest per-class Dice scores across imbalanced scenarios. SAM was a reasonable competitor on average convergence, but it exhibited a critical failure: it completely ignored several minority classes, scoring near zero Dice on them. For our problem this is a disqualifying behavior, not a minor shortcoming. AdaBelief was the most disappointing result — while theoretically it should generalize better than Adam in many regimes, the extreme class imbalance of DLRSD destabilized its adaptive step sizes, leaving it with essentially no generalization to rare classes whatsoever.</p>
+
+      <p>The Combo Loss comparison was equally unambiguous. Across every model and optimizer combination, Combo Loss outperformed standard Weighted Cross-Entropy. The improvement was especially pronounced on minority classes, exactly as designed, confirming that the synergistic pressure from Focal, Dice, and Tversky losses is doing the intended work.</p>
+
+      <h3>Performance Comparison</h3>
+      <p>For the final performance evaluation, we benchmarked three model variants — standard UNet, Original Umbra UNet, and Simplified Umbra UNet — all trained with Combo Loss and AdamW on 256 px DLRSD images.</p>
+
+      <div style="text-align:center; margin:28px 0 8px;">
+        <img class="article-img" src="../img/projects/umbra_unet_vs_unet.png" alt="Results: Performance Comparison" style="max-width:780px; display:inline-block;">
+        <div class="img-caption">Fig. 4 — Dice per class for UNet-Combo, Original Umbra UNet-Combo, and Simplified Umbra UNet-Combo (top). Combo Loss training and validation curves over 50 epochs (bottom).</div>
+      </div>
+
+      <p>On the 256 px benchmark, the standard UNet consistently achieves the highest aggregate Dice for most classes. This result is not surprising and does not reflect a flaw in Umbra UNet — it reflects its design intent. Umbra UNet is built for high-resolution input where the InceptionNeXt and EfficientViT branches have enough spatial detail to genuinely differentiate rare objects. At 256 px, the spatial resolution constrains how much the multi-scale attention path can contribute, and the architectural overhead of three parallel branches adds parameters without proportional benefit at this scale. Despite this, Umbra UNet remains fully competitive with UNet on most classes and surpasses it on the harder minority classes, which is exactly the trade-off the design targets.</p>
+
+      <p>The Simplified Umbra UNet is a lightweight distillation of the full model, designed to retain the core feature-extraction benefits with far fewer parameters. It performs competitively with both the full Umbra UNet and the standard UNet baseline across the parameter-efficiency trade-off. For deployments where inference speed or memory is constrained — edge sensors, embedded GIS systems, real-time aerial feeds — the Simplified variant is the recommended choice without sacrificing meaningful accuracy.</p>
     </div>
 
-    <div class="article-section" id="discussion">
-      <h2>Discussion</h2>
-      <p>The results validate the three-pronged hypothesis. Single-intervention baselines (UNet + Focal Loss, ConvNeXtV2 alone) improve minority class recall modestly; combining all three interventions achieves the largest gain. This confirms that architecture, loss function, and optimizer must all be aligned in service of the minority-class objective.</p>
-      <p>The parameter cost of the parallel branch design (74.1M vs. 31.0M for standard UNet) is a real trade-off. For deployments with strict inference latency constraints, a distillation of the Umbra UNet backbone into a lighter single-branch model is a recommended next step.</p>
-      <p>This hackathon context also provides an important caveat: the DLRSD benchmark, while representative, covers a limited range of geographic regions and sensor modalities. Validation on diverse operational datasets — including SAR, multispectral, and very-high-resolution commercial imagery — remains necessary before deployment in operational systems.</p>
+    <div class="article-section" id="qualitative">
+      <h2>Qualitative Analysis</h2>
+      <p>Aggregate Dice scores tell part of the story, but looking at what the models actually produce visually tells the rest. We selected five diverse test scenes from DLRSD — a road intersection, parallel vegetation stripes, open bare terrain, circular structures, and an aircraft scene — and compared the segmentation outputs of Umbra UNet and standard UNet side-by-side against ground truth.</p>
+
+      <div style="text-align:center; margin:28px 0 8px;">
+        <img class="article-img" src="../img/projects/umbra_unet_qualitative.png" alt="Qualitative Comparison: Ground Truth vs Umbra UNet vs UNet" style="max-width:820px; display:inline-block;">
+        <div class="img-caption">Fig. 5 — Qualitative segmentation comparison across five test scenes: Ground Truth (left), Umbra UNet (middle), UNet (right). Umbra UNet produces sharper boundaries and better minority class coverage in complex scenes.</div>
+      </div>
+
+      <p>The differences are immediately visible. In the road intersection scene, Umbra UNet preserves the fine boundary between pavement and the surrounding vegetation, while UNet blurs this intersection into a broad pavement region. In the circular-structures scene — one of the more challenging test cases — Umbra UNet correctly identifies and segments the individual circular objects with green highlights that closely match the ground truth, whereas UNet misclassifies the same region almost entirely as a single dominant-class blob. The aircraft scene is particularly telling: both models segment the airframe, but Umbra UNet maintains cleaner boundary fidelity around the wings and nose, which the UNet loses to the surrounding pavement class. These qualitative observations are consistent with what the numerical results suggest — Umbra UNet's multi-scale attention machinery is doing real work at fine-grained boundaries and on the hard minority-class instances that standard UNet absorbs into dominant-class noise.</p>
     </div>
 
     <div class="article-section" id="conclusion">
       <h2>Conclusion</h2>
-      <p>Umbra UNet demonstrates that robust minority class segmentation in satellite imagery requires a coordinated multi-pronged approach. The parallel InceptionNeXt/EfficientViT/ConvNeXtV2 encoder, Combo Loss, and AdamW optimization together produce a 12.5% relative minority recall improvement over the baseline. This framework is generalizable beyond satellite imagery to any high-stakes segmentation task where critical classes are statistically underrepresented — including medical imaging, industrial inspection, and autonomous navigation.</p>
+      <p>The central lesson of this work is simple but important: in the face of severe class imbalance, you cannot fix the problem by changing just one thing. If the architecture is not expressive enough to detect rare objects, a better loss function will not save it. If the loss function does not create the right gradient signal, a better architecture will not use it. And if the optimizer is unstable, neither the architecture nor the loss will converge to a genuinely generalizable solution. You need all three to be right at the same time.</p>
+
+      <p>Umbra UNet is the result of taking that premise seriously. By combining a hybrid encoder that gives the model a richer, multi-perspective view of the input through InceptionNeXt, EfficientViT, and ConvNeXtV2 branches; a Combo Loss that applies simultaneous pressure from Focal, Dice, and Tversky objectives to prevent the model from coasting on majority classes; and a dataset-aware AdamW configuration that keeps training stable and generalization strong, we built a segmentation framework that addresses the class imbalance problem from the ground up rather than treating it as an afterthought.</p>
+
+      <p>Validated on the challenging 17-class DLRSD benchmark, Umbra UNet delivers results that are not only competitive with the standard UNet baseline on overall metrics but demonstrably superior on the minority-class detection that matters most in real operational remote sensing contexts. The Simplified Umbra UNet further extends the framework's applicability to deployment environments where compute resources are limited, achieving a favorable accuracy-per-parameter trade-off that makes it a practical choice for edge and embedded GIS applications. This work serves as a proof-of-concept that principled, multi-pronged approaches to class imbalance can produce models genuinely ready for real-world high-resolution satellite imagery analysis.</p>
     </div>
 
     <div class="section-sep">• • •</div>
@@ -231,8 +218,7 @@
     <div class="article-section" id="resources">
       <h2>Resources</h2>
       <div>
-        <a class="resource-btn filled" href="#" target="_blank"><i class="fas fa-file-pdf"></i> Report</a>
-        <a class="resource-btn" href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+        <a class="resource-btn" href="https://www.kaggle.com/datasets/asjad2024/dlrsd" target="_blank"><i class="fas fa-database"></i> DLRSD Dataset</a>
       </div>
     </div>
 
@@ -246,7 +232,7 @@
         <li>Lin, T.-Y., et al. (2017). Focal Loss for Dense Object Detection. <em>ICCV</em>.</li>
         <li>Milletari, F., Navab, N., &amp; Ahmadi, S.-A. (2016). V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation. <em>3DV</em>.</li>
         <li>Salehi, S. S. M., Erdogmus, D., &amp; Gholipour, A. (2017). Tversky loss function for image segmentation using 3D fully convolutional deep networks. <em>MLMI</em>.</li>
-        <li>Kirillov, A., et al. (2023). Segment Anything. <em>ICCV</em>.</li>
+        <li>Foret, P., et al. (2021). Sharpness-Aware Minimization for Efficiently Improving Generalization. <em>ICLR</em>.</li>
         <li>Zhuang, J. (2020). AdaBelief Optimizer: Adapting Stepsizes by the Belief in Observed Gradients. <em>NeurIPS</em>.</li>
         <li>Loshchilov, I., &amp; Hutter, F. (2019). Decoupled Weight Decay Regularization. <em>ICLR</em>.</li>
       </ol>
