@@ -268,9 +268,7 @@
     </p>
     <p class="hero-meta">Research Article &nbsp;·&nbsp; September 2024</p>
     <div class="hero-links">
-      <a class="hero-btn primary" href="#" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
-      <a class="hero-btn" href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
-      <a class="hero-btn" href="#" target="_blank"><i class="fas fa-layer-group"></i> Architectures</a>
+      <a class="hero-btn primary" href="https://github.com/Nikhil-Rao20/YOLOv8_Backbones" target="_blank"><i class="fab fa-github"></i> Code</a>
     </div>
   </section>
 
@@ -288,7 +286,7 @@
     <div class="article-section" id="abstract">
       <h2>Abstract</h2>
       <div class="abstract-box">
-        <p>YOLOv8 is a dominant real-time object detection framework, yet its backbone — the primary feature extractor — remains largely unchanged from prior generations. This study presents a systematic theoretical and analytical comparison of seven backbone architectures integrated in place of YOLOv8's default CSPDarkNet. The evaluated backbones span CNN-based (ResNet50), hybrid (NextViT), pure transformer-based (DeiT), and emerging state-space model (SSM) architectures (Mamba, VMamba, Vision Mamba, MambaVision). Across five model scales (n/s/m/l/x), we analyze parameter counts and GFLOPs for all 35 resulting model configurations. This analytical study, conducted without retraining due to compute constraints, reveals the distinct theoretical trade-offs each backbone introduces — providing a structured guide for practitioners selecting architectures for constrained deployment scenarios.</p>
+        <p>YOLOv8 is a dominant real-time object detection framework, yet its backbone, the primary feature extractor, remains largely unchanged from prior generations. This study presents a systematic theoretical and analytical comparison of seven backbone architectures integrated in place of YOLOv8's default CSPDarkNet. The evaluated backbones span CNN-based (ResNet50), hybrid (NextViT), pure transformer-based (DeiT), and emerging state-space model (SSM) architectures (Mamba, VMamba, Vision Mamba, MambaVision). Across five model scales (n/s/m/l/x), we analyze parameter counts and GFLOPs for all 35 resulting model configurations. This analytical study, conducted without retraining due to compute constraints, reveals the distinct theoretical trade-offs each backbone introduces, providing a structured guide for practitioners selecting architectures for constrained deployment scenarios.</p>
       </div>
     </div>
 
@@ -298,7 +296,7 @@
       <h2>Introduction</h2>
       <div style="text-align: center;">
         <img class="article-img" src="../img/projects/yolobackbone.png" alt="YOLOv8 Backbone Swap Overview" style="max-width: 780px; display: inline-block;">
-        <div class="img-caption">Fig. 1 — Schematic of the backbone replacement strategy within the YOLOv8 architecture.</div>
+        <div class="img-caption">Fig. 1 , Schematic of the backbone replacement strategy within the YOLOv8 architecture.</div>
       </div>
       <p>The YOLO family of detectors achieves state-of-the-art speed-accuracy trade-offs by tightly coupling a feature extraction backbone with specialized neck and head components. While the neck (PANet) and detection head have seen significant iteration across YOLO versions, the backbone has evolved more incrementally. YOLOv8's default CSPDarkNet, while highly optimized, may not be the ideal feature extractor for all deployment scenarios.</p>
       <p>The deep learning landscape has seen an explosion of new backbone designs. Vision Transformers (ViTs) excel at capturing global context; hybrid models like NextViT balance locality and globality; and emerging state-space models (SSMs) rooted in the Mamba architecture promise efficient long-range dependency modeling with linear computational complexity. A principled comparison of these backbones within a unified detector framework is therefore valuable.</p>
@@ -309,7 +307,7 @@
       <h2>Backbone Architectures</h2>
       <div style="text-align: center;">
         <img class="article-img" src="../img/projects/dgyolo.png" alt="Directed Graph Overview of Backbones" style="max-width: 680px; display: inline-block;">
-        <div class="img-caption">Fig. 2 — Directed graph illustration of architectural relationships between studied backbones.</div>
+        <div class="img-caption">Fig. 2, Directed graph illustration of architectural relationships between studied backbones.</div>
       </div>
       <p>Each backbone was adapted to function as a drop-in replacement for the CSPDarkNet backbone by producing feature maps at the appropriate spatial scales expected by the PANet neck.</p>
 
@@ -326,17 +324,13 @@
       <p>A hybrid architecture combining CNN local feature extraction with transformer global reasoning within a unified stage design. Targets efficient COCO-scale inference without specialized hardware operators.</p>
 
       <h3>Mamba-Based Architectures (VMamba, Vision Mamba, MambaVision)</h3>
-      <p>The three SSM-based backbones represent the frontier of sequence modeling applied to vision. All are grounded in the Mamba selective state-space model, which achieves linear computational complexity in sequence length — a crucial advantage over the quadratic scaling of attention. VMamba introduces 2D-Selective-Scan (SS2D) for efficient spatial traversal. Vision Mamba adds bidirectional SSM for improved global coverage. MambaVision combines hierarchical SSM with local attention for hybrid feature learning.</p>
+      <p>The three SSM-based backbones represent the frontier of sequence modeling applied to vision. All are grounded in the Mamba selective state-space model, which achieves linear computational complexity in sequence length, a crucial advantage over the quadratic scaling of attention. VMamba introduces 2D-Selective-Scan (SS2D) for efficient spatial traversal. Vision Mamba adds bidirectional SSM for improved global coverage. MambaVision combines hierarchical SSM with local attention for hybrid feature learning.</p>
 
       <div class="highlight-box">
         <h4>Theoretical Advantage of SSMs</h4>
-        <p>Mamba-based models model long-range dependencies with <strong>O(n)</strong> complexity vs. <strong>O(n²)</strong> for attention-based transformers. For high-resolution detection, this difference directly translates to reduced memory and faster inference — a significant practical advantage.</p>
+        <p>Mamba-based models model long-range dependencies with <strong>O(n)</strong> complexity vs. <strong>O(n²)</strong> for attention-based transformers. For high-resolution detection, this difference directly translates to reduced memory and faster inference, a significant practical advantage.</p>
       </div>
 
-      <div style="text-align: center;">
-        <img class="article-img" src="../img/projects/mlp_mixer.jpeg" alt="Architecture Comparison Diagram" style="max-width: 640px; display: inline-block;">
-        <div class="img-caption">Fig. 3 — Conceptual comparison of MLP, Attention, and SSM information routing strategies relevant to the studied backbones.</div>
-      </div>
     </div>
 
     <div class="article-section" id="analysis">
@@ -367,7 +361,7 @@
           </tbody>
         </table>
       </div>
-      <div class="img-caption">Table 1 — Parameter counts (in millions) for all backbone × scale combinations. CSPDarkNet remains the most parameter-efficient default.</div>
+      <div class="img-caption">Table 1, Parameter counts (in millions) for all backbone × scale combinations. CSPDarkNet remains the most parameter-efficient default.</div>
 
       <h3>GFLOPs at 640×640 Input</h3>
       <div class="table-responsive">
@@ -393,15 +387,15 @@
           </tbody>
         </table>
       </div>
-      <div class="img-caption">Table 2 — GFLOPs at 640×640 resolution. NextViT offers the best compute-efficiency among non-default backbones.</div>
+      <div class="img-caption">Table 2, GFLOPs at 640×640 resolution. NextViT offers the best compute-efficiency among non-default backbones.</div>
     </div>
 
     <div class="article-section" id="discussion">
       <h2>Discussion</h2>
-      <p>CSPDarkNet's dominant efficiency across all scales — fewest parameters at every size — confirms why it remains the standard. Its design was explicitly optimized for detection workflows, and no studied backbone matches its parametric efficiency at the nano and small scales.</p>
+      <p>CSPDarkNet's dominant efficiency across all scales, fewest parameters at every size, confirms why it remains the standard. Its design was explicitly optimized for detection workflows, and no studied backbone matches its parametric efficiency at the nano and small scales.</p>
       <p>Among alternatives, <strong>NextViT</strong> presents the most favorable trade-off for practitioners unable to use CSPDarkNet: it provides hybrid local-global feature extraction at a lower GFLOP cost than transformer-only (DeiT) or SSM-based alternatives. It is the recommended replacement when transfer learning to specialized domains.</p>
       <p>The SSM-based backbones (VMamba, Vision Mamba, MambaVision) introduce the highest parameter overhead in this configuration. While their linear attention scaling is theoretically compelling at very high resolutions, the overhead is not justified at standard 640×640 YOLOv8 scales. Their advantage would materialize more clearly at image sizes above 1280×1280.</p>
-      <p>Critically, this work is a theoretical and architectural study — no training was conducted. Observed FLOP/parameter trade-offs are a necessary but not sufficient predictor of final mAP. Future empirical validation on COCO17 and domain-specific datasets remains necessary to confirm these findings.</p>
+      <p>Critically, this work is a theoretical and architectural study, no training was conducted. Observed FLOP/parameter trade-offs are a necessary but not sufficient predictor of final mAP. Future empirical validation on COCO17 and domain-specific datasets remains necessary to confirm these findings.</p>
     </div>
 
     <div class="article-section" id="conclusion">
@@ -414,9 +408,7 @@
     <div class="article-section" id="resources">
       <h2>Resources</h2>
       <div>
-        <a class="resource-btn filled" href="#" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
-        <a class="resource-btn" href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-        <a class="resource-btn" href="#" target="_blank"><i class="fas fa-layer-group"></i> Model Architectures</a>
+        <a class="resource-btn filled" href="https://github.com/Nikhil-Rao20/YOLOv8_Backbones" target="_blank"><i class="fab fa-github"></i> Source Code</a>
       </div>
     </div>
 
@@ -440,7 +432,7 @@
     <div class="article-section" id="contact">
       <h2>Contact</h2>
       <p>
-        <strong>Nikhileswara Rao Sulake</strong> —
+        <strong>Nikhileswara Rao Sulake</strong>,
         <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a> &nbsp;·&nbsp;
         <a href="https://www.linkedin.com/in/nikhileswara-rao-sulake/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
         <a href="https://github.com/Nikhil-Rao20" target="_blank">GitHub</a>

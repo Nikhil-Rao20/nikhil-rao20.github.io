@@ -319,10 +319,10 @@
     </p>
     <p class="hero-affiliations">Dept. of CSE, RGUKT Nuzvid</p>
     <p class="hero-meta">Research Article &nbsp;·&nbsp; September 2024</p>
-    <div class="hero-links">
+    <!-- <div class="hero-links">
       <a class="hero-btn primary" href="#" target="_blank"><i class="fas fa-file-pdf"></i> Report</a>
       <a class="hero-btn" href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
-    </div>
+    </div> -->
   </section>
 
   <div class="article-body">
@@ -339,11 +339,11 @@
     <div class="article-section" id="abstract">
       <h2>Abstract</h2>
       <div class="abstract-box">
-        <p>Standard deep learning models for medical image analysis excel at learning correlational patterns but often fail to capture the underlying causal relationships inherent in disease pathology. This paper investigates a novel approach to enhance diagnostic accuracy by integrating principles of causal inference directly into a deep learning framework. We present a systematic study on the classification of retinal diseases from Optical Coherence Tomography (OCT) images using a ResNet18 architecture augmented with causality-aware modules. We explore two distinct mechanisms: a concatenation-based method ("Cat") and a feature-weighting method ("Mulcat"), along with different causality map computations (Lehmer mean vs. Max) and extraction modes (Full/Bool and Causes/Effects). Our key finding: a Mulcat model using a Lehmer-derived causality map with boolean weighting of causal features achieves <strong>88.90% accuracy</strong>, demonstrating that selective integration of causal signals — rather than amplification — is the key to improved performance.</p>
+        <p>Standard deep learning models for medical image analysis excel at learning correlational patterns but often fail to capture the underlying causal relationships inherent in disease pathology. This paper investigates a novel approach to enhance diagnostic accuracy by integrating principles of causal inference directly into a deep learning framework. We present a systematic study on the classification of retinal diseases from Optical Coherence Tomography (OCT) images using a ResNet18 architecture augmented with causality-aware modules. We explore two distinct mechanisms: a concatenation-based method ("Cat") and a feature-weighting method ("Mulcat"), along with different causality map computations (Lehmer mean vs. Max) and extraction modes (Full/Bool and Causes/Effects). Our key finding: a Mulcat model using a Lehmer-derived causality map with boolean weighting of causal features achieves <strong>88.90% accuracy</strong>, demonstrating that selective integration of causal signals, rather than amplification, is the key to improved performance.</p>
       </div>
       <div style="text-align: center; margin-top: 24px;">
         <img class="article-img" src="../img/projects/casuality.png" alt="Causality-Aware Architecture Overview" style="max-width: 780px; width: 100%; display: inline-block;">
-        <div class="img-caption">Fig. 1 — Overview of the causality-aware ResNet18 architecture integrating causal inference modules for enhanced OCT classification.</div>
+        <div class="img-caption">Fig. 1, Overview of the causality-aware ResNet18 architecture integrating causal inference modules for enhanced OCT classification.</div>
       </div>
     </div>
 
@@ -352,13 +352,13 @@
     <div class="article-section" id="introduction">
       <h2>Introduction</h2>
       <p>Optical Coherence Tomography (OCT) provides high-resolution cross-sectional images of the retina, critical for diagnosing diabetic retinopathy, macular degeneration, and glaucoma. CNNs like ResNet have been widely applied to automate classification of these images, often matching human-level performance.</p>
-      <p>However, a fundamental limitation of traditional CNNs is their reliance on statistical correlations. These models recognize patterns without an explicit understanding of the cause-and-effect relationships that define disease progression. This "correlation, not causation" paradigm can lead to brittle models that struggle with out-of-distribution examples — a critical drawback in high-stakes medical applications.</p>
+      <p>However, a fundamental limitation of traditional CNNs is their reliance on statistical correlations. These models recognize patterns without an explicit understanding of the cause-and-effect relationships that define disease progression. This "correlation, not causation" paradigm can lead to brittle models that struggle with out-of-distribution examples, a critical drawback in high-stakes medical applications.</p>
       <p>Recent advances in causal inference offer a promising direction. By developing methods to estimate and integrate causal signals from data, it is possible to guide a neural network to learn features that are <em>causally relevant</em>, not merely correlated. This study presents a rigorous empirical analysis of causality-aware ResNet18 variants, uncovering a novel and counter-intuitive configuration that yields superior performance.</p>
     </div>
 
     <div class="article-section" id="methodology">
       <h2>Methodology</h2>
-      <p>Our framework augments the ResNet18 backbone with specialized modules that process a computed "causality map" — a k×k matrix where each element C(i,j) quantifies the causal influence of feature map F<sub>i</sub> on F<sub>j</sub>.</p>
+      <p>Our framework augments the ResNet18 backbone with specialized modules that process a computed "causality map", a k×k matrix where each element C(i,j) quantifies the causal influence of feature map F<sub>i</sub> on F<sub>j</sub>.</p>
 
       <h3>Causality Map Generation</h3>
       <p>After the image is processed by ResNet18's convolutional layers, two methods construct the causality map:</p>
@@ -377,7 +377,7 @@
 
       <div class="method-box">
         <h4>Cat (Concatenate) Module</h4>
-        <p>Flattens both the k feature maps and the k×k causality map into separate vectors, then concatenates them for the classifier. A passive strategy — the causal map is provided as supplementary metadata alongside visual features.</p>
+        <p>Flattens both the k feature maps and the k×k causality map into separate vectors, then concatenates them for the classifier. A passive strategy, the causal map is provided as supplementary metadata alongside visual features.</p>
       </div>
 
       <div class="method-box">
@@ -413,7 +413,7 @@
           </tbody>
         </table>
       </div>
-      <div class="img-caption">Table 1 — Lehmer parameter fine-tuning. p = 0 (geometric mean) is clearly optimal when training from scratch.</div>
+      <div class="img-caption">Table 1, Lehmer parameter fine-tuning. p = 0 (geometric mean) is clearly optimal when training from scratch.</div>
 
       <h3>Main Classification Results</h3>
       <div class="table-responsive">
@@ -440,38 +440,28 @@
           </tbody>
         </table>
       </div>
-      <div class="img-caption">Table 2 — Main results on the OCT dataset. The Mulcat (Lehmer, Bool, Causes) configuration is the best-performing causal variant.</div>
+      <div class="img-caption">Table 2, Main results on the OCT dataset. The Mulcat (Lehmer, Bool, Causes) configuration is the best-performing causal variant.</div>
 
       <div class="highlight-box">
         <h4><i class="fas fa-lightbulb"></i> Key Observation</h4>
-        <p>The "Full" weighting mode — which directly amplifies features by their causal scores — consistently performs poorly, collapsing to 56.88% in the worst case. The "Bool" mode, treating causality as a selection gate rather than an amplifier, proves far more robust. <strong>More causal signal is not always better; selective integration is the key.</strong></p>
+        <p>The "Full" weighting mode, which directly amplifies features by their causal scores, consistently performs poorly, collapsing to 56.88% in the worst case. The "Bool" mode, treating causality as a selection gate rather than an amplifier, proves far more robust. <strong>More causal signal is not always better; selective integration is the key.</strong></p>
       </div>
     </div>
 
     <div class="article-section" id="discussion">
       <h2>Discussion</h2>
       <p>The dramatic failure of the Full weighting mode suggests that raw causal scores are too noisy to be used as direct multipliers. Amplifying a single causally dominant feature biases the model, ignoring subtler visual cues that are also diagnostically relevant.</p>
-      <p>The Bool mode's success demonstrates that using causality as a <em>selection mechanism</em> — identifying which features matter, then weighting them equally — leads to more robust representations. The optimal direction (Causes over Effects) further aligns with clinical reasoning: identifying the root physiological cause is more valuable than detecting downstream consequences for accurate classification.</p>
+      <p>The Bool mode's success demonstrates that using causality as a <em>selection mechanism</em>, identifying which features matter, then weighting them equally, leads to more robust representations. The optimal direction (Causes over Effects) further aligns with clinical reasoning: identifying the root physiological cause is more valuable than detecting downstream consequences for accurate classification.</p>
       <p>The geometric mean (p = 0) as the optimal Lehmer setting implies that multiplicative, rather than additive, relationships best capture how features interact in OCT retinal pathology.</p>
     </div>
 
     <div class="article-section" id="conclusion">
       <h2>Conclusion</h2>
       <p>This work demonstrates that the method of integrating causal information is critically important. Simple concatenation offers little benefit; aggressive amplification is detrimental; but nuanced, boolean-gated selection of causally relevant features based on the Lehmer geometric mean provides a highly competitive and interpretable result.</p>
-      <p>The identified configuration — Mulcat + Lehmer (p=0) + Bool + Causes — at 88.90% accuracy stands as the best causal variant and establishes a strong proof-of-concept for causality-aware representation learning in medical imaging. Future work will explore more sophisticated causality estimation methods, multi-modal extensions, and clinical validation of the discovered causal patterns.</p>
+      <p>The identified configuration, Mulcat + Lehmer (p=0) + Bool + Causes, at 88.90% accuracy stands as the best causal variant and establishes a strong proof-of-concept for causality-aware representation learning in medical imaging. Future work will explore more sophisticated causality estimation methods, multi-modal extensions, and clinical validation of the discovered causal patterns.</p>
     </div>
 
     <div class="section-sep">• • •</div>
-
-    <div class="article-section" id="resources">
-      <h2>Resources</h2>
-      <p>Implementation code, experimental notebooks, and extended results are available below.</p>
-      <div>
-        <a class="resource-btn filled" href="#" target="_blank"><i class="fas fa-file-pdf"></i> Paper (PDF)</a>
-        <a class="resource-btn" href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-        <a class="resource-btn" href="#" target="_blank"><i class="fas fa-database"></i> Dataset</a>
-      </div>
-    </div>
 
     <div class="references-section" id="references">
       <h2>References</h2>
@@ -488,7 +478,7 @@
     <div class="article-section" id="contact">
       <h2>Contact</h2>
       <p>For further information or collaboration opportunities:<br>
-        <strong>Nikhileswara Rao Sulake</strong> —
+        <strong>Nikhileswara Rao Sulake</strong>,
         <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a> &nbsp;·&nbsp;
         <a href="https://www.linkedin.com/in/nikhileswara-rao-sulake/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
         <a href="https://github.com/Nikhil-Rao20" target="_blank">GitHub</a>

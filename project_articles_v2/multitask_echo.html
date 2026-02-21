@@ -112,7 +112,7 @@
     <div class="article-section" id="abstract">
       <h2>Abstract</h2>
       <div class="abstract-box">
-        <p>Automated 3D analysis of the left ventricle (LV) from echocardiography is clinically valuable but challenging due to the scarcity of annotated 3D data. This paper presents a two-phase research framework addressing this challenge. Phase 1 proposes generating synthetic 3D echocardiographic volumes from an ensemble of 2D segmentation models, then training a lightweight multitask model on this synthetic data; the best configuration achieves a Dice score of <strong>0.9701</strong>. Phase 2 transitions to real-world evaluation, using the MITEA dataset to expose a critical <strong>domain gap</strong> (Dice drops from 0.97 to 0.6782), motivating the development of Umbra UNet — a hybrid architecture for improved generalization. The full pipeline results in a deployment-ready model of <strong>4.73 MB</strong> with <strong>0.62 s</strong> single-volume inference time.</p>
+        <p>Automated 3D analysis of the left ventricle (LV) from echocardiography is clinically valuable but challenging due to the scarcity of annotated 3D data. This paper presents a two-phase research framework addressing this challenge. Phase 1 proposes generating synthetic 3D echocardiographic volumes from an ensemble of 2D segmentation models, then training a lightweight multitask model on this synthetic data; the best configuration achieves a Dice score of <strong>0.9701</strong>. Phase 2 transitions to real-world evaluation, using the MITEA dataset to expose a critical <strong>domain gap</strong> (Dice drops from 0.97 to 0.6782), motivating the development of Umbra UNet, a hybrid architecture for improved generalization. The full pipeline results in a deployment-ready model of <strong>4.73 MB</strong> with <strong>0.62 s</strong> single-volume inference time.</p>
       </div>
     </div>
 
@@ -120,7 +120,7 @@
 
     <div class="article-section" id="introduction">
       <h2>Introduction</h2>
-      <p>Left ventricular performance is a primary indicator of cardiac health. Key metrics — ejection fraction (EF), end-diastolic volume (EDV), and end-systolic volume (ESV) — are derived from precise volumetric analysis. While 3D echocardiography provides all necessary spatial information, manual annotation of 3D scans is time-consuming and operator-dependent.</p>
+      <p>Left ventricular performance is a primary indicator of cardiac health. Key metrics, ejection fraction (EF), end-diastolic volume (EDV), and end-systolic volume (ESV), are derived from precise volumetric analysis. While 3D echocardiography provides all necessary spatial information, manual annotation of 3D scans is time-consuming and operator-dependent.</p>
       <p>Deep learning has dramatically advanced 2D cardiac segmentation. The challenge in 3D is data scarcity: large, annotated 3D echo datasets are rare and expensive to produce. This work proposes a pragmatic two-phase approach: first, leverage abundant 2D models to synthesize 3D training data, then confront the inevitable gap between synthetic and real 3D data with a more capable architecture.</p>
     </div>
 
@@ -132,13 +132,10 @@
         <p>Build a high-performing, lightweight multitask model for simultaneous 3D LV segmentation and ejection fraction regression, trained entirely on synthetically generated 3D volumes derived from 2D model ensembles.</p>
       </div>
 
-      <div style="text-align:center;">
-        <img class="article-img" src="../img/projects/university.gif" alt="Synthetic 3D Volume Generation Process" style="max-width:680px; display:inline-block;">
-        <div class="img-caption">Fig. 1 — Illustration of the synthetic 3D volume generation process using ensemble 2D segmentation predictions.</div>
-      </div>
+      
 
       <h3>Synthetic Data Pipeline</h3>
-      <p>Ten diverse 2D segmentation architectures — including standard UNet variants, FCN-ResNet50, DeepLabV3, DoubleUNet, and attention-based models — were trained on 2D echocardiographic frames. For each patient, predictions from these models across temporal frames were stacked and interpolated to reconstruct pseudo-3D volumes. This provides a training signal for the downstream 3D model without requiring manual 3D annotations.</p>
+      <p>Ten diverse 2D segmentation architectures, including standard UNet variants, FCN-ResNet50, DeepLabV3, DoubleUNet, and attention-based models, were trained on 2D echocardiographic frames. For each patient, predictions from these models across temporal frames were stacked and interpolated to reconstruct pseudo-3D volumes. This provides a training signal for the downstream 3D model without requiring manual 3D annotations.</p>
 
       <h3>Multitask Model Design</h3>
       <p>The target model is a 3D multitask network accepting volumetric inputs. The segmentation branch outputs a 3D LV mask; the regression branch estimates ejection fraction simultaneously. A joint loss balances Dice loss (segmentation) and MSE (EF regression). The model was explicitly designed for deployment: <strong>4.73 MB</strong> total size, <strong>0.62 s</strong> inference per volume on standard hardware.</p>
@@ -163,11 +160,11 @@
           </tbody>
         </table>
       </div>
-      <div class="img-caption">Table 1 — Phase 1 segmentation and EF results by synthetic data generator. Best configurations shown.</div>
+      <div class="img-caption">Table 1, Phase 1 segmentation and EF results by synthetic data generator. Best configurations shown.</div>
 
       <div class="highlight-box">
         <h4><i class="fas fa-info-circle"></i> Phase 1 Summary</h4>
-        <p>A Dice score of 0.9701 on synthetically generated 3D volumes confirms the viability of the proposed data generation strategy. The FCN-ResNet50-based generator produces the most consistent 3D reconstructions, while DoubleUNet yields superior EF estimation — a non-trivial divergence that underscores the importance of generator choice based on downstream metric priority.</p>
+        <p>A Dice score of 0.9701 on synthetically generated 3D volumes confirms the viability of the proposed data generation strategy. The FCN-ResNet50-based generator produces the most consistent 3D reconstructions, while DoubleUNet yields superior EF estimation, a non-trivial divergence that underscores the importance of generator choice based on downstream metric priority.</p>
       </div>
     </div>
 
@@ -181,7 +178,7 @@
 
       <div style="text-align:center;">
         <img class="article-img" src="../img/projects/staws.gif" alt="Domain Gap Visualization" style="max-width:680px; display:inline-block;">
-        <div class="img-caption">Fig. 2 — Qualitative comparison of Phase 1 model predictions on synthetic vs. real MITEA data, illustrating the domain gap.</div>
+        <div class="img-caption">Fig. 2, Qualitative comparison of Phase 1 model predictions on synthetic vs. real MITEA data, illustrating the domain gap.</div>
       </div>
 
       <h3>The Domain Gap Problem</h3>
@@ -203,7 +200,7 @@
           </tbody>
         </table>
       </div>
-      <div class="img-caption">Table 2 — 2D baseline segmentation performance on MITEA 2D slices.</div>
+      <div class="img-caption">Table 2, 2D baseline segmentation performance on MITEA 2D slices.</div>
 
       <h3>MITEA 3D Results</h3>
       <div class="table-responsive">
@@ -222,7 +219,7 @@
           </tbody>
         </table>
       </div>
-      <div class="img-caption">Table 3 — 3D segmentation results on the MITEA dataset. Standard 3D UNet fine-tuned on MITEA achieves best generalization.</div>
+      <div class="img-caption">Table 3, 3D segmentation results on the MITEA dataset. Standard 3D UNet fine-tuned on MITEA achieves best generalization.</div>
 
       <h3>Umbra UNet</h3>
       <p>Umbra UNet is a hybrid architecture developed in Phase 2 to bridge the domain gap. It combines parallel encoding branches with hierarchical feature fusion, designed to extract multi-scale representations robust to the distributional differences between synthetic and real echocardiographic data. While it achieves a significant improvement over direct transfer (0.7941 vs. 0.6782), overfitting on the limited MITEA training split prevents it from surpassing the fine-tuned 3D UNet baseline. Umbra UNet's architecture is further developed and validated in the subsequent satellite imagery segmentation work.</p>
@@ -242,7 +239,7 @@
 
     <div class="article-section" id="conclusion">
       <h2>Conclusion</h2>
-      <p>This paper presents a complete research arc from synthetic data generation (Phase 1, Dice 0.9701) through real-world validation and domain gap quantification (Phase 2, Dice 0.6782 → 0.8464) to the initial development of Umbra UNet. The findings establish a 4.73 MB deployment-ready model for 3D LV analysis and provide clear guidance for future work: larger annotated 3D datasets are essential for generalizable models, and domain gap mitigation must be an explicit design objective — not an afterthought.</p>
+      <p>This paper presents a complete research arc from synthetic data generation (Phase 1, Dice 0.9701) through real-world validation and domain gap quantification (Phase 2, Dice 0.6782 → 0.8464) to the initial development of Umbra UNet. The findings establish a 4.73 MB deployment-ready model for 3D LV analysis and provide clear guidance for future work: larger annotated 3D datasets are essential for generalizable models, and domain gap mitigation must be an explicit design objective, not an afterthought.</p>
     </div>
 
     <div class="section-sep">• • •</div>
@@ -274,7 +271,7 @@
     <div class="article-section" id="contact">
       <h2>Contact</h2>
       <p>
-        <strong>Nikhileswara Rao Sulake</strong> —
+        <strong>Nikhileswara Rao Sulake</strong>,
         <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a> &nbsp;·&nbsp;
         <a href="https://www.linkedin.com/in/nikhileswara-rao-sulake/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
         <a href="https://github.com/Nikhil-Rao20" target="_blank">GitHub</a>
