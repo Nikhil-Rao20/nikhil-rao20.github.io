@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/research.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/projects.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/experiences.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/contact.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/gallery.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/prev_projects.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Project Articles -->
+  <url>
+    <loc>https://nikhil-rao20.github.io/project_articles_v2/sih_drone.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/project_articles_v2/multitask_echo.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/project_articles_v2/umbraUnet.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/project_articles_v2/cardiolens.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/project_articles_v2/multi_backbone_yolo.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/project_articles_v2/zoya.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/project_articles_v2/staws.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/project_articles_v2/thyroid.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/project_articles_v2/doc2data.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/project_articles_v2/casuality.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nikhil-rao20.github.io/project_articles_v2/ai-calc.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
