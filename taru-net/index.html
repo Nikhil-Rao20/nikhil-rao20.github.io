@@ -261,16 +261,15 @@
             <span class="author-block">
               Subhamoy Mandal<sup>1,*</sup>,</span>
             <span class="author-block">
-              Suman Chakraborty<sup>5</sup>
+              Suman Chakraborty<sup>1</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>SMST, IIT Kharagpur,</span>
+            <span class="author-block"><sup>1</sup>IIT Kharagpur,</span>
             <span class="author-block"><sup>2</sup>RGUKT Nuzvid,</span>
             <span class="author-block"><sup>3</sup>VIT Chennai,</span>
             <span class="author-block"><sup>4</sup>Narayana Hospital,</span>
-            <span class="author-block"><sup>5</sup>Dept. of Mechanical Engg., IIT Kharagpur</span>
           </div>
 
           <div class="column has-text-centered">
@@ -314,7 +313,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./media/covid-prediction.png" alt="TARU-Net 3D Reconstruction Results" style="width: 100%; border-radius: 8px;">
+      <img src="./media/arch_project.png" alt="TARU-Net 3D Reconstruction Results" style="width: 100%; border-radius: 8px;">
       <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
         <span class="dnerf">TARU-Net</span> generates high-fidelity 3D lung models with color-coded severity mapping from CT scans.
       </h2>
@@ -355,27 +354,27 @@
         </div>
 
         <!-- COVID Input Data -->
-        <h3 class="title is-4">Input Data: COVID-19 Pneumonia</h3>
+        <h2 class="title is-4">Input Data: COVID-19 Pneumonia</h2>
         <div class="has-text-centered">
-          <img src="./media/covid-input-data.png" alt="COVID-19 CT Input Data" style="max-width: 100%; border-radius: 8px;">
+          <img src="./media/covid-input-data.png" alt="COVID-19 CT Input Data" style="max-width: 70%; border-radius: 8px;">
           <p class="is-size-6" style="margin-top: 0.5rem; color: #666;">
             Raw CT scan (left), extracted lung region (middle), and pneumonia-affected regions (right).
           </p>
         </div>
 
         <!-- Cancer Input Data -->
-        <h3 class="title is-4" style="margin-top: 2rem;">Input Data: Lung Cancer</h3>
+        <h2 class="title is-4" style="margin-top: 2rem;">Input Data: Lung Cancer</h2>
         <div class="has-text-centered">
-          <img src="./media/cancer-input-data.png" alt="Lung Cancer CT Input Data" style="max-width: 100%; border-radius: 8px;">
+          <img src="./media/cancer-input-data.png" alt="Lung Cancer CT Input Data" style="max-width: 70%; border-radius: 8px;">
           <p class="is-size-6" style="margin-top: 0.5rem; color: #666;">
             Raw CT scan (left), extracted lung region (middle), and cancer-affected regions (right).
           </p>
         </div>
 
         <!-- 3D Axis Views -->
-        <h3 class="title is-4" style="margin-top: 2rem;">3D CT Scan Orientation Views</h3>
+        <h2 class="title is-4" style="margin-top: 2rem;">3D CT Scan Orientation Views</h2>
         <div class="has-text-centered">
-          <img src="./media/three-axis-image.png" alt="Axial Coronal Sagittal Views" style="max-width: 100%; border-radius: 8px;">
+          <img src="./media/three-axis-image.png" alt="Axial Coronal Sagittal Views" style="max-width: 90%; border-radius: 8px;">
           <p class="is-size-6" style="margin-top: 0.5rem; color: #666;">
             Axial, Coronal, and Sagittal slices with 3D volume overlay showing directional axes.
           </p>
@@ -527,45 +526,24 @@
 </section>
 
 
+
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Dataset</h2>
-    <div class="content">
-      <p>We curated CT datasets covering COVID-19 induced pneumonia and lung cancer:</p>
-    </div>
-
-    <div class="table-container">
-      <table class="table is-bordered is-striped is-hoverable">
-        <thead>
-          <tr>
-            <th>Split</th>
-            <th>Lung Cancer</th>
-            <th>COVID-19</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Train</td>
-            <td>53,409</td>
-            <td>16,985</td>
-          </tr>
-          <tr>
-            <td>Test</td>
-            <td>16,434</td>
-            <td>5,226</td>
-          </tr>
-          <tr>
-            <td>Validation</td>
-            <td>12,326</td>
-            <td>3,920</td>
-          </tr>
-          <tr style="font-weight: bold;">
-            <td>Total</td>
-            <td>82,169</td>
-            <td>26,131</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Conclusion</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present a unified computational pipeline that seamlessly integrates 2D deep learning-based segmentation with 3D surface topology-driven reconstruction for volume visualization, generating anatomically faithful, color-coded models of the human lung. By leveraging U-Net's feature-extraction capabilities coupled with topology-based surface reconstruction, TARU-Net achieves high accuracy in delineating lung parenchyma, airways, and pathological regions.
+          </p>
+          <p>
+            The fusion of deep learning and topology-aware reconstruction transforms discrete CT voxel data into realistic 3D representations with smooth, anatomically consistent surfaces. This hybrid approach surpasses traditional methods in robustness, adaptability to diseased tissues (fibrotic or tumorous lungs), and computational efficiency—offering transformative potential for diagnosis, surgical planning, computational medicine, and medical education.
+          </p>
+          <p>
+            Beyond immediate utility, this work paves the way for explainable and real-time AI in thoracic imaging, bridging algorithmic precision with clinical interpretability. Future directions include four-dimensional (time-resolved) reconstruction to capture lung deformation during respiration, supported by self-supervised learning, domain adaptation, and federated frameworks for privacy-preserving model training.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
