@@ -181,8 +181,8 @@ body {
   }
   
   .publication-authors .author-block {
-    display: block;
-    margin-bottom: 0.25rem;
+    display: inline-block;
+    margin-bottom: 0.15rem;
   }
 }
 
