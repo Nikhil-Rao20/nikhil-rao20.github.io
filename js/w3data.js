@@ -148,3 +148,21 @@ function w3Http(target, readyfunc, xml, method) {
         httpObj.send(xml);
     }
 }
+
+// Site-wide Google Analytics 4 initialization.
+(function initSiteAnalytics() {
+    var GA_MEASUREMENT_ID = window.GA_MEASUREMENT_ID || "G-45HXR30603";
+    if (!GA_MEASUREMENT_ID || window.__siteGaInitialized) {return;}
+
+    window.__siteGaInitialized = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function() { window.dataLayer.push(arguments); };
+
+    window.gtag("js", new Date());
+    window.gtag("config", GA_MEASUREMENT_ID, { "anonymize_ip": true });
+
+    var gaScript = document.createElement("script");
+    gaScript.async = true;
+    gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_MEASUREMENT_ID);
+    document.head.appendChild(gaScript);
+})();
