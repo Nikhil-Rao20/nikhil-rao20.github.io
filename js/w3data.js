@@ -151,7 +151,7 @@ function w3Http(target, readyfunc, xml, method) {
 
 // Site-wide Google Analytics 4 initialization.
 (function initSiteAnalytics() {
-    var GA_MEASUREMENT_ID = window.GA_MEASUREMENT_ID || "G-45HXR30603";
+    var GA_MEASUREMENT_ID = window.GA_MEASUREMENT_ID || "G-W7CLQ74TF9";
     if (!GA_MEASUREMENT_ID || window.__siteGaInitialized) {return;}
 
     window.__siteGaInitialized = true;
