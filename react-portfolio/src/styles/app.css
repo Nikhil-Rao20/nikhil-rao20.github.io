@@ -1,0 +1,19 @@
+@import url('/assets/css/main.css');
+
+:root {
+  color-scheme: light;
+  font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.legacy-page {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}

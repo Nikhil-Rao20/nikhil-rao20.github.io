@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="DRISTI is a disaster response drone project by Nikhileswara Rao Sulake that combines aerial perception, computer vision, and intelligent decision support.">
+  <meta name="keywords" content="DRISTI, disaster response drone, drone vision, computer vision, aerial robotics, disaster management, Nikhileswara Rao Sulake, Nikhil Rao Sulake">
+  <link rel="canonical" href="https://nikhil-rao20.github.io/project_articles_v2/sih_drone.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DRISTI: Disaster Response Drone">
+  <meta property="og:description" content="A disaster response drone project combining aerial perception, computer vision, and intelligent decision support.">
+  <meta property="og:url" content="https://nikhil-rao20.github.io/project_articles_v2/sih_drone.html">
+  <meta property="og:site_name" content="Nikhileswara Rao Sulake">
+  <title>DRISTI: Disaster Response Drone | Nikhileswara Rao Sulake</title>
+  <link rel="shortcut icon" href="../favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="../favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXpO6+Zc8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    body { background:#fff; font-family:"Open Sans",Arial,sans-serif; font-size:15.5px; line-height:1.75; color:#333; }
+    .article-hero { background:#fff; border-bottom:1px solid #e5e8ed; padding:48px 20px 36px; text-align:center; position:relative; }
+    .hero-title { font-family:"Montserrat",Helvetica,sans-serif; font-size:3rem; font-weight:700; color:#20364c; line-height:1.22; margin:0 auto 18px; max-width:860px; }
+    .hero-authors { font-family:"Open Sans",sans-serif; font-size:1.45rem; color:#333; margin-bottom:6px; }
+    .hero-authors a { color:#1585cf; text-decoration:none; font-weight:600; border-bottom:1px dashed transparent; transition:border-color .2s; }
+    .hero-authors a:hover { border-bottom-color:#1585cf; }
+    .hero-meta { font-size:1.25rem; color:slategray; font-family:"Open Sans",sans-serif; margin-bottom:28px; }
+    .hero-links { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:8px; }
+    .hero-btn { display:inline-flex; align-items:center; gap:7px; padding:8px 20px; border-radius:6px; font-family:"Montserrat",sans-serif; font-size:1.3rem; font-weight:600; text-decoration:none; border:2px solid #20364c; color:#20364c; background:#fff; transition:all .2s ease; }
+    .hero-btn:hover { background:#20364c; color:#fff; text-decoration:none; }
+    .hero-btn.primary { background:#20364c; color:#fff; }
+    .hero-btn.primary:hover { background:#1585cf; border-color:#1585cf; }
+    .award-badge { display:inline-block; background:#20364c; color:#fff; font-family:"Montserrat",sans-serif; font-size:1.2rem; font-weight:600; padding:5px 16px; border-radius:4px; margin-bottom:16px; letter-spacing:.02em; }
+    .award-badge i { margin-right:6px; }
+    .article-body { max-width:860px; margin:0 auto; padding:48px 20px 72px; }
+    .article-body h2 { font-family:"Montserrat",Helvetica,sans-serif; font-size:1.9rem; font-weight:600; color:#20364c; margin-top:0; margin-bottom:16px !important; padding-bottom:8px; border-bottom:2px solid slategray; }
+    .article-body h3 { font-family:"Montserrat",Helvetica,sans-serif; font-size:1.55rem; font-weight:600; color:#3d5166; margin-top:30px; margin-bottom:10px !important; }
+    .article-body h4 { font-family:"Montserrat",Helvetica,sans-serif; font-size:1.35rem; font-weight:600; color:slategray; margin-top:22px; margin-bottom:8px !important; text-transform:uppercase; letter-spacing:.04em; }
+    .article-section { margin-bottom:52px; }
+    .abstract-box { background:#f4f7fb; border-left:4px solid #20364c; padding:22px 26px; border-radius:0 8px 8px 0; margin-bottom:0; }
+    .abstract-box p { margin-bottom:0; font-size:1.45rem; color:#2c3e50; line-height:1.8; }
+    .tag-list { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:36px; }
+    .tag { background:#eaf4fb; color:#1585cf; border:1px solid #b8ddf5; padding:4px 14px; border-radius:20px; font-size:1.2rem; font-weight:500; font-family:"Montserrat",sans-serif; transition:all .2s; }
+    .tag:hover { background:#1585cf; color:#fff; border-color:#1585cf; }
+    .article-img { width:100%; border-radius:8px; margin:20px 0 6px; box-shadow:0 2px 12px rgba(0,0,0,.09); transition:transform .3s ease; }
+    .article-img:hover { transform:scale(1.01); }
+    .img-caption { text-align:center; font-style:italic; color:slategray; font-size:1.3rem; margin-bottom:20px; font-family:"Open Sans",sans-serif; }
+    .highlight-box { background:#f4f7fb; border-left:4px solid #1585cf; padding:18px 22px; border-radius:0 8px 8px 0; margin:22px 0; }
+    .highlight-box h4 { color:#20364c; text-transform:none; letter-spacing:0; font-size:1.4rem; margin-top:0; }
+    .method-box { background:#fff; border:1px solid #e0e6ef; border-left:4px solid #20364c; border-radius:0 8px 8px 0; padding:18px 22px; margin:18px 0; }
+    .method-box h4 { color:#20364c; text-transform:none; letter-spacing:0; font-size:1.4rem; margin-top:0; margin-bottom:10px; }
+    .pipeline-step { background:#fff; border:1px solid #e0e6ef; border-radius:8px; padding:18px 22px; margin:16px 0; }
+    .pipeline-step .step-num { display:inline-block; background:#20364c; color:#fff; font-family:"Montserrat",sans-serif; font-size:1.1rem; font-weight:700; padding:2px 12px; border-radius:3px; margin-bottom:10px; letter-spacing:.04em; }
+    .pipeline-step h4 { color:#20364c; text-transform:none; letter-spacing:0; font-size:1.4rem; margin-top:4px; margin-bottom:8px; }
+    .pipeline-step p { font-size:1.38rem; color:#444; margin-bottom:0; line-height:1.7; }
+    .article-body .table thead tr th { background:#fff; color:#20364c; font-family:"Montserrat",sans-serif; font-size:1.35rem; border-bottom:2px solid #20364c; }
+    .article-body .table tbody tr td { font-size:1.35rem; vertical-align:middle; }
+    .article-body .table tbody tr:hover { background:#f8fafc; }
+    .article-body h3::after { display:none !important; content:none !important; }
+    .article-body h3 span { background:transparent; padding-right:0; }
+    .hero-back-link { position:absolute; top:18px; left:20px; display:inline-flex; align-items:center; gap:6px; font-size:1.3rem; color:#1585cf; font-family:"Montserrat",sans-serif; font-weight:500; text-decoration:none; transition:color .2s; }
+    .hero-back-link:hover { color:#20364c; text-decoration:none; }
+    .resource-btn { display:inline-flex; align-items:center; gap:7px; padding:9px 22px; border-radius:6px; font-family:"Montserrat",sans-serif; font-size:1.3rem; font-weight:600; text-decoration:none; border:2px solid #20364c; color:#20364c; background:#fff; transition:all .2s ease; margin-right:8px; margin-top:10px; }
+    .resource-btn:hover { background:#20364c; color:#fff; text-decoration:none; }
+    .resource-btn.filled { background:#20364c; color:#fff; }
+    .resource-btn.filled:hover { background:#1585cf; border-color:#1585cf; }
+    .references-section { background:#f4f7fb; padding:26px 24px; border-left:5px solid #20364c; border-radius:0 8px 8px 0; margin:40px 0; overflow-wrap:break-word; word-break:break-word; }
+    .references-section h2 { border-bottom:none; font-size:1.7rem; padding-bottom:0; margin-bottom:16px !important; }
+    .references-section ol { padding-left:20px; }
+    .references-section ol li { font-size:1.25rem; line-height:1.65; color:#3d4147; margin-bottom:10px; }
+    .references-section ol li a { color:#1585cf; }
+    .section-sep { text-align:center; margin:48px 0 36px; color:#c8d3de; letter-spacing:.5em; font-size:1.1rem; }
+    .gallery-section { margin:40px 0 0; }
+    .gallery-section h2 { font-family:"Montserrat",Helvetica,sans-serif; font-size:1.9rem; font-weight:600; color:#20364c; margin-top:0; margin-bottom:16px !important; padding-bottom:8px; border-bottom:2px solid slategray; }
+    .gallery-featured { width:100%; max-height:400px; object-fit:cover; border-radius:8px; box-shadow:0 2px 14px rgba(0,0,0,.12); display:block; margin-bottom:8px; }
+    .gallery-featured-caption { text-align:center; font-style:italic; color:slategray; font-size:1.3rem; margin-bottom:24px; font-family:"Open Sans",sans-serif; }
+    .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .gallery-grid img { width:100%; height:180px; object-fit:cover; border-radius:6px; box-shadow:0 1px 6px rgba(0,0,0,.1); transition:transform .25s ease,box-shadow .25s ease; display:block; }
+    .gallery-grid img:hover { transform:scale(1.03); box-shadow:0 4px 16px rgba(0,0,0,.18); }
+    @media(max-width:600px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} .gallery-grid img{height:130px;} }
+    @media(max-width:767px){ .hero-back-link{position:static;display:inline-flex;margin-bottom:16px} .hero-title{font-size:2.2rem} .article-body h2{font-size:1.65rem} .article-body h3{font-size:1.4rem} .hero-btn{font-size:1.2rem;padding:7px 15px} .article-body{padding:32px 15px 60px} }
+    @media(max-width:480px){ .hero-title{font-size:1.85rem} }
+  </style>
+</head>
+<body>
+
+  <div w3-include-html="../navbar.html"></div>
+
+  <section class="article-hero">
+    <a href="../projects.html" class="hero-back-link">
+      <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+    <div class="award-badge"><i class="fas fa-trophy"></i> Top 5 Finalists &middot; Smart India Hackathon 2025</div>
+    <h1 class="hero-title">DRISTI: An Autonomous Drone System for Survivor Detection and Supply Delivery in Disaster-Affected Regions</h1>
+    <p class="hero-authors">
+      <a href="https://nikhil-rao20.github.io" target="_blank">Nikhileswara Rao Sulake</a>
+    </p>
+    <p class="hero-meta">Technical Report &nbsp;&middot;&nbsp; Robotics &amp; Drones &nbsp;&middot;&nbsp; Smart India Hackathon 2025 &nbsp;&middot;&nbsp; PS-25047</p>
+    <div class="hero-links">
+      <a class="hero-btn primary" href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a class="hero-btn" href="#detection"><i class="fas fa-film"></i> Demo Video</a>
+    </div>
+  </section>
+
+  <div class="article-body">
+
+    <div class="tag-list">
+      <span class="tag">Autonomous UAV</span>
+      <span class="tag">Disaster Response</span>
+      <span class="tag">ArduPilot</span>
+      <span class="tag">Edge AI</span>
+      <span class="tag">YOLO</span>
+      <span class="tag">Raspberry Pi</span>
+      <span class="tag">Obstacle Avoidance</span>
+      <span class="tag">Payload Delivery</span>
+    </div>
+
+    <div class="article-section" id="abstract">
+      <h2>Abstract</h2>
+      <div class="abstract-box">
+        <p>DRISTI is a fully autonomous, end-to-end unmanned aerial vehicle system designed for survivor detection and medical supply delivery in disaster-affected areas where ground access is unavailable. Built on the HolyBro X500 V2 quadrotor platform, it uses a Raspberry Pi companion computer running a custom-trained Leaf YOLO nano model for real-time person detection at 3&ndash;5 m operational altitude. Navigation is managed by ArduPilot, with onboard AI issuing MAVLink commands to close the loop between perception and flight control. Video is transmitted over a resilient two-tier architecture requiring no internet connectivity. The primary hardware contribution is a motorized cable-lowering delivery mechanism driven by dual DC motors and a pulley system, enabling supply deployment without altitude cycling and significantly improving battery efficiency over conventional servo-drop approaches. The complete system was selected among the Top 5 Finalists at Smart India Hackathon 2025 under Problem Statement 25047, organized by the Government of Odisha, Electronics &amp; IT Department.</p>
+      </div>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="article-section" id="introduction">
+      <h2>Introduction</h2>
+      <div style="text-align:center;">
+        <img class="article-img" src="../img/projects/Dristi/Drone.png" alt="DRISTI drone assembled" style="max-width:780px;display:inline-block;" onerror="this.style.display='none'">
+        <div class="img-caption">Fig. 1: The assembled DRISTI drone with Raspberry Pi, 5 MP camera, and payload delivery module.</div>
+      </div>
+      <p>Natural disasters reliably destroy the infrastructure required to respond to them. Floods inundate roads, earthquakes collapse bridges, and cyclones knock out cellular networks. Within hours of a disaster event, isolated survivors become logistically unreachable by any ground-based system. The gap between a disaster management headquarters and a stranded individual may be short in geographic distance, yet insurmountable on the ground.</p>
+      <p>Unmanned Aerial Vehicles (UAVs) present the natural solution to this problem. They operate above terrain obstructions, require no road infrastructure, and can navigate directly to GPS coordinates. The core engineering challenge, however, is not merely achieving flight — it is building a system that autonomously identifies survivors, navigates to their location, delivers supplies safely, and completes this entire cycle without internet connectivity or continuous human piloting intervention.</p>
+      <p>Smart India Hackathon 2025 formalized this challenge as Problem Statement 25047 — "Disaster Response Drone for Remote Areas" — issued by the Government of Odisha, Electronics &amp; IT Department, and held at GEIT Gunupur, Odisha. The problem statement specified an operational payload capacity of 5 kg as the design target. DRISTI (Drone for Rescue, Intelligence, Supply and Terrain Inspection) is the team's response: a complete autonomous system designed, assembled, calibrated, and field-tested from individual hardware components, integrating open-source flight control, edge AI inference, and a novel mechanical delivery mechanism.</p>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="article-section" id="hardware">
+      <h2>Hardware Architecture</h2>
+      <p>The drone was assembled entirely from individual components — no commercially pre-integrated UAV was procured. Every element was selected, assembled, and calibrated by the team. The mechanical platform is the HolyBro X500 V2 development kit, a 500 mm wheelbase quadrotor frame designed for research and development applications. The kit provides a complete propulsion stack: 2216 920KV brushless DC motors, 1045 carbon-fiber propellers, and 20A SimonK-firmware ESCs. The F9 power distribution board consolidates battery input and routes power cleanly to motors, flight controller, and companion computer. The platform is rated for a maximum take-off weight of approximately 2 kg on the standard 4S LiPo configuration, with a hover endurance of roughly 25 minutes unloaded and around 15–18 minutes at modest payload. Stable flight was demonstrated with approximately 1 kg of total onboard payload during the hackathon evaluation, below but progressing toward the 5 kg capacity specified in PS-25047, which would require an upgraded 6S propulsion stack.</p>
+      <p>Position and navigation are handled by an M8N GPS module with integrated compass, which tracks across GPS, GLONASS, and Galileo constellations and achieves sub-2 m accuracy in open-sky conditions. Flight control runs on ArduPilot, the most widely deployed open-source autopilot firmware in UAV research. ArduPilot manages low-level PID control loops, sensor fusion across IMU, barometer, GPS and compass, motor mixing, and failsafe logic. All calibration and mission planning was performed in Mission Planner, the ArduPilot ground control station. AUTO mode executes pre-programmed GPS waypoint sequences; GUIDED mode accepts real-time position setpoints from the companion computer via MAVLink for dynamic target approach during delivery. A Flysky FS-i6 6-channel 2.4 GHz transmitter paired with an FS-iA6B receiver provides manual override capability and serves as a safety intervention mechanism in the field.</p>
+      <p>A Raspberry Pi single-board computer is mounted onboard and communicates with the flight controller over the MAVLink serial protocol. This bidirectional link allows the companion computer to read flight telemetry and issue navigation commands, making the drone fully self-contained with no tethered laptop or cloud dependency. The vision system is a 5 megapixel CSI camera module mounted at a deliberate 45° downward-forward angle. This orientation simultaneously covers the ground surface below for survivor detection and the immediate forward airspace for obstacle detection within a single image frame, eliminating the need for a multi-camera setup while keeping system mass low.</p>
+
+      <div style="display:flex;gap:16px;align-items:flex-start;justify-content:center;flex-wrap:wrap;margin:20px 0 6px;">
+        <div style="flex:1;min-width:180px;max-width:300px;text-align:center;">
+          <img class="article-img" src="../img/projects/Dristi/Drone_Flying.gif" alt="DRISTI drone in flight" style="width:100%;height:380px;object-fit:cover;margin:0;" onerror="this.style.display='none'">
+        </div>
+        <div style="flex:1;min-width:240px;max-width:460px;text-align:center;">
+          <img class="article-img" src="../img/projects/Dristi/Drone_Closeup.png" alt="DRISTI drone close-up" style="width:100%;height:380px;object-fit:cover;margin:0;" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div class="img-caption">Fig. 2: DRISTI in autonomous flight (left) and close-up of the assembled hardware (right), during field evaluation at GEIT Gunupur.</div>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="article-section" id="detection">
+      <h2>On-Device Person Detection</h2>
+      <p>Person detection is performed by Leaf YOLO, a lightweight variant of the YOLO (You Only Look Once) single-shot object detection family. YOLO processes the complete image in a single forward pass and directly regresses bounding box coordinates and class probabilities, making it substantially faster than two-stage detectors while maintaining competitive accuracy at small model sizes. The nano configuration was selected specifically for its minimal parameter count and memory footprint, enabling real-time inference at approximately <strong>15 frames per second</strong> on the Raspberry Pi's ARM processor without GPU acceleration — a non-negotiable constraint given that the companion computer must simultaneously sustain video capture, AI inference, MAVLink telemetry, and delivery actuation on a power-limited embedded platform.</p>
+
+      <div style="text-align:center;">
+        <img class="article-img" src="../img/projects/Dristi/Drone_Analysis_Video.gif" alt="Leaf YOLO detection at operational altitude" style="max-width:720px;display:inline-block;" onerror="this.style.display='none'">
+        <div class="img-caption">Fig. 3: Leaf YOLO nano inference on the live drone camera feed at 3&ndash;5 m operational altitude.</div>
+      </div>
+
+      <p>Standard person detection benchmarks like COCO and PASCAL VOC are compiled from ground-level photography, typically shot from 1–2 m above the subject. A UAV operating at 3–5 m altitude produces a top-down to oblique perspective that differs considerably: head-to-shoulder aspect ratios are compressed, limbs are foreshortened, and lighting geometry diverges from ground-level norms. A model trained exclusively on such data generalizes poorly under aerial viewpoints.</p>
+      <p>To address this domain mismatch, a custom aerial dataset was collected at the hackathon venue by flying the drone at operational altitudes while participants moved across the capture area in various poses and orientations. The dataset comprises approximately 1,000 images, each containing between 10 and 12 annotated person instances — a dense annotation setup well-suited for the crowded survivor scenarios the system targets. Initial bounding box annotations were generated using SAM (Segment Anything Model) for rapid segmentation coverage, then manually reviewed and corrected to ensure label quality. The dataset is not publicly available due to intellectual property restrictions imposed by the hackathon organizers. Fine-tuning was performed on a GPU-equipped development laptop, and the trained weights were transferred to the Raspberry Pi for onboard deployment. All inference executes entirely on the Raspberry Pi — detection outputs are consumed internally by the navigation controller and transmitted externally only as bounding box overlays on the video stream to the ground operator.</p>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="article-section" id="transmission">
+      <h2>Video Transmission</h2>
+      <p>Disaster environments are characterized by the degradation or complete absence of communication infrastructure. A system dependent on internet connectivity for its video feed is unreliable in the very conditions it is designed for. DRISTI implements a two-tier transmission architecture that maintains operator situational awareness under both connected and fully disconnected conditions.</p>
+
+      <div class="pipeline-step">
+        <div class="step-num">Tier 1</div>
+        <h4>Wi-Fi Transmission</h4>
+        <p>When a Wi-Fi access point is reachable — such as a portable router at a mobile command post — the Raspberry Pi streams the live annotated camera feed over standard Wi-Fi to the ground station terminal. The operator receives real-time video with YOLO bounding box overlays and delivery status indicators.</p>
+      </div>
+
+      <div class="pipeline-step">
+        <div class="step-num">Tier 2</div>
+        <h4>Local RF Network</h4>
+        <p>When Wi-Fi is unavailable, the system falls back to a direct point-to-point RF link between the drone and the ground laptop on a dedicated RF channel. This network is fully internet-independent and requires no external infrastructure. Video is streamed at reduced but operationally sufficient bandwidth, preserving operator awareness in completely disconnected environments.</p>
+      </div>
+
+      <p>Crucially, all AI processing and autonomous navigation execute onboard regardless of which transmission tier is active. The mission — detecting survivors and delivering supplies — proceeds without any internet connectivity requirement.</p>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="article-section" id="navigation">
+      <h2>Autonomous Navigation and Obstacle Avoidance</h2>
+      <p>The survey mission follows a lawnmower pattern programmed as an ArduPilot waypoint sequence in Mission Planner. Parallel horizontal tracks are spaced so that the camera's field of view at operational altitude provides complete, overlapping ground coverage of the target search area. On a high-confidence person detection event, the companion computer issues a MAVLink GUIDED mode command directing the drone toward the GPS coordinates of the detected individual, transitioning from survey to delivery mode.</p>
+
+      <div style="text-align:center;">
+        <img class="article-img" src="../img/projects/Dristi/flowchart.png" alt="DRISTI area coverage sweep and target approach" style="max-width:720px;display:inline-block;" onerror="this.style.display='none'">
+        <div class="img-caption">Fig. 4: Area coverage sweep and autonomous transition to a detected survivor's location.</div>
+      </div>
+
+      <p>Obstacle avoidance operates using the same 45° camera that drives person detection, with no additional sensors required. The avoidance logic analyzes the bounding box position of any detected obstacle relative to the image center. If the box appears high and centered in the frame, the obstacle is directly ahead and proximate — the drone reduces forward velocity and incrementally gains altitude. If the box is laterally displaced, the drone steers in the opposite direction to route around the obstruction. Once the obstacle clears the central image zone, forward navigation resumes at normal speed. This approach requires no ultrasonic rangefinders, infrared sensors, or LiDAR, keeping the hardware configuration minimal and system mass low.</p>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="article-section" id="payload">
+      <h2>Payload Delivery System</h2>
+      <p>The most common delivery strategy in UAV demonstrations is a servo-actuated drop: the drone descends to near-ground altitude, releases a latch, and the package falls. This approach has real drawbacks in disaster relief. Repeated descent-and-ascent cycles consume significant battery energy, reducing the number of deliveries possible per charge. Flying close to the ground in debris-laden post-disaster environments substantially increases collision risk. And free-releasing fragile medical supplies risks damage on impact.</p>
+      <p>DRISTI's delivery system avoids all three problems. The drone does not descend during deployment. Instead, it maintains stable hover at operational altitude and lowers the supply package on a controlled cable, operating like an aerial crane. This is achieved through a dual DC motor and pulley assembly mounted to the airframe.</p>
+
+      <div class="method-box">
+        <h4>Dual DC Motor Pulley Assembly</h4>
+        <p>Two DC motors drive a common cable spool. Running the motors forward pays out cable at a controlled rate, lowering the attached supply package. Slack detection — monitored via motor current draw — signals that the package has reached the ground. The survivor unties the slip-knot attachment and collects the supplies. The motors then reverse automatically, retracting the cable fully before the drone resumes its mission.</p>
+      </div>
+
+      <div style="text-align:center;">
+        <img class="article-img" src="../img/projects/Dristi/Drone_Payload.png" alt="DRISTI cable-lowering delivery in operation" style="max-width:420px;display:inline-block;" onerror="this.style.display='none'">
+        <div class="img-caption">Fig. 5: The dual DC motor cable-lowering assembly. The drone maintains altitude throughout the complete delivery cycle.</div>
+      </div>
+
+      <p>The battery efficiency benefit is significant. In a conventional drone, the energy cost of each delivery cycle is dominated by altitude change — potential energy expenditure scales with vehicle mass and altitude delta. By maintaining a fixed hover altitude, DRISTI eliminates this cost entirely. The payload moves through mechanical motor work on the cable spool, which is far more efficient than lifting the full airframe up and down for every delivery. In multi-survivor scenarios, this translates directly into more successful deliveries per charge.</p>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="article-section" id="challenges">
+      <h2>Implementation Challenges</h2>
+      <p>Building a fully integrated autonomous system under hackathon time constraints surfaced several non-trivial engineering problems across both software and hardware.</p>
+
+      <p>The most significant software debugging effort involved a compatibility conflict between Leaf YOLO and the Ultralytics library. Leaf YOLO's model loader uses an <code>attempt_load()</code> function that is incompatible with the standard Ultralytics YOLO model loading path. Attempting to initialize both within the same Python environment caused silent failures and incorrect model initialization. The fix was to isolate the two import paths entirely — Leaf YOLO and Ultralytics were loaded through separate module scopes, preventing namespace collision and ensuring each model initialized against its own correct backend.</p>
+
+      <p>A second problem was unexpectedly low CPU utilization on the Raspberry Pi, measured at around 30% despite the volume of concurrent tasks the companion computer was responsible for. The root cause was a serial pipeline architecture where inference, video capture, MAVLink communication, and delivery actuation were being serviced sequentially, each blocking on the previous. Restructuring the entire software stack around a concurrent pipeline — with each subsystem running in its own thread and communicating through shared queues — brought utilization to levels commensurate with the workload and eliminated the latency accumulating at pipeline boundaries.</p>
+
+      <p>Related to this was the overhead of coordinating multiple Python processes. Running each subsystem as a separate script introduced significant inter-process communication cost. The solution was a unified Flask server hosting all subsystems — inference, MAVLink telemetry, video streaming, and delivery control — within a single process, with Python threading managing internal concurrency. This reduced the deployment to a single startup command and removed the IPC layer entirely.</p>
+
+      <p>On the hardware side, a persistent issue was a camera ribbon cable dequeue timeout: under flight vibration, the CSI ribbon connector would intermittently lose contact and stall the capture pipeline. This was resolved through careful cable routing and mechanically securing the connector against vibration-induced loosening. Beyond the camera, hardware integration involved rounds of ESC and motor calibration, resolving MAVLink wiring conflicts, correcting propeller synchronization, and managing the attitude disturbances introduced by the hanging cable payload during hover — each requiring iterative field testing to characterize and correct.</p>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="article-section" id="results">
+      <h2>System Performance and Evaluation</h2>
+
+      <p>All development and evaluation was conducted under the time and resource constraints of the Smart India Hackathon 2025 finals. The table below summarizes validated performance characteristics as demonstrated at the event.</p>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>System Attribute</th>
+              <th>Demonstrated Performance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Flight platform</td><td>HolyBro X500 V2, ArduPilot, Flysky FS-i6</td></tr>
+            <tr><td>Demonstrated payload mass</td><td>400 g (Raspberry Pi + camera + delivery module)</td></tr>
+            <tr><td>Person detection altitude</td><td>3&ndash;5 m with consistent bounding box localization</td></tr>
+            <tr><td>Detection model</td><td>Leaf YOLO Nano, custom fine-tuned, deployed on Raspberry Pi</td></tr>
+            <tr><td>Onboard inference speed</td><td>~15 FPS on Raspberry Pi ARM (no GPU)</td></tr>
+            <tr><td>Training dataset</td><td>~1,000 aerial images, 10&ndash;12 annotations/image, SAM-assisted + manual verification</td></tr>
+            <tr><td>Network dependency</td><td>None; local RF fallback when internet is unavailable</td></tr>
+            <tr><td>Delivery altitude descent</td><td>Zero &mdash; drone maintains cruise altitude throughout delivery</td></tr>
+            <tr><td>Delivery mechanism</td><td>Dual DC motor cable-lowering with automatic retract</td></tr>
+            <tr><td>Obstacle avoidance</td><td>Single-camera (45&deg;), bounding-box positional steering</td></tr>
+            <tr><td>Hackathon result</td><td>Top 5 Finalists, Smart India Hackathon 2025, PS-25047</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The motorized cable-lowering delivery mechanism was specifically noted by evaluators as a technically differentiated solution. Teams addressing the same problem statement uniformly adopted servo-based drop mechanisms; DRISTI's zero-descent delivery profile and the battery-efficiency argument were primary factors in the jury's assessment of technical differentiation.</p>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="article-section" id="conclusion">
+      <h2>Conclusion and Future Work</h2>
+      <p>DRISTI demonstrates that a fully autonomous, internet-independent UAV system for disaster relief can be built from commodity open-source components. The integration of ArduPilot navigation, edge-deployed YOLO person detection, a resilient dual-tier communication architecture, and a mechanically efficient cable-lowering delivery system into a coherent end-to-end pipeline represents a meaningful step toward operationally deployable disaster response UAVs.</p>
+      <p>The principal technical contributions are: a custom aerial person detection model trained on domain-matched data and deployed entirely on an edge device; a two-tier video transmission architecture resilient to complete network infrastructure failure; a motorized cable-lowering payload delivery system that eliminates altitude cycling and reduces low-altitude collision risk; and a sensor-minimal obstacle avoidance strategy using a single 45° camera.</p>
+      <p>On the hardware side, the most immediate extension is upgrading the propulsion system to higher-KV motors with a 6S battery to approach the 5 kg payload target specified in PS-25047. For perception, replacing the reactive 2D bounding-box avoidance with a monocular depth estimation model like MiDaS would enable predictive 3D path planning, allowing the drone to avoid obstacles well before close-range proximity. At a system level, coordinating a swarm of DRISTI units with shared detection state and non-overlapping search zones would scale coverage linearly with fleet size — ArduPilot's swarm extension provides the baseline infrastructure for this. Finally, PS-25047 explicitly requires a mobile application for disaster management teams; a real-time map view with live detection locations, drone position, and delivery status would complete the operator-facing interface for field deployment.</p>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="article-section" id="resources">
+      <h2>Resources</h2>
+      <div>
+        <a href="#" class="resource-btn filled" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#detection" class="resource-btn"><i class="fas fa-film"></i> Demo Video</a>
+      </div>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="gallery-section" id="gallery">
+      <h2>Event Gallery</h2>
+
+      <img class="gallery-featured" src="../img/projects/Dristi/Team_Taking_Special_Prize.png" alt="Team receiving the Special Prize at Smart India Hackathon 2025">
+      <div class="gallery-featured-caption">The team receiving the Special Prize at Smart India Hackathon 2025, GEIT Gunupur.</div>
+
+      <div class="gallery-grid">
+        <img src="../img/projects/Dristi/Explaining_to_Jury.png" alt="Explaining the system to the jury">
+        <img src="../img/projects/Dristi/Mentors_and_Jury.png" alt="Mentors and jury visiting the demonstration">
+        <img src="../img/projects/Dristi/Nodal_Incharge_Checking_OurDrone.png" alt="Nodal in-charge inspecting the drone">
+        <img src="../img/projects/Dristi/Teammates_Setting_Drone.png" alt="Teammates assembling and configuring the drone">
+        <img src="../img/projects/Dristi/We_Setting_Our_Drone.png" alt="Pre-flight setup and calibration">
+        <img src="../img/projects/Dristi/Team%20Discussion.png" alt="Team discussion during development">
+        <img src="../img/projects/Dristi/On_Ground_Group_Pic.png" alt="Team group photo on the competition floor">
+        <img src="../img/projects/Dristi/Drone_Static.png" alt="Close-up of the assembled DRISTI drone">
+        <img src="../img/projects/Dristi/Drone_Close_Shot.png" alt="DRISTI payload delivery mechanism">
+      </div>
+    </div>
+
+    <div class="section-sep">&bull; &bull; &bull;</div>
+
+    <div class="references-section">
+      <h2>References</h2>
+      <ol>
+        <li>ArduPilot Development Team. <em>ArduPilot Autopilot Suite.</em> Open-source UAV flight stack. <a href="https://ardupilot.org" target="_blank">ardupilot.org</a></li>
+        <li>HolyBro. <em>X500 V2 Development Kit: User Guide and Hardware Reference.</em> <a href="https://holybro.com" target="_blank">holybro.com</a></li>
+        <li>Redmon, J., Divvala, S., Girshick, R., &amp; Farhadi, A. <em>You Only Look Once: Unified, Real-Time Object Detection.</em> CVPR 2016.</li>
+        <li>Wang, C.-Y., Bochkovskiy, A., &amp; Liao, H.-Y. M. <em>YOLOv7: Trainable Bag-of-Freebies Sets New State-of-the-Art for Real-Time Object Detectors.</em> CVPR 2023.</li>
+        <li>MAVLink Protocol Development Team. <em>MAVLink Micro Air Vehicle Message Marshalling Library.</em> <a href="https://mavlink.io" target="_blank">mavlink.io</a></li>
+        <li>Raspberry Pi Foundation. <em>Raspberry Pi Hardware Documentation.</em> <a href="https://www.raspberrypi.com/documentation" target="_blank">raspberrypi.com</a></li>
+        <li>Smart India Hackathon 2025. <em>Problem Statement 25047 &mdash; Disaster Response Drone for Remote Areas.</em> Government of Odisha, Electronics &amp; IT Department. Ministry of Education, Government of India.</li>
+      </ol>
+    </div>
+
+    <div class="article-section" id="contact" style="margin-bottom:0;">
+      <h2>Contact</h2>
+      <p>
+        <strong>Nikhileswara Rao Sulake</strong> &nbsp;&middot;&nbsp;
+        <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a> &nbsp;&middot;&nbsp;
+        <a href="https://www.linkedin.com/in/nikhileswara-rao-sulake/" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp;
+        <a href="https://github.com/Nikhil-Rao20" target="_blank">GitHub</a>
+      </p>
+    </div>
+
+  </div>
+
+  <a role="button" id="topper" data-toggle="tooltip" data-placement="top" title="Top" class="btn scroll-link" href="#top">
+    <i class="fa fa-fw fa-2x fa-caret-up" aria-hidden="true"></i>
+  </a>
+
+  <div w3-include-html="../footer.html"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <script src="../js/w3data.js"></script>
+  <script> w3IncludeHTML(); </script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>

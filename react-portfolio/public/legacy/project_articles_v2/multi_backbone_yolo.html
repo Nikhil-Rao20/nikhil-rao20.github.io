@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="A comparative analysis of multiple YOLO backbones by Nikhileswara Rao Sulake, exploring CNN, transformer, and Mamba-based architectures for object detection.">
+  <meta name="keywords" content="YOLO backbone analysis, YOLOv8, object detection, CNN backbones, transformer backbones, Mamba, computer vision, Nikhileswara Rao Sulake, Nikhil Rao Sulake">
+  <link rel="canonical" href="https://nikhil-rao20.github.io/project_articles_v2/multi_backbone_yolo.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Backbones of YOLO: A Comprehensive Analysis">
+  <meta property="og:description" content="A comparison of CNN, transformer, and Mamba-based backbones for object detection." />
+  <meta property="og:url" content="https://nikhil-rao20.github.io/project_articles_v2/multi_backbone_yolo.html">
+  <meta property="og:site_name" content="Nikhileswara Rao Sulake">
+  <title>Backbones of YOLO: A Comprehensive Analysis | Nikhileswara Rao Sulake</title>
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="../favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="../favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXpO6+Zc8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  <!-- Academicons -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+  <!-- Portfolio main CSS -->
+  <link rel="stylesheet" href="../css/main.css">
+
+  <style>
+    body {
+      background: #ffffff;
+      font-family: "Open Sans", Arial, sans-serif;
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: #333;
+    }
+    .article-hero {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e8ed;
+      padding: 48px 20px 36px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-title {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #20364c;
+      line-height: 1.22;
+      margin: 0 auto 18px;
+      max-width: 860px;
+    }
+    .hero-authors {
+      font-family: "Open Sans", sans-serif;
+      font-size: 1.45rem;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .hero-authors a { color: #1585cf; text-decoration: none; font-weight: 600; border-bottom: 1px dashed transparent; transition: border-color 0.2s; }
+    .hero-authors a:hover { border-bottom-color: #1585cf; }
+    .hero-meta {
+      font-size: 1.25rem;
+      color: slategray;
+      font-family: "Open Sans", sans-serif;
+      margin-bottom: 28px;
+    }
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #20364c;
+      color: #20364c;
+      background: #ffffff;
+      transition: all 0.2s ease;
+    }
+    .hero-btn:hover { background: #20364c; color: #ffffff; text-decoration: none; }
+    .hero-btn.primary { background: #20364c; color: #ffffff; }
+    .hero-btn.primary:hover { background: #1585cf; border-color: #1585cf; }
+    .article-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+    .article-body h2 {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: #20364c;
+      margin-top: 0;
+      margin-bottom: 16px !important;
+      padding-bottom: 8px;
+      border-bottom: 2px solid slategray;
+    }
+    .article-body h3 {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: #3d5166;
+      margin-top: 30px;
+      margin-bottom: 10px !important;
+    }
+    .article-body h3::after { display: none !important; content: none !important; }
+    .article-body h3 span { background: transparent; padding-right: 0; }
+    .article-body h4 {
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: slategray;
+      margin-top: 22px;
+      margin-bottom: 8px !important;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .article-section { margin-bottom: 52px; }
+    .abstract-box {
+      background: #f4f7fb;
+      border-left: 4px solid #20364c;
+      padding: 22px 26px;
+      border-radius: 0 8px 8px 0;
+    }
+    .abstract-box p { margin-bottom: 0; font-size: 1.45rem; color: #2c3e50; line-height: 1.8; }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .tag {
+      background: #eaf4fb;
+      color: #1585cf;
+      border: 1px solid #b8ddf5;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      font-family: "Montserrat", sans-serif;
+    }
+    .article-img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 20px 0 6px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+    }
+    .img-caption {
+      text-align: center;
+      font-style: italic;
+      color: slategray;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    .highlight-box {
+      background: #f4f7fb;
+      border-left: 4px solid #1585cf;
+      padding: 18px 22px;
+      border-radius: 0 8px 8px 0;
+      margin: 22px 0;
+    }
+    .highlight-box h4 { color: #20364c; text-transform: none; letter-spacing: 0; font-size: 1.4rem; margin-top: 0; }
+    .article-body .table thead tr th {
+      background: #ffffff;
+      color: #20364c;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.3rem;
+      border-bottom: 2px solid #20364c;
+    }
+    .article-body .table tbody tr td { font-size: 1.3rem; vertical-align: middle; }
+    .article-body .table tbody tr td:first-child { font-weight: 600; }
+    .hero-back-link {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.3rem;
+      color: #1585cf;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .hero-back-link:hover { color: #20364c; text-decoration: none; }
+    .resource-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 22px;
+      border-radius: 6px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #20364c;
+      color: #20364c;
+      background: #ffffff;
+      transition: all 0.2s ease;
+      margin-right: 8px;
+      margin-top: 10px;
+    }
+    .resource-btn:hover { background: #20364c; color: #fff; text-decoration: none; }
+    .resource-btn.filled { background: #20364c; color: #fff; }
+    .resource-btn.filled:hover { background: #1585cf; border-color: #1585cf; }
+    .references-section {
+      background: #f4f7fb;
+      padding: 26px 24px;
+      border-left: 5px solid #20364c;
+      border-radius: 0 8px 8px 0;
+      margin: 40px 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .references-section h2 { border-bottom: none; font-size: 1.7rem; padding-bottom: 0; margin-bottom: 16px !important; }
+    .references-section ol { padding-left: 20px; }
+    .references-section ol li { font-size: 1.25rem; line-height: 1.65; color: #3d4147; margin-bottom: 10px; }
+    .references-section ol li a { color: #1585cf; }
+    .section-sep { text-align: center; margin: 48px 0 36px; color: #c8d3de; letter-spacing: 0.5em; font-size: 1.1rem; }
+
+    @media (max-width: 767px) {
+      .hero-back-link { position: static; display: inline-flex; margin-bottom: 16px; }
+      .hero-title { font-size: 2.2rem; }
+      .article-body h2 { font-size: 1.65rem; }
+      .article-body h3 { font-size: 1.4rem; }
+      .hero-btn { font-size: 1.2rem; padding: 7px 15px; }
+      .article-body { padding: 32px 15px 60px; }
+    }
+    @media (max-width: 480px) { .hero-title { font-size: 1.85rem; } }
+  </style>
+</head>
+<body>
+
+  <div w3-include-html="../navbar.html"></div>
+
+  <section class="article-hero">
+    <a href="../projects.html" class="hero-back-link">
+      <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+    <h1 class="hero-title">YOLOv8 Re-imagined: A Comparative Architectural Analysis of Next-Generation Backbones for Enhanced Feature Extraction</h1>
+    <p class="hero-authors">
+      Sivaji Retta &nbsp;&amp;&nbsp;
+      <a href="https://nikhil-rao20.github.io" target="_blank">Nikhileswara Rao Sulake</a>
+    </p>
+    <p class="hero-meta">Research Article &nbsp;·&nbsp; September 2024</p>
+    <div class="hero-links">
+      <a class="hero-btn primary" href="https://github.com/Nikhil-Rao20/YOLOv8_Backbones" target="_blank"><i class="fab fa-github"></i> Code</a>
+    </div>
+  </section>
+
+  <div class="article-body">
+
+    <div class="tag-list">
+      <span class="tag">Computer Vision</span>
+      <span class="tag">Object Detection</span>
+      <span class="tag">YOLO</span>
+      <span class="tag">Vision Transformers</span>
+      <span class="tag">State Space Models</span>
+      <span class="tag">Deep Learning</span>
+    </div>
+
+    <div class="article-section" id="abstract">
+      <h2>Abstract</h2>
+      <div class="abstract-box">
+        <p>YOLOv8 is a dominant real-time object detection framework, yet its backbone, the primary feature extractor, remains largely unchanged from prior generations. This study presents a systematic theoretical and analytical comparison of seven backbone architectures integrated in place of YOLOv8's default CSPDarkNet. The evaluated backbones span CNN-based (ResNet50), hybrid (NextViT), pure transformer-based (DeiT), and emerging state-space model (SSM) architectures (Mamba, VMamba, Vision Mamba, MambaVision). Across five model scales (n/s/m/l/x), we analyze parameter counts and GFLOPs for all 35 resulting model configurations. This analytical study, conducted without retraining due to compute constraints, reveals the distinct theoretical trade-offs each backbone introduces, providing a structured guide for practitioners selecting architectures for constrained deployment scenarios.</p>
+      </div>
+    </div>
+
+    <div class="section-sep">• • •</div>
+
+    <div class="article-section" id="introduction">
+      <h2>Introduction</h2>
+      <div style="text-align: center;">
+        <img class="article-img" src="../img/projects/yolobackbone.png" alt="YOLOv8 Backbone Swap Overview" style="max-width: 780px; display: inline-block;">
+        <div class="img-caption">Fig. 1 , Schematic of the backbone replacement strategy within the YOLOv8 architecture.</div>
+      </div>
+      <p>The YOLO family of detectors achieves state-of-the-art speed-accuracy trade-offs by tightly coupling a feature extraction backbone with specialized neck and head components. While the neck (PANet) and detection head have seen significant iteration across YOLO versions, the backbone has evolved more incrementally. YOLOv8's default CSPDarkNet, while highly optimized, may not be the ideal feature extractor for all deployment scenarios.</p>
+      <p>The deep learning landscape has seen an explosion of new backbone designs. Vision Transformers (ViTs) excel at capturing global context; hybrid models like NextViT balance locality and globality; and emerging state-space models (SSMs) rooted in the Mamba architecture promise efficient long-range dependency modeling with linear computational complexity. A principled comparison of these backbones within a unified detector framework is therefore valuable.</p>
+      <p>This work provides exactly that: a rigorous architectural analysis of 7 backbones × 5 YOLO scales, examining the theoretical computational and parametric implications of each before any expensive training runs are committed.</p>
+    </div>
+
+    <div class="article-section" id="backbones">
+      <h2>Backbone Architectures</h2>
+      <div style="text-align: center;">
+        <img class="article-img" src="../img/projects/dgyolo.png" alt="Directed Graph Overview of Backbones" style="max-width: 680px; display: inline-block;">
+        <div class="img-caption">Fig. 2, Directed graph illustration of architectural relationships between studied backbones.</div>
+      </div>
+      <p>Each backbone was adapted to function as a drop-in replacement for the CSPDarkNet backbone by producing feature maps at the appropriate spatial scales expected by the PANet neck.</p>
+
+      <h3>CSPDarkNet (Baseline)</h3>
+      <p>The default YOLOv8 backbone. Uses Cross-Stage Partial connections (CSP) to improve gradient flow and reduce redundant computation. Optimized specifically for detection by Ultralytics.</p>
+
+      <h3>ResNet50</h3>
+      <p>A canonical CNN backbone with residual connections. Well-understood, widely pretrained, and highly transfer-effective. Serves as the traditional CNN comparison point in this study.</p>
+
+      <h3>DeiT (Data-efficient Image Transformer)</h3>
+      <p>A pure Vision Transformer pretrained without large-scale datasets by using knowledge distillation. Captures global context via self-attention but introduces quadratic scaling in sequence length.</p>
+
+      <h3>NextViT</h3>
+      <p>A hybrid architecture combining CNN local feature extraction with transformer global reasoning within a unified stage design. Targets efficient COCO-scale inference without specialized hardware operators.</p>
+
+      <h3>Mamba-Based Architectures (VMamba, Vision Mamba, MambaVision)</h3>
+      <p>The three SSM-based backbones represent the frontier of sequence modeling applied to vision. All are grounded in the Mamba selective state-space model, which achieves linear computational complexity in sequence length, a crucial advantage over the quadratic scaling of attention. VMamba introduces 2D-Selective-Scan (SS2D) for efficient spatial traversal. Vision Mamba adds bidirectional SSM for improved global coverage. MambaVision combines hierarchical SSM with local attention for hybrid feature learning.</p>
+
+      <div class="highlight-box">
+        <h4>Theoretical Advantage of SSMs</h4>
+        <p>Mamba-based models model long-range dependencies with <strong>O(n)</strong> complexity vs. <strong>O(n²)</strong> for attention-based transformers. For high-resolution detection, this difference directly translates to reduced memory and faster inference, a significant practical advantage.</p>
+      </div>
+
+    </div>
+
+    <div class="article-section" id="analysis">
+      <h2>Comparative Analysis</h2>
+      <p>All 35 configurations (7 backbones × 5 YOLO scales: n/s/m/l/x) were analyzed for theoretical complexity. Tables 1 and 2 summarize parameter counts and GFLOPs across scales.</p>
+
+      <h3>Parameters (Millions)</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Backbone</th>
+              <th>YOLOv8-n</th>
+              <th>YOLOv8-s</th>
+              <th>YOLOv8-m</th>
+              <th>YOLOv8-l</th>
+              <th>YOLOv8-x</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>CSPDarkNet</td><td>3.2</td><td>11.2</td><td>25.9</td><td>43.7</td><td>68.2</td></tr>
+            <tr><td>ResNet50</td><td>28.5</td><td>36.5</td><td>51.2</td><td>69.0</td><td>93.5</td></tr>
+            <tr><td>DeiT</td><td>22.1</td><td>30.1</td><td>44.8</td><td>62.6</td><td>87.1</td></tr>
+            <tr><td>NextViT</td><td>19.8</td><td>27.8</td><td>42.5</td><td>60.3</td><td>84.8</td></tr>
+            <tr><td>VMamba</td><td>31.2</td><td>39.2</td><td>53.9</td><td>71.7</td><td>96.2</td></tr>
+            <tr><td>Vision Mamba</td><td>26.8</td><td>34.8</td><td>49.5</td><td>67.3</td><td>91.8</td></tr>
+            <tr><td>MambaVision</td><td>29.4</td><td>37.4</td><td>52.1</td><td>69.9</td><td>94.4</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="img-caption">Table 1, Parameter counts (in millions) for all backbone × scale combinations. CSPDarkNet remains the most parameter-efficient default.</div>
+
+      <h3>GFLOPs at 640×640 Input</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Backbone</th>
+              <th>YOLOv8-n</th>
+              <th>YOLOv8-s</th>
+              <th>YOLOv8-m</th>
+              <th>YOLOv8-l</th>
+              <th>YOLOv8-x</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>CSPDarkNet</td><td>8.7</td><td>28.6</td><td>78.9</td><td>165.2</td><td>257.8</td></tr>
+            <tr><td>ResNet50</td><td>18.9</td><td>38.8</td><td>89.1</td><td>175.4</td><td>268.0</td></tr>
+            <tr><td>DeiT</td><td>21.4</td><td>41.3</td><td>91.6</td><td>177.9</td><td>270.5</td></tr>
+            <tr><td>NextViT</td><td>16.2</td><td>36.1</td><td>86.4</td><td>172.7</td><td>265.3</td></tr>
+            <tr><td>VMamba</td><td>24.1</td><td>44.0</td><td>94.3</td><td>180.6</td><td>273.2</td></tr>
+            <tr><td>Vision Mamba</td><td>19.7</td><td>39.6</td><td>89.9</td><td>176.2</td><td>268.8</td></tr>
+            <tr><td>MambaVision</td><td>22.3</td><td>42.2</td><td>92.5</td><td>178.8</td><td>271.4</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="img-caption">Table 2, GFLOPs at 640×640 resolution. NextViT offers the best compute-efficiency among non-default backbones.</div>
+    </div>
+
+    <div class="article-section" id="discussion">
+      <h2>Discussion</h2>
+      <p>CSPDarkNet's dominant efficiency across all scales, fewest parameters at every size, confirms why it remains the standard. Its design was explicitly optimized for detection workflows, and no studied backbone matches its parametric efficiency at the nano and small scales.</p>
+      <p>Among alternatives, <strong>NextViT</strong> presents the most favorable trade-off for practitioners unable to use CSPDarkNet: it provides hybrid local-global feature extraction at a lower GFLOP cost than transformer-only (DeiT) or SSM-based alternatives. It is the recommended replacement when transfer learning to specialized domains.</p>
+      <p>The SSM-based backbones (VMamba, Vision Mamba, MambaVision) introduce the highest parameter overhead in this configuration. While their linear attention scaling is theoretically compelling at very high resolutions, the overhead is not justified at standard 640×640 YOLOv8 scales. Their advantage would materialize more clearly at image sizes above 1280×1280.</p>
+      <p>Critically, this work is a theoretical and architectural study, no training was conducted. Observed FLOP/parameter trade-offs are a necessary but not sufficient predictor of final mAP. Future empirical validation on COCO17 and domain-specific datasets remains necessary to confirm these findings.</p>
+    </div>
+
+    <div class="article-section" id="conclusion">
+      <h2>Conclusion</h2>
+      <p>This study provides a comprehensive theoretical map of the YOLOv8 backbone design space in 2024. With 35 analyzed configurations, it establishes clear quantitative trade-offs in parameters and GFLOPs across the full YOLO scale spectrum. CSPDarkNet retains its efficiency crown, NextViT is the best non-default alternative at standard scales, and the Mamba-family backbones offer the most theoretical promise at ultra-high-resolution inputs. The framework developed here provides practitioners with a principled, low-cost method for backbone selection before committing to expensive training runs.</p>
+    </div>
+
+    <div class="section-sep">• • •</div>
+
+    <div class="article-section" id="resources">
+      <h2>Resources</h2>
+      <div>
+        <a class="resource-btn filled" href="https://github.com/Nikhil-Rao20/YOLOv8_Backbones" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+      </div>
+    </div>
+
+    <div class="references-section" id="references">
+      <h2>References</h2>
+      <ol>
+        <li>Redmon, J., et al. (2016). You Only Look Once: Unified, Real-Time Object Detection. <em>CVPR</em>.</li>
+        <li>Jocher, G., et al. (2023). Ultralytics YOLOv8. <em>GitHub</em>. <a href="https://github.com/ultralytics/ultralytics" target="_blank">ultralytics/ultralytics</a></li>
+        <li>He, K., Zhang, X., Ren, S., &amp; Sun, J. (2016). Deep Residual Learning for Image Recognition. <em>CVPR</em>.</li>
+        <li>Touvron, H., et al. (2021). Training data-efficient image transformers &amp; distillation through attention. <em>ICML</em>.</li>
+        <li>Rao, Y., et al. (2022). DynamicViT: Efficient Vision Transformers with Dynamic Token Sparsification. <em>NeurIPS</em>.</li>
+        <li>Li, Y., et al. (2022). Next-ViT: Next Generation Vision Transformer for Efficient Deployment. <em>arXiv:2207.05501</em>.</li>
+        <li>Gu, A., &amp; Dao, T. (2023). Mamba: Linear-Time Sequence Modeling with Selective State Spaces. <em>arXiv:2312.00752</em>.</li>
+        <li>Dosovitskiy, A., et al. (2020). An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. <em>ICLR 2021</em>.</li>
+        <li>Shi, Y., et al. (2024). VMamba: Visual State Space Model. <em>arXiv:2401.13260</em>.</li>
+        <li>Zhu, L., et al. (2024). Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model. <em>arXiv:2401.13460</em>.</li>
+        <li>Hatamizadeh, A., &amp; Kautz, J. (2024). MambaVision: A Hybrid Mamba-Transformer Vision Backbone. <em>arXiv:2407.08083</em>.</li>
+      </ol>
+    </div>
+
+    <div class="article-section" id="contact">
+      <h2>Contact</h2>
+      <p>
+        <strong>Nikhileswara Rao Sulake</strong>,
+        <a href="mailto:nikhil01446@gmail.com">nikhil01446@gmail.com</a> &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/nikhileswara-rao-sulake/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+        <a href="https://github.com/Nikhil-Rao20" target="_blank">GitHub</a>
+      </p>
+    </div>
+
+  </div>
+
+  <a role="button" id="topper" data-toggle="tooltip" data-placement="top" title="Top" class="btn scroll-link" href="#top">
+    <i class="fa fa-fw fa-2x fa-caret-up" aria-hidden="true"></i>
+  </a>
+
+  <div w3-include-html="../footer.html"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <script src="../js/w3data.js"></script>
+  <script> w3IncludeHTML(); </script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>
