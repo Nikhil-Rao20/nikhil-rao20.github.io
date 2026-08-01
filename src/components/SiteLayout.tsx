@@ -1,4 +1,6 @@
 import type { PropsWithChildren } from 'react';
+import { useTheme } from 'next-themes';
+import { AnimatedThemeToggler } from './ui/animated-theme-toggler';
 
 const navItems = [
   ['about', 'About', 'index.html'],
@@ -9,6 +11,8 @@ const navItems = [
 ] as const;
 
 export function SiteLayout({ children, route }: PropsWithChildren<{ route: string }>) {
+  const { theme, setTheme, systemTheme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
   return (
     <>
       <nav className="navbar navbar-inverse">
@@ -32,6 +36,21 @@ export function SiteLayout({ children, route }: PropsWithChildren<{ route: strin
                   </li>
                 );
               })}
+
+              <li className="hidden-xs" style={{ display: 'flex', alignItems: 'center', height: '50px', paddingLeft: '15px' }}>
+                <AnimatedThemeToggler
+                  theme={(currentTheme || 'light') as "light" | "dark"}
+                  onThemeChange={(t) => setTheme(t)}
+                  className="w-9 h-9 rounded-full bg-[#f3f4f6] dark:bg-white flex items-center justify-center text-[#20364c] dark:text-black transition-colors border border-transparent dark:border-[#334155]"
+                />
+              </li>
+              <li className="visible-xs" style={{ padding: '10px 15px' }}>
+                <AnimatedThemeToggler
+                  theme={(currentTheme || 'light') as "light" | "dark"}
+                  onThemeChange={(t) => setTheme(t)}
+                  className="w-9 h-9 rounded-full bg-[#f3f4f6] dark:bg-white flex items-center justify-center text-[#20364c] dark:text-black transition-colors border border-transparent dark:border-[#334155]"
+                />
+              </li>
             </ul>
           </div>
         </div>

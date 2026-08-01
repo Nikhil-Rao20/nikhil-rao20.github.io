@@ -4,13 +4,16 @@ import { pageByRoute } from './generated/pages';
 import { SiteLayout } from './components/SiteLayout';
 import { ScrollToTop } from './components/ScrollToTop';
 
-import { Home } from './pages/Home';
-import { Research } from './pages/Research';
-import { Experiences } from './pages/Experiences';
-import { Projects } from './pages/Projects';
-import { PrevProjects } from './pages/PrevProjects';
-import { Gallery } from './pages/Gallery';
-import { Contact } from './pages/Contact';
+import { lazy, Suspense } from 'react';
+import Loader from './components/kokonutui/loader';
+
+const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
+const Research = lazy(() => import('./pages/Research').then(m => ({ default: m.Research })));
+const Experiences = lazy(() => import('./pages/Experiences').then(m => ({ default: m.Experiences })));
+const Projects = lazy(() => import('./pages/Projects').then(m => ({ default: m.Projects })));
+const PrevProjects = lazy(() => import('./pages/PrevProjects').then(m => ({ default: m.PrevProjects })));
+const Gallery = lazy(() => import('./pages/Gallery').then(m => ({ default: m.Gallery })));
+const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: m.Contact })));
 
 const defaultRoute = 'index.html';
 
@@ -26,7 +29,7 @@ function MigratedPageWrapper({ route, children }: { route: string; children: Rea
   usePageInteractions(container, page.route);
   usePageScripts(page, container);
 
-  const content = <div ref={container} className="page-content">{children}</div>;
+  const content = <div ref={container} className="page-content"><Suspense fallback={<Loader className="h-[60vh] w-full" />}>{children}</Suspense></div>;
   if (!page.portfolioChrome) return <main>{content}</main>;
   return <SiteLayout route={page.route}><main>{content}</main><ScrollToTop /></SiteLayout>;
 }

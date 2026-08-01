@@ -12,7 +12,33 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <style>
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
+        .static-loader-container { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; width: 100vw; gap: 2rem; background-color: #ffffff; font-family: sans-serif; }
+        .static-loader { position: relative; width: 8rem; height: 8rem; }
+        .static-ring { position: absolute; inset: 0; border-radius: 9999px; }
+        .r1 { background: conic-gradient(from 0deg, transparent 0deg, rgb(0, 0, 0) 90deg, transparent 180deg); mask: radial-gradient(circle at 50% 50%, transparent 35%, black 37%, black 39%, transparent 41%); -webkit-mask: radial-gradient(circle at 50% 50%, transparent 35%, black 37%, black 39%, transparent 41%); opacity: 0.8; animation: spin 3s linear infinite; }
+        .r2 { background: conic-gradient(from 0deg, transparent 0deg, rgb(0, 0, 0) 120deg, rgba(0, 0, 0, 0.5) 240deg, transparent 360deg); mask: radial-gradient(circle at 50% 50%, transparent 42%, black 44%, black 48%, transparent 50%); -webkit-mask: radial-gradient(circle at 50% 50%, transparent 42%, black 44%, black 48%, transparent 50%); opacity: 0.9; animation: spin 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .r3 { background: conic-gradient(from 180deg, transparent 0deg, rgba(0, 0, 0, 0.6) 45deg, transparent 90deg); mask: radial-gradient(circle at 50% 50%, transparent 52%, black 54%, black 56%, transparent 58%); -webkit-mask: radial-gradient(circle at 50% 50%, transparent 52%, black 54%, black 56%, transparent 58%); opacity: 0.35; animation: spin-reverse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .r4 { background: conic-gradient(from 270deg, transparent 0deg, rgba(0, 0, 0, 0.4) 20deg, transparent 40deg); mask: radial-gradient(circle at 50% 50%, transparent 61%, black 62%, black 63%, transparent 64%); -webkit-mask: radial-gradient(circle at 50% 50%, transparent 61%, black 62%, black 63%, transparent 64%); opacity: 0.5; animation: spin 3.5s linear infinite; }
+        .static-text { text-align: center; color: rgba(0,0,0,0.9); font-size: 1rem; }
+        .static-subtext { color: rgba(0,0,0,0.6); font-size: 0.875rem; margin-top: 0.5rem; }
+      </style>
+      <div class="static-loader-container">
+        <div class="static-loader">
+          <div class="static-ring r1"></div>
+          <div class="static-ring r2"></div>
+          <div class="static-ring r3"></div>
+          <div class="static-ring r4"></div>
+        </div>
+        <div>
+          <div class="static-text">Loading Portfolio...</div>
+          <div class="static-subtext">Please wait while we prepare everything for you</div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

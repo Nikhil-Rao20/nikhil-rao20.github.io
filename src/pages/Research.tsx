@@ -1,3 +1,5 @@
+import ParticleButton from '../components/kokonutui/particle-button';
+
 export function Research() {
   return (
     <>
@@ -68,10 +70,10 @@ export function Research() {
                      <p className="pub-authors">Hexin Dong, Yi Lin, Pengyu Zhou, Fengnian Zhao, Alan Clint Legasto, Juno Cho, Dohui Kim, Justin Namuk Kim, Mingeon Kim, Sunwoo Kwak, Gabriel Moyà-Alcover, Ky Trung Nguyen, Thanh-Huy Nguyen, Ha-Hieu Pham, Huy-Hieu Pham, Huy Pham Le, <strong>Nikhileswara Rao Sulake</strong>, Aina Tur-Serrano, Ruichi Zhang, Ang Zu, Adam E. Flanders, Zhiyong Lu, Ronald M. Summers, Mingquan Lin, Hao Chen, Yuzhe Yang, George Shih</p>
                      <p className="pub-venue"><em>Medical Image Analysis [*Under Review, Manuscript ID: MEDIA-D-26-01261]</em></p>
                      <div className="pub-links">
-                        {/*  <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:UeHWp8X0CEIC" className="pub-btn">SCHOLAR</a>
-                        <a href="https://arxiv.org/abs/2603.02294" className="pub-btn">Paper</a>
-                        <a href="https://github.com/Nikhil-Rao20/Long_Tail" className="pub-btn">CODE</a>
-                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:v5kkwUYqSfoJ:scholar.google.com/&output=citation&scisdr=CjzT8Uj5EMKY-mnWEXU:ADi0EEUAAAAAadTQCXXtm83SbzNRavFdYk5_2TA&scisig=ADi0EEUAAAAAadTQCfdaZ57JY45QsSNI3byqcys&scisf=4&ct=citation&cd=-1&hl=en" className="pub-btn">BibTeX</a>  */}
+                        {/*  <ParticleButton href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:UeHWp8X0CEIC" >SCHOLAR</ParticleButton>
+                        <ParticleButton href="https://arxiv.org/abs/2603.02294" >Paper</ParticleButton>
+                        <ParticleButton href="https://github.com/Nikhil-Rao20/Long_Tail" >CODE</ParticleButton>
+                        <ParticleButton href="https://scholar.googleusercontent.com/scholar.bib?q=info:v5kkwUYqSfoJ:scholar.google.com/&output=citation&scisdr=CjzT8Uj5EMKY-mnWEXU:ADi0EEUAAAAAadTQCXXtm83SbzNRavFdYk5_2TA&scisig=ADi0EEUAAAAAadTQCfdaZ57JY45QsSNI3byqcys&scisf=4&ct=citation&cd=-1&hl=en" >BibTeX</ParticleButton>  */}
                      </div>
                   </div>
                </li>
@@ -89,11 +91,11 @@ export function Research() {
                      <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong></p>
                      <p className="pub-venue"><em>ArXiv Preprint</em></p>
                      <div className="pub-links">
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:UeHWp8X0CEIC" className="pub-btn">SCHOLAR</a>
-                        <a href="https://arxiv.org/abs/2603.02294" className="pub-btn">ArXiv</a>
-                        <a href="https://github.com/Nikhil-Rao20/Long_Tail" className="pub-btn">CODE</a>
-                        <a href="https://nikhil-rao20.github.io/cxr-lt/" className="pub-btn">WEBSITE</a>
-                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:v5kkwUYqSfoJ:scholar.google.com/&output=citation&scisdr=CjzT8Uj5EMKY-mnWEXU:ADi0EEUAAAAAadTQCXXtm83SbzNRavFdYk5_2TA&scisig=ADi0EEUAAAAAadTQCfdaZ57JY45QsSNI3byqcys&scisf=4&ct=citation&cd=-1&hl=en" className="pub-btn">BibTeX</a>
+                        <ParticleButton href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:UeHWp8X0CEIC" >SCHOLAR</ParticleButton>
+                        <ParticleButton href="https://arxiv.org/abs/2603.02294" >ArXiv</ParticleButton>
+                        <ParticleButton href="https://github.com/Nikhil-Rao20/Long_Tail" >CODE</ParticleButton>
+                        <ParticleButton href="https://nikhil-rao20.github.io/cxr-lt/" >WEBSITE</ParticleButton>
+                        <ParticleButton href="https://scholar.googleusercontent.com/scholar.bib?q=info:v5kkwUYqSfoJ:scholar.google.com/&output=citation&scisdr=CjzT8Uj5EMKY-mnWEXU:ADi0EEUAAAAAadTQCXXtm83SbzNRavFdYk5_2TA&scisig=ADi0EEUAAAAAadTQCfdaZ57JY45QsSNI3byqcys&scisf=4&ct=citation&cd=-1&hl=en" >BibTeX</ParticleButton>
                      </div>
                   </div>
                </li>
@@ -110,10 +112,10 @@ export function Research() {
                      <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong><sup>†</sup>, Sai Manikanta Eswar Machara<sup>†</sup>, Sivaji Retta, Iyyakutti Iyappan Ganapathi, Naoufel Werghi</p>
                      <p className="pub-venue"><em>29<sup>th</sup> Medical Image Computing and Computer Assisted Intervention (MICCAI), 2026 [*Under Review]</em></p>
                      <div className="pub-links">
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
                      </div>
                   </div>
                </li>
@@ -131,10 +133,10 @@ export function Research() {
                      <p className="pub-authors">Partha Acharya, <strong>Nikhileswara Rao Sulake</strong>, Soutrik Chakraborty, Subhamoy Mandal, Suman Chakraborty</p>
                      <p className="pub-venue"><em>29<sup>th</sup> Medical Image Computing and Computer Assisted Intervention (MICCAI), 2026 [*Under Review]</em></p>
                      <div className="pub-links">
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
                      </div>
                   </div>
                </li>
@@ -151,10 +153,10 @@ export function Research() {
                      <p className="pub-authors">Partha Acharya, <strong>Nikhileswara Rao Sulake</strong>, Aishik Sen, Amitabha Chattopadhyay, Subhamoy Mandal, Suman Chakraborty</p>
                      <p className="pub-venue"><em>IEEE Transactions on Radiation and Plasma Medical Sciences [*Under Review]</em></p>
                      <div className="pub-links">
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
                      </div>
                   </div>
                </li>
@@ -172,10 +174,10 @@ export function Research() {
                      <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong>, Sai Manikanta Eswar Machara, Divya Katam, Sivalal Kethavath</p>
                      <p className="pub-venue"><em>12<sup>th</sup> IEEE International Conference on Electronics, Computing and Communication Technologies 2026 [*Under Review]</em></p>
                      <div className="pub-links">
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
                      </div>
                   </div>
                </li>
@@ -193,10 +195,10 @@ export function Research() {
                      <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong>, Divya Katam, Venkata Ganesh Sirela, Sivalal Kethavath</p>
                      <p className="pub-venue">IEEE Guwahati Subsection Conference (GCON) 2026</p>
                      <div className="pub-links">
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
                      </div>
                   </div>
                </li>
@@ -214,10 +216,10 @@ export function Research() {
                      <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong>, Sivalal Kethavath</p>
                      <p className="pub-venue">IEEE Guwahati Subsection Conference (GCON) 2026</p>
                      <div className="pub-links">
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
                      </div>
                   </div>
                </li>
@@ -235,12 +237,12 @@ export function Research() {
                      <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong></p>
                      <p className="pub-venue"><em>Biomedical Signal Processing and Control [*Under Review]</em></p>
                      <div className="pub-links">
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:2osOgNQ5qMEC" className="pub-btn" target="_blank" rel="noopener">SCHOLAR</a>
-                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6145911" className="pub-btn" target="_blank" rel="noopener">SSRN</a>
-                        <a href="https://track.authorhub.elsevier.com/?uuid=13f39104-c14e-44e2-a77c-e59b30ca7be8" className="pub-btn" target="_blank" rel="noopener">Review</a>
-                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:wgvP9TIzIGYJ:scholar.google.com/&output=citation&scisdr=Cl8uoyH1EMKY-iWJ3PU:AFtJQiwAAAAAaZiPxPVWHsibQJV8CJgGMnfrTLY&scisig=AFtJQiwAAAAAaZiPxPPtrJ8dtlxbbFmuO1Ww-fQ&scisf=4&ct=citation&cd=-1&hl=en"  className="pub-btn" target="_blank" rel="noopener">BibTeX</a>
-                        {/*  <a href="#" className="pub-btn">CODE</a>  */}
-                        {/*  <a href="#" className="pub-btn">WEBSITE</a>  */}
+                        <ParticleButton href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:2osOgNQ5qMEC" target="_blank" rel="noopener">SCHOLAR</ParticleButton>
+                        <ParticleButton href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6145911" target="_blank" rel="noopener">SSRN</ParticleButton>
+                        <ParticleButton href="https://track.authorhub.elsevier.com/?uuid=13f39104-c14e-44e2-a77c-e59b30ca7be8" target="_blank" rel="noopener">Review</ParticleButton>
+                        <ParticleButton href="https://scholar.googleusercontent.com/scholar.bib?q=info:wgvP9TIzIGYJ:scholar.google.com/&output=citation&scisdr=Cl8uoyH1EMKY-iWJ3PU:AFtJQiwAAAAAaZiPxPVWHsibQJV8CJgGMnfrTLY&scisig=AFtJQiwAAAAAaZiPxPPtrJ8dtlxbbFmuO1Ww-fQ&scisf=4&ct=citation&cd=-1&hl=en" target="_blank" rel="noopener">BibTeX</ParticleButton>
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
                      </div>
                   </div>
                </li>
@@ -258,11 +260,11 @@ export function Research() {
                      <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong></p>
                      <p className="pub-venue"><em>Medium, Analytics Vidhya</em>, 2024 &nbsp;&middot;&nbsp; <strong>Accepted at CVC 2026</strong></p>
                      <div className="pub-links">
-                        <a href="https://arxiv.org/pdf/2604.03349" className="pub-btn">Paper</a>
-                        {/*  <a href="#" className="pub-btn">BIB</a>  */}
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:u5HHmVD_uO8C" className="pub-btn" target="_blank" rel="noopener">SCHOLAR</a>
-                        <a href="https://medium.com/@nikhil-rao-20/yolov11-explained-next-level-object-detection-with-enhanced-speed-and-accuracy-2dbe2d376f71" className="pub-btn" target="_blank" rel="noopener">Medium</a>
-                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:4ZDiBsdFBI4J:scholar.google.com/&output=citation&scisdr=Cl8uoyH1EMKY-iWJck4:AFtJQiwAAAAAaZiPak5URSy_Dr9Tyhc5vpgoVX0&scisig=AFtJQiwAAAAAaZiParsG88r9cG-kpKNWhunI9Os&scisf=4&ct=citation&cd=-1&hl=en" className="pub-btn" target="_blank" rel="noopener">BibTeX</a>
+                        <ParticleButton href="https://arxiv.org/pdf/2604.03349" >Paper</ParticleButton>
+                        {/*  <ParticleButton href="#" >BIB</ParticleButton>  */}
+                        <ParticleButton href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:u5HHmVD_uO8C" target="_blank" rel="noopener">SCHOLAR</ParticleButton>
+                        <ParticleButton href="https://medium.com/@nikhil-rao-20/yolov11-explained-next-level-object-detection-with-enhanced-speed-and-accuracy-2dbe2d376f71" target="_blank" rel="noopener">Medium</ParticleButton>
+                        <ParticleButton href="https://scholar.googleusercontent.com/scholar.bib?q=info:4ZDiBsdFBI4J:scholar.google.com/&output=citation&scisdr=Cl8uoyH1EMKY-iWJck4:AFtJQiwAAAAAaZiPak5URSy_Dr9Tyhc5vpgoVX0&scisig=AFtJQiwAAAAAaZiParsG88r9cG-kpKNWhunI9Os&scisf=4&ct=citation&cd=-1&hl=en" target="_blank" rel="noopener">BibTeX</ParticleButton>
                      </div>
                   </div>
                </li>
@@ -279,11 +281,11 @@ export function Research() {
                      <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong>, Sidharth Pancholi</p>
                      <p className="pub-venue"><em>Authorea Preprints</em></p>
                      <div className="pub-links">
-                        {/*  <a href="#" className="pub-btn">ABS</a>  */}
-                        {/*  <a href="#" className="pub-btn">BIB</a>  */}
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:9yKSN-GCB0IC" className="pub-btn" target="_blank" rel="noopener">SCHOLAR</a>
-                        <a href="https://www.techrxiv.org/doi/pdf/10.36227/techrxiv.176231563.32545081" className="pub-btn" target="_blank" rel="noopener">TechRxiv</a>
-                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:d2Rq4lbMYOcJ:scholar.google.com/&output=citation&scisdr=Cl8uoyH1EMKY-iWJvME:AFtJQiwAAAAAaZiPpMHGXLNl_70Vwl6ouMydjeU&scisig=AFtJQiwAAAAAaZiPpFldbEgPmoaTlE1oIbzATcM&scisf=4&ct=citation&cd=-1&hl=en" className="pub-btn" target="_blank" rel="noopener">BibTeX</a>
+                        {/*  <ParticleButton href="#" >ABS</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >BIB</ParticleButton>  */}
+                        <ParticleButton href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener">SCHOLAR</ParticleButton>
+                        <ParticleButton href="https://www.techrxiv.org/doi/pdf/10.36227/techrxiv.176231563.32545081" target="_blank" rel="noopener">TechRxiv</ParticleButton>
+                        <ParticleButton href="https://scholar.googleusercontent.com/scholar.bib?q=info:d2Rq4lbMYOcJ:scholar.google.com/&output=citation&scisdr=Cl8uoyH1EMKY-iWJvME:AFtJQiwAAAAAaZiPpMHGXLNl_70Vwl6ouMydjeU&scisig=AFtJQiwAAAAAaZiPpFldbEgPmoaTlE1oIbzATcM&scisf=4&ct=citation&cd=-1&hl=en" target="_blank" rel="noopener">BibTeX</ParticleButton>
                      </div>
                   </div>
                </li>
