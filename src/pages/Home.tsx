@@ -62,26 +62,12 @@ export function Home() {
           <div className="col-sm-8">
             <p>
 
-              Hello, I'm Nikhileswara Rao Sulake, a Bachelor’s student in Computer Science and Engineering at <a href="https://rguktn.ac.in/" target="_blank" rel="noopener noreferrer">RGUKT (Rajiv Gandhi University of Knowledge Technologies)</a> in Vijayawada, India with a strong focus on Deep Learning, Computer Vision, and Medical Imaging. Thank you for visiting my profile.<br /><br />
-              I previously interned at
-              <a href="https://med.stanford.edu/" target="_blank" rel="noopener noreferrer">Stanford Medicine</a> under the guidance of
-              <a href="https://profiles.stanford.edu/arutselvan-natarajan" target="_blank" rel="noopener noreferrer">Dr. Arutselvan Natarajan</a> and
-              <a href="https://profiles.stanford.edu/frezghi-habte" target="_blank" rel="noopener noreferrer">Dr. Frezghi Habte</a>, and at
-              <a href="http://www.iitkgp.ac.in/" target="_blank" rel="noopener noreferrer">IIT Kharagpur</a> with
-              <a href="https://www.linkedin.com/in/partha-acharya-b7664b11/" target="_blank" rel="noopener noreferrer">Mr. Partha Acharya</a>
-              (<a href="https://www.linkedin.com/company/tata-consultancy-services/" target="_blank" rel="noopener noreferrer">TCS Research, India</a>) and
-              <a href="https://scholar.google.com/citations?user=yUEeCY0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Subhamoy Mandal</a>.
-              I have also collaborated with
-              <a href="https://iisc.ac.in/" target="_blank" rel="noopener noreferrer">IISc Bangalore</a> under the guidance of
-              <a href="https://scholar.google.com/citations?user=8b7u3b8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Phaneendra Yalavarthy</a>, with
-              <a href="https://hms.harvard.edu/" target="_blank" rel="noopener noreferrer">Harvard Medical School</a> under the guidance of
-              <a href="https://scholar.google.com/citations?user=9u2zK7gAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Bhaskara Chintada</a> and
-              also with <a href="https://www.ku.ac.ae/" target="_blank" rel="noopener noreferrer">Khalifa University of Science and Technology</a> under
-              the guidance of <a href="https://scholar.google.com/citations?user=TMpGqLEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Iyyakutti Iyappan Ganapathi</a>.
-              In industry, I interned at
-              <a href="https://www.ntwo.ai/" target="_blank" rel="noopener noreferrer">Neural Nurture</a>,
-              <a href="https://www.linkedin.com/company/parabola9/" target="_blank" rel="noopener noreferrer">Parabola9</a>,
-              <a href="https://www.linkedin.com/company/coreai/" target="_blank" rel="noopener noreferrer">CoreAI</a>.
+              Hello, I'm Nikhileswara Rao Sulake, a Bachelor’s student in Computer Science and Engineering at <a href="https://rguktn.ac.in/" target="_blank" rel="noopener noreferrer">RGUKT (Rajiv Gandhi University of Knowledge Technologies)</a> in Vijayawada, India with a strong focus on Deep Learning, Computer Vision, and Medical Imaging. I am currently an Engineering Intern at <a href="https://www.tanuh.ai/" target="_blank" rel="noopener noreferrer">TANUH AI CoE</a>, <a href="https://www.iisc.ac.in/" target="_blank" rel="noopener noreferrer">IISc Bangalore</a> under the guidance of <a href="https://cds.iisc.ac.in/faculty/yalavarthy/">Prof. Phaneendra K. Yalavarthy</a> in the Renal Vertical. Thank you for visiting my profile.<br /><br />
+
+              I previously interned at <a href="https://med.stanford.edu/" target="_blank" rel="noopener noreferrer">Stanford Medicine</a> under the guidance of <a href="https://profiles.stanford.edu/arutselvan-natarajan" target="_blank" rel="noopener noreferrer">Dr. Arutselvan Natarajan</a> and
+              <a href="https://profiles.stanford.edu/frezghi-habte" target="_blank" rel="noopener noreferrer">Dr. Frezghi Habte</a>, and at <a href="http://www.iitkgp.ac.in/" target="_blank" rel="noopener noreferrer">IIT Kharagpur</a> with <a href="https://www.linkedin.com/in/partha-acharya-b7664b11/" target="_blank" rel="noopener noreferrer">Mr. Partha Acharya</a> (<a href="https://www.linkedin.com/company/tata-consultancy-services/" target="_blank" rel="noopener noreferrer">TCS Research, India</a>) and <a href="https://scholar.google.com/citations?user=yUEeCY0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Subhamoy Mandal</a>.
+              I have also collaborated with <a href="https://iisc.ac.in/" target="_blank" rel="noopener noreferrer">IISc Bangalore</a> under the guidance of <a href="https://scholar.google.com/citations?user=8b7u3b8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Phaneendra Yalavarthy</a>, with <a href="https://hms.harvard.edu/" target="_blank" rel="noopener noreferrer">Harvard Medical School</a> under the guidance of <a href="https://scholar.google.com/citations?user=9u2zK7gAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Bhaskara Chintada</a> and also with <a href="https://www.ku.ac.ae/" target="_blank" rel="noopener noreferrer">Khalifa University of Science and Technology</a> under the guidance of <a href="https://scholar.google.com/citations?user=TMpGqLEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Iyyakutti Iyappan Ganapathi</a>, <a href="https://scholar.google.com/citations?user=M6QUSTwAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Muhammad Owais</a> and <a href="https://scholar.google.com/citations?user=bCC3kdUAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Prof. Irfan Hussain</a>.
+              In industry, I interned at  <a href="https://www.ntwo.ai/" target="_blank" rel="noopener noreferrer">Neural Nurture</a>, <a href="https://www.linkedin.com/company/parabola9/" target="_blank" rel="noopener noreferrer">Parabola9</a> & <a href="https://www.linkedin.com/company/coreai/" target="_blank" rel="noopener noreferrer">CoreAI</a>.
             </p>
 
             <p>
@@ -89,11 +75,25 @@ export function Home() {
             </p>
 
             <p>
-              I’m actively seeking Research Assistant roles in academic or industrial research labs, with a focus on computer vision, medical imaging, and multimodal AI. I am also preparing to pursue my higher studies through an MSc–Integrated PhD program, and would be glad to connect regarding potential opportunities.
+              I'm actively looking for <strong>PhD opportunities</strong> in medical imaging, computational biology, computer vision and deep learning. I am also open to research collaborations and full-time roles in the industry. Please feel free to reach out to me for any potential opportunities or collaborations.
             </p>
             <h3 className="push-down-3"><span>News</span></h3>
             <div className="news-container">
               <ul id="news">
+
+                <li style={{ "marginBottom": "5px" }}><strong>[Aug 2026]</strong> <a href="https://nikhil-rao20.github.io/cips-net/" target="_blank" rel="noopener">CIPS-Net</a> paper accepted at COMPAYL++ workshop at <a href="https://conferences.miccai.org/2026/en/" target="_blank" rel="noopener noreferrer">MICCAI 2026</a> conference. One year long experiments took a great turn into MICCAI.</li>
+
+                <li style={{ "marginBottom": "5px" }}><strong>[July 2026]</strong> <a href="https://nikhil-rao20.github.io/ecg-free-echo/" target="_blank" rel="noopener">ECG-Free Echo</a> paper accepted at ASMUS workshop at <a href="https://conferences.miccai.org/2026/en/" target="_blank" rel="noopener noreferrer">MICCAI 2026</a> conference, from <a href="https://miccai.org/sig/sig-mus/" target="_blank" rel="noopener noreferrer">Special Interest Group - Medical UltraSound</a>.</li>
+
+                <li style={{ "marginBottom": "5px" }}><strong>[June 2026]</strong> <a href="https://nikhil-rao20.github.io/lung-digital-twin/" target="_blank" rel="noopener">Lung Digital Twin</a> paper accepted at <a href="https://conferences.miccai.org/2026/en/" target="_blank" rel="noopener noreferrer">MICCAI 2026</a> main conference.</li>
+
+
+                <li style={{ "marginBottom": "5px" }}><strong>[May 2026]</strong> Joined as Engineering Intern in the Renal Vertical at <a href="https://www.tanuh.ai/" target="_blank" rel="noopener noreferrer">TANUH AI CoE</a>, <a href="https://www.iisc.ac.in/" target="_blank" rel="noopener noreferrer">IISc Bangalore</a> under the guidance of <a href="https://cds.iisc.ac.in/faculty/yalavarthy/">Prof. Phaneendra K. Yalavarthy</a>. Going to work on awesome kidney ultrasound projects, including eGFR estimation from US images and KFRE recalibration for the Indian population with patient-specific care.</li>
+
+
+                <li style={{ "marginBottom": "5px" }}><strong>[May 2026]</strong> We placed <a href="https://nha.gov.in/hackathon#:~:text=Nikhileswara%20Rao%20Sulake" target="_blank" rel="noopener">Top 2</a> at the <a href="https://nha.gov.in/hackathon" target="_blank" rel="noopener">AB PM-JAY Auto-Adjudication Hackathon</a> 2026 conducted by NHA and IISc Banglore with IndiaAI for our solution on document forgery detection.</li>
+
+
                 <li style={{ "marginBottom": "5px" }}><strong>[Mar 2026]</strong> Two papers accepted at the IEEE Guwahati Subsection Conference (GCON) Conference 2026 presenting at IIT Guwahati, India. (<a href="#" target="_blank" rel="noopener">[Paper1: Uncertainty Quantification]</a>, <a href="#" target="_blank" rel="noopener">[Paper2: Multiphase MRI Segmentation]</a>)</li>
 
                 <li style={{ "marginBottom": "5px" }}>

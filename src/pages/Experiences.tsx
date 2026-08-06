@@ -16,6 +16,17 @@ export function Experiences() {
       <h2 className="section-title">Academic Collaborations</h2>
       
       <div className="experience-grid">
+
+        {/*  TANUH, IISc Banglore  */}
+        <div className="experience-item">
+          <div className="institution-logo">
+            <img src="/assets/img/company/tanuh_logo.svg" alt="TANUH, IISc Banglore" />
+          </div>
+          <h3 className="institution-name">TANUH AI CoE, IISc Banglore</h3>
+          <h4 className="role-title">Engineering Intern</h4>
+          <p className="role-title"><a href="https://cds.iisc.ac.in/faculty/yalavarthy/">Prof. Phaneendra K. Yalavarthy</a></p>
+          <p className="duration">May 2026 - Present</p>
+        </div>
         
         {/*  Khalifa University  */}
         <div className="experience-item">
@@ -24,7 +35,7 @@ export function Experiences() {
           </div>
           <h3 className="institution-name">Khalifa University of Science and Technology</h3>
           <h4 className="role-title">Research Collaborator</h4>
-          <p className="role-title"><a href="https://khazna.ku.ac.ae/en/persons/iyyakutti-iyappan-ganapathi/">Dr. I I Ganapathi</a></p>
+          <p className="role-title"><a href="https://khazna.ku.ac.ae/en/persons/iyyakutti-iyappan-ganapathi/">Dr. I I Ganapathi</a>, <a href="https://www.ku.ac.ae/college-people/muhammad-owais/">Dr. M Owais</a> & <a href="https://www.ku.ac.ae/college-people/irfan-hussain">Prof. Irfan Hussain</a></p>
           <p className="duration">Aug 2025 - Mar 2026</p>
         </div>
 
@@ -58,7 +69,7 @@ export function Experiences() {
           <h3 className="institution-name">Harvard Medical School</h3>
           <h4 className="role-title">Research Collaborator</h4>
           <p className="role-title"><a href="https://scholar.google.com/citations?user=SRdx2PwAAAAJ&hl=en">Dr. BR Chintada</a></p>
-          <p className="duration">Feb 2025 - Present</p>
+          <p className="duration">Feb 2025 - Jan 2026</p>
         </div>
 
         {/*  IISc Bangalore  */}
@@ -78,7 +89,7 @@ export function Experiences() {
           </div>
           <h3 className="institution-name">IISER, Trivandrum</h3>
           <h4 className="role-title">Research Collaborator</h4>
-          <p className="role-title"><a href="https://www.iisertvm.ac.in/faculty/rajisusanmathew">Dr. Raji Susan Mathew</a></p>
+          <p className="role-title"><a href="https://www.iisertvm.ac.in/faculty/rajisusanmathew">Assis Prof. Raji Susan Mathew</a></p>
           <p className="duration">Apr 2024 - Sep 2024</p>
         </div>
 

@@ -61,7 +61,7 @@ export function Research() {
                {/*  Publication 11: CXR-LT 2026 Challenge: Multi-Center Long-Tailed and Zero Shot Chest X-ray Classification  */}
                <li className="pub-entry">
                   <div className="pub-thumb">
-                     <span className="pub-venue-badge badge-journal">Medical Image Analysis</span>
+                     <span className="pub-venue-badge badge-journal">MedIA</span>
                      <img className="pub-thumb-img" src="/assets/img/publications/cxr_lt_challenge_paper.png" alt="Loss Design for Long Tail CXR Classification paper thumbnail"  />
                      <div className="pub-thumb-placeholder" style={{"display":"none"}}><i className="fas fa-file-alt"></i></div>
                   </div>
@@ -78,24 +78,37 @@ export function Research() {
                   </div>
                </li>
 
-
-               {/*  Publication 10: Loss Design for Long Tail CXR Clasification  */}
                <li className="pub-entry">
                   <div className="pub-thumb">
-                     <span className="pub-venue-badge badge-preprint">Preprint 2026</span>
-                     <img className="pub-thumb-img" src="/assets/img/publications/loss_design_long_tail_paper.png" alt="Loss Design for Long Tail CXR Classification paper thumbnail"  />
+                     <span className="pub-venue-badge badge-journal">IEEE TIP</span>
+                     <img className="pub-thumb-img" src="/assets/img/publications/hyperbolic.png" alt="Hyperbolic One-Class Fine Tuning paper thumbnail"  />
                      <div className="pub-thumb-placeholder" style={{"display":"none"}}><i className="fas fa-file-alt"></i></div>
                   </div>
                   <div className="pub-body">
-                     <p className="pub-title"><a href="#" target="_blank" rel="noopener">Loss Design and Architecture Selection for Long-Tailed Multi-Label Chest X-Ray Classification</a></p>
-                     <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong></p>
-                     <p className="pub-venue"><em>ArXiv Preprint</em></p>
+                     <p className="pub-title"><a href="#" target="_blank" rel="noopener">A Hyperbolic One-Class Fine-Tuning of Foundation Models for Robust Medical Deepfake Detection</a></p>
+                     <p className="pub-authors">Saurabh Sharma<sup>†</sup>, Sai Manikanta Eswar Machara<sup>†</sup>, <strong>Nikhileswara Rao Sulake</strong><sup>†</sup>, Sivalal Kethavath, Phaneendra K. Yalavarthy</p>
+                     <p className="pub-venue"><em>IEEE Transactions on Image Processing [*Under Review, Manuscript ID: TIP-40302-2026]</em></p>
                      <div className="pub-links">
-                        <ParticleButton href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:UeHWp8X0CEIC" >SCHOLAR</ParticleButton>
-                        <ParticleButton href="https://arxiv.org/abs/2603.02294" >ArXiv</ParticleButton>
-                        <ParticleButton href="https://github.com/Nikhil-Rao20/Long_Tail" >CODE</ParticleButton>
-                        <ParticleButton href="https://nikhil-rao20.github.io/cxr-lt/" >WEBSITE</ParticleButton>
-                        <ParticleButton href="https://scholar.googleusercontent.com/scholar.bib?q=info:v5kkwUYqSfoJ:scholar.google.com/&output=citation&scisdr=CjzT8Uj5EMKY-mnWEXU:ADi0EEUAAAAAadTQCXXtm83SbzNRavFdYk5_2TA&scisig=ADi0EEUAAAAAadTQCfdaZ57JY45QsSNI3byqcys&scisf=4&ct=citation&cd=-1&hl=en" >BibTeX</ParticleButton>
+                     </div>
+                  </div>
+               </li>
+
+               {/*  Publication 3: ECG Free Cardiac Timing in Echo  */}
+               <li className="pub-entry">
+                  <div className="pub-thumb">
+                     <span className="pub-venue-badge badge-conf">MICCAI 2026</span>
+                     <img className="pub-thumb-img" src="/assets/img/publications/ecg_free_cardiac_paper.png" alt="ECG Free Cardiac Timing in Echo paper thumbnail"  />
+                     <div className="pub-thumb-placeholder" style={{"display":"none"}}><i className="fas fa-file-alt"></i></div>
+                  </div>
+                  <div className="pub-body">
+                     <p className="pub-title"><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:2osOgNQ5qMEC" target="_blank" rel="noopener">Speckle-Aware Signal Extraction as an Alternative to Complex Methods for ECG-Free Cardiac Phase Detection</a></p>
+                     <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong>, Sai Manikanta Eswar Machara, Sivaji Retta, Iyyakutti Iyappan Ganapathi, Muhammad Owais, Irfan Hussain</p>
+                     <p className="pub-venue"><em>29<sup>th</sup> Medical Image Computing and Computer Assisted Intervention (MICCAI), 2026</em></p>
+                     <div className="pub-links">
+                         <ParticleButton href="#" >PAPER</ParticleButton> 
+                         <ParticleButton href="https://github.com/Nikhil-Rao20/ECG_Free_Echo" >CODE</ParticleButton> 
+                         <ParticleButton href="https://nikhil-rao20.github.io/ecg-free-echo/" >WEBSITE</ParticleButton> 
+                         <ParticleButton href="#" >BIBTEX</ParticleButton> 
                      </div>
                   </div>
                </li>
@@ -109,13 +122,13 @@ export function Research() {
                   </div>
                   <div className="pub-body">
                      <p className="pub-title"><a href="#" target="_blank" rel="noopener">CIPS-Net: A Comprehensive Framework for Histopathology Image Analysis</a></p>
-                     <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong><sup>†</sup>, Sai Manikanta Eswar Machara<sup>†</sup>, Sivaji Retta, Iyyakutti Iyappan Ganapathi, Naoufel Werghi</p>
-                     <p className="pub-venue"><em>29<sup>th</sup> Medical Image Computing and Computer Assisted Intervention (MICCAI), 2026 [*Under Review]</em></p>
+                     <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong><sup>†</sup>, Sai Manikanta Eswar Machara<sup>†</sup>, Sivaji Retta, Iyyakutti Iyappan Ganapathi, Muhammad Owais, Irfan Hussain</p>
+                     <p className="pub-venue"><em>29<sup>th</sup> Medical Image Computing and Computer Assisted Intervention (MICCAI), 2026</em></p>
                      <div className="pub-links">
-                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
-                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
-                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
-                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
+                         <ParticleButton href="#" >PAPER</ParticleButton> 
+                         <ParticleButton href="https://github.com/Nikhil-Rao20/CIPS_Net" >CODE</ParticleButton> 
+                         <ParticleButton href="https://nikhil-rao20.github.io/cips-net/" >WEBSITE</ParticleButton> 
+                         <ParticleButton href="#" >BIBTEX</ParticleButton> 
                      </div>
                   </div>
                </li>
@@ -131,7 +144,66 @@ export function Research() {
                   <div className="pub-body">
                      <p className="pub-title"><a href="#" target="_blank" rel="noopener">Digital Twin of the Lung from Wearable Biosignals for Real-Time Respiratory Monitoring</a></p>
                      <p className="pub-authors">Partha Acharya, <strong>Nikhileswara Rao Sulake</strong>, Soutrik Chakraborty, Subhamoy Mandal, Suman Chakraborty</p>
-                     <p className="pub-venue"><em>29<sup>th</sup> Medical Image Computing and Computer Assisted Intervention (MICCAI), 2026 [*Under Review]</em></p>
+                     <p className="pub-venue"><em>29<sup>th</sup> Medical Image Computing and Computer Assisted Intervention (MICCAI), 2026</em></p>
+                     <div className="pub-links">
+                         <ParticleButton href="#" >PAPER</ParticleButton> 
+                         <ParticleButton href="" >CODE</ParticleButton> 
+                         <ParticleButton href="https://nikhil-rao20.github.io/lung-digital-twin/" >WEBSITE</ParticleButton> 
+                         <ParticleButton href="#" >BIBTEX</ParticleButton> 
+                     </div>
+                  </div>
+               </li>
+
+               <li className="pub-entry">
+                  <div className="pub-thumb">
+                     <span className="pub-venue-badge badge-conf">ICRA 2026</span>
+                     <img className="pub-thumb-img" src="/assets/img/publications/goose-m2f.png" alt="GOOSE M2F paper thumbnail"  />
+                     <div className="pub-thumb-placeholder" style={{"display":"none"}}><i className="fas fa-file-alt"></i></div>
+                  </div>
+                  <div className="pub-body">
+                     <p className="pub-title"><a href="#" target="_blank" rel="noopener">GOOSE-M2F: Adapting Mask2Former for High-Fidelity, Long-Tailed Fine-Grained Semantic Segmentation in Unstructured Outdoor Terrain</a></p>
+                     <p className="pub-authors">Jyothiraditya Lingam, <strong>Nikhileswara Rao Sulake</strong>,Sai Manikanta Eswar Machara</p>
+                     <p className="pub-venue"><em>43<sup>rd</sup> IEEE International Conference on Robotics and Automation (Challenge Paper), 2026</em></p>
+                     <div className="pub-links">
+                         {/* <ParticleButton href="#" >PAPER</ParticleButton> 
+                         <ParticleButton href="" >CODE</ParticleButton> 
+                         <ParticleButton href="#" >WEBSITE</ParticleButton> 
+                         <ParticleButton href="#" >BIBTEX</ParticleButton>  */}
+                     </div>
+                  </div>
+               </li>
+
+               {/*  Publication 10: Loss Design for Long Tail CXR Clasification  */}
+               <li className="pub-entry">
+                  <div className="pub-thumb">
+                     <span className="pub-venue-badge badge-preprint">Preprint 2026</span>
+                     <img className="pub-thumb-img" src="/assets/img/publications/loss_design_long_tail_paper.png" alt="Loss Design for Long Tail CXR Classification paper thumbnail"  />
+                     <div className="pub-thumb-placeholder" style={{"display":"none"}}><i className="fas fa-file-alt"></i></div>
+                  </div>
+                  <div className="pub-body">
+                     <p className="pub-title"><a href="#" target="_blank" rel="noopener">Loss Design and Architecture Selection for Long-Tailed Multi-Label Chest X-Ray Classification</a></p>
+                     <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong></p>
+                     <p className="pub-venue"><em>ArXiv Preprint</em></p>
+                     <div className="pub-links">
+                        <ParticleButton href="https://arxiv.org/abs/2603.02294" >ArXiv</ParticleButton>
+                        <ParticleButton href="https://github.com/Nikhil-Rao20/Long_Tail" >CODE</ParticleButton>
+                        <ParticleButton href="https://nikhil-rao20.github.io/cxr-lt/" >WEBSITE</ParticleButton>
+                        <ParticleButton href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:UeHWp8X0CEIC" >SCHOLAR</ParticleButton>
+                        <ParticleButton href="https://scholar.googleusercontent.com/scholar.bib?q=info:v5kkwUYqSfoJ:scholar.google.com/&output=citation&scisdr=CjzT8Uj5EMKY-mnWEXU:ADi0EEUAAAAAadTQCXXtm83SbzNRavFdYk5_2TA&scisig=ADi0EEUAAAAAadTQCfdaZ57JY45QsSNI3byqcys&scisf=4&ct=citation&cd=-1&hl=en" >BibTeX</ParticleButton>
+                     </div>
+                  </div>
+               </li>
+
+               <li className="pub-entry">
+                  <div className="pub-thumb">
+                     <span className="pub-venue-badge badge-conf">ICVGIP 2026</span>
+                     <img className="pub-thumb-img" src="/assets/img/publications/neural_transfer.png" alt="Neural Transfer Paper thumbnail"  />
+                     <div className="pub-thumb-placeholder" style={{"display":"none"}}><i className="fas fa-file-alt"></i></div>
+                  </div>
+                  <div className="pub-body">
+                     <p className="pub-title"><a href="#" target="_blank" rel="noopener">Image Data Augmentation for Autonomous Vehicle Dataset using Neural Style Transfer</a></p>
+                     <p className="pub-authors">Partha Acharya, Soutrik Chakraborty, <strong>Nikhileswara Rao Sulake</strong>, Subhamoy Mandal, Suman Chakraborty</p>
+                     <p className="pub-venue"><em>Indian Conference on Computer Vision, Graphics and Image Processing (ICVGIP) 2026 [*Under Review]</em></p>
                      <div className="pub-links">
                         {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
                         {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
@@ -150,7 +222,26 @@ export function Research() {
                   </div>
                   <div className="pub-body">
                      <p className="pub-title"><a href="#" target="_blank" rel="noopener">TARU-Net: Topology-Aware Deep Learning for High-Fidelity Lung CT Segmentation and Volume Visualization</a></p>
-                     <p className="pub-authors">Partha Acharya, <strong>Nikhileswara Rao Sulake</strong>, Aishik Sen, Amitabha Chattopadhyay, Subhamoy Mandal, Suman Chakraborty</p>
+                     <p className="pub-authors">Partha Acharya, Soutrik Chakraborty, <strong>Nikhileswara Rao Sulake</strong>, Aishik Sen, Subhamoy Mandal, Suman Chakraborty</p>
+                     <p className="pub-venue"><em>IEEE Transactions on Radiation and Plasma Medical Sciences [*Under Review]</em></p>
+                     <div className="pub-links">
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
+                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
+                     </div>
+                  </div>
+               </li>
+
+               <li className="pub-entry">
+                  <div className="pub-thumb">
+                     <span className="pub-venue-badge badge-journal">IEEE TIP</span>
+                     <img className="pub-thumb-img" src="/assets/img/publications/CNN_iSURF.jpg" alt="TARU-Net paper thumbnail"  />
+                     <div className="pub-thumb-placeholder" style={{"display":"none"}}><i className="fas fa-file-alt"></i></div>
+                  </div>
+                  <div className="pub-body">
+                     <p className="pub-title"><a href="#" target="_blank" rel="noopener">Hybrid CNN-iSURF Feature Extraction: A Robust Approach for Image Matching Using Deep Learning and Keypoint-Based Descriptors</a></p>
+                     <p className="pub-authors">Partha Acharya, Harsh Vardhan, Vineeth Bhanukoti, <strong>Nikhileswara Rao Sulake</strong>, Soutrik Chakraborty, Subhamoy Mandal, Suman Chakraborty</p>
                      <p className="pub-venue"><em>IEEE Transactions on Radiation and Plasma Medical Sciences [*Under Review]</em></p>
                      <div className="pub-links">
                         {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
@@ -225,28 +316,6 @@ export function Research() {
                </li>
 
 
-               {/*  Publication 3: ECG Free Cardiac Timing in Echo  */}
-               <li className="pub-entry">
-                  <div className="pub-thumb">
-                     <span className="pub-venue-badge badge-journal">BSPC Journal</span>
-                     <img className="pub-thumb-img" src="/assets/img/publications/ecg_free_cardiac_paper.png" alt="ECG Free Cardiac Timing in Echo paper thumbnail"  />
-                     <div className="pub-thumb-placeholder" style={{"display":"none"}}><i className="fas fa-file-alt"></i></div>
-                  </div>
-                  <div className="pub-body">
-                     <p className="pub-title"><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:2osOgNQ5qMEC" target="_blank" rel="noopener">Signal Extraction Strategies for ECG-Free Cardiac Timing in Echocardiography: An Empirical Investigation</a></p>
-                     <p className="pub-authors"><strong>Nikhileswara Rao Sulake</strong></p>
-                     <p className="pub-venue"><em>Biomedical Signal Processing and Control [*Under Review]</em></p>
-                     <div className="pub-links">
-                        <ParticleButton href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=zE6f8d8AAAAJ&citation_for_view=zE6f8d8AAAAJ:2osOgNQ5qMEC" target="_blank" rel="noopener">SCHOLAR</ParticleButton>
-                        <ParticleButton href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6145911" target="_blank" rel="noopener">SSRN</ParticleButton>
-                        <ParticleButton href="https://track.authorhub.elsevier.com/?uuid=13f39104-c14e-44e2-a77c-e59b30ca7be8" target="_blank" rel="noopener">Review</ParticleButton>
-                        <ParticleButton href="https://scholar.googleusercontent.com/scholar.bib?q=info:wgvP9TIzIGYJ:scholar.google.com/&output=citation&scisdr=Cl8uoyH1EMKY-iWJ3PU:AFtJQiwAAAAAaZiPxPVWHsibQJV8CJgGMnfrTLY&scisig=AFtJQiwAAAAAaZiPxPPtrJ8dtlxbbFmuO1Ww-fQ&scisf=4&ct=citation&cd=-1&hl=en" target="_blank" rel="noopener">BibTeX</ParticleButton>
-                        {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
-                        {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
-                     </div>
-                  </div>
-               </li>
-
 
                {/*  Publication 2: YOLOv11  */}
                <li className="pub-entry">
@@ -296,22 +365,6 @@ export function Research() {
                † Equal contribution
             </p>
 
-            <h3 className="push-down-4"><span>Ongoing Research Projects</span></h3>
-            <ul>
-               <li>
-                  <strong>HuMAR</strong> - Working on developing efficient and scalable text-instructed vision-language model for multimodal and multitasking Human Centric detection.
-               </li>
-               <li>
-                  <strong>Novel Segmentation and Denoising Architectures</strong> - Working on developing of novel self supervised models for multitasking and rigorous experiments on various OCT datasets. 
-               </li>
-               <li>
-                  <strong>Bone Cancer Detection</strong> - Generaly Whole Genome Sequencing is the gold standard for detection costing $6k per patient, so we are working on a method to detect the bone cancer from the H&E whole slide images. 
-               </li>
-               <li>
-                  <strong>Whole Genome Doubling</strong> - WGD is one of the somatic events of cancer, detecting it takes very long time using sequencing, hence we are developing a methdology on detecting the WGD from the H&E WSI's.
-               </li>
-            </ul>
-
 
             <h3 className="push-down-4"><span>Services and Contributions</span></h3>
             <ul>
@@ -323,6 +376,11 @@ export function Research() {
 
             <h3 className="push-down-4"><span>Research Competitions</span></h3>
             <ul>
+
+               <li>
+                  <a href="https://nha.gov.in/hackathon#:~:text=Nikhileswara%20Rao%20Sulake" target="_blank" rel="noopener" 
+                     aria-label="Open CXR-LT 2026 Challenge Website">Top 2</a> - AB PMJAY Auto-Adjudication Hackathon by <a href="https://nha.gov.in/hackathon" target="_blank" rel="noopener" >NHA</a> and <a href="https://www.iisc.ac.in/" target="_blank" rel="noopener">IISc Bangalore</a> 2026
+               </li>
            
                <li>
                   <a href="https://cxr-lt.github.io/CXR-LT-2026/#:~:text=5,0.0945" target="_blank" rel="noopener" 
