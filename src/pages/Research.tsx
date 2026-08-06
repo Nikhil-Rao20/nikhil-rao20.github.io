@@ -17,7 +17,7 @@ export function Research() {
          <div className="col-sm-12">
                   <h1>Research</h1>
                   <p>
-                     This page collects my current research publications and preprints across computer vision, medical imaging, multimodal learning, and clinically oriented deep learning. The work spans chest X-ray classification, long-tailed recognition, lung CT segmentation, histopathology image analysis, echocardiography, retinal OCT, and responsible AI topics such as LLM privacy.
+                     This page collects my current research publications and preprints across computer vision, medical imaging, multimodal learning, and clinically oriented deep learning.
                   </p>
                   <p>
                      Featured research pages include <a href="/cxr-lt/">CXR-LT</a>, <a href="/taru-net/">TARU-Net</a>, <a href="/cips-net/">CIPS-Net</a>, <a href="/ecg-free-echo/">ECG-Free Echo</a>, and <a href="/lung-digital-twin/">Lung Digital Twin</a>.
