@@ -53,7 +53,7 @@ export function Home() {
                 </tr>
                 <tr>
                   <td><i className="fas fa-file-pdf"></i></td>
-                  <td><a href="/assets/Nikhil_Rao_CV.pdf" target="_blank">CV</a></td>
+                  <td><a href="#/cv.html">CV</a></td>
                 </tr>
               </tbody>
             </table>

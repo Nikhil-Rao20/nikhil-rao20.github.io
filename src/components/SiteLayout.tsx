@@ -6,7 +6,7 @@ const navItems = [
   ['about', 'About', 'index.html'],
   ['research', 'Research', 'research.html'],
   ['experiences', 'Experience', 'experiences.html'],
-  ['vitae', 'CV', '/assets/Nikhil_Rao_CV.pdf'],
+  ['vitae', 'CV', 'cv.html'],
   ['projects', 'Projects', 'projects.html'],
 ] as const;
 
@@ -32,7 +32,7 @@ export function SiteLayout({ children, route }: PropsWithChildren<{ route: strin
                 const active = href === route || (id === 'about' && route === 'index.html');
                 return (
                   <li key={id} id={id} className={active ? 'active' : undefined}>
-                    <a className={`montserrat${active ? ' hvr-bubble-bottom' : ''}`} href={href.startsWith('/') ? href : `#/${href}`} target={id === 'vitae' ? '_blank' : undefined}>{label}</a>
+                    <a className={`montserrat${active ? ' hvr-bubble-bottom' : ''}`} href={href.startsWith('/') ? href : `#/${href}`}>{label}</a>
                   </li>
                 );
               })}
