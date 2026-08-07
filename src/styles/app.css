@@ -25,3 +25,25 @@ body,
     animation: none;
     mix-blend-mode: normal;
 }
+
+/* Bootstrap 3 sets `outline: 5px auto -webkit-focus-ring-color` on a:focus, so a
+   clicked nav tab keeps a ring until it loses focus; the pill-shaped
+   .gallery-tab / .project-tab buttons pick up the UA ring the same way. Drop it
+   for pointer input only — :focus-visible still matches keyboard focus, so
+   tabbing through the site stays visible. */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+.navbar-nav > li > a:focus:not(:focus-visible),
+.gallery-tab:focus:not(:focus-visible),
+.project-tab:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Keyboard focus keeps a clear ring, following each element's own radius. */
+a:focus-visible,
+button:focus-visible,
+.gallery-tab:focus-visible,
+.project-tab:focus-visible {
+  outline: 2px solid #1585cf;
+  outline-offset: 2px;
+}
