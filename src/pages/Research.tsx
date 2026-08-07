@@ -115,13 +115,13 @@ export function Research() {
                <li className="pub-entry">
                   <div className="pub-thumb">
                      <span className="pub-venue-badge badge-journal">IEEE TIP</span>
-                     <img className="pub-thumb-img" src="/assets/img/publications/CNN_iSURF.jpg" alt="TARU-Net paper thumbnail"  />
+                     <img className="pub-thumb-img" src="/assets/img/publications/CNN_iSURF.jpg" alt="Hybrid CNN-iSURF paper thumbnail"  />
                      <div className="pub-thumb-placeholder" style={{"display":"none"}}><i className="fas fa-file-alt"></i></div>
                   </div>
                   <div className="pub-body">
                      <p className="pub-title"><a href="#" target="_blank" rel="noopener">Hybrid CNN-iSURF Feature Extraction: A Robust Approach for Image Matching Using Deep Learning and Keypoint-Based Descriptors</a></p>
                      <p className="pub-authors">Partha Acharya, Harsh Vardhan, Vineeth Bhanukoti, <strong>Nikhileswara Rao Sulake</strong>, Soutrik Chakraborty, Subhamoy Mandal, Suman Chakraborty</p>
-                     <p className="pub-venue"><em>IEEE Transactions on Radiation and Plasma Medical Sciences [*Under Review]</em></p>
+                     <p className="pub-venue"><em>IEEE Transactions on Image Processing [*Under Review]</em></p>
                      <div className="pub-links">
                         {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
                         {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
