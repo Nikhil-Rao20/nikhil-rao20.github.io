@@ -80,6 +80,7 @@ export function Home() {
             <h3 className="push-down-3"><span>News</span></h3>
             <div className="news-container">
               <ul id="news">
+                <li style={{ "marginBottom": "5px" }}><strong>[Aug 2026]</strong> <a href="https://miccai.org/conference-awards/miccai-registration-and-travel-grants/" target="_blank" rel="noopener">MICCAI 2026 Travel Grant</a> Awarded. One of the 25 selected researchers, globally.</li>
 
                 <li style={{ "marginBottom": "5px" }}><strong>[Aug 2026]</strong> <a href="https://nikhil-rao20.github.io/cips-net/" target="_blank" rel="noopener">CIPS-Net</a> paper accepted at COMPAYL++ workshop at <a href="https://conferences.miccai.org/2026/en/" target="_blank" rel="noopener noreferrer">MICCAI 2026</a> conference. One year long experiments took a great turn into MICCAI.</li>
 
