@@ -20,7 +20,7 @@ export function Research() {
                      This page collects my current research publications and preprints across computer vision, medical imaging, multimodal learning, and clinically oriented deep learning.
                   </p>
                   <p>
-                     Featured research pages include <a href="/cxr-lt/">CXR-LT</a>, <a href="/taru-net/">TARU-Net</a>, <a href="/cips-net/">CIPS-Net</a>, <a href="/ecg-free-echo/">ECG-Free Echo</a>, and <a href="/lung-digital-twin/">Lung Digital Twin</a>.
+                     Featured research pages include <a href="/cxr-lt/">CXR-LT</a>, <a href="/taru-net/coming-soon.html">TARU-Net</a>, <a href="/cips-net/">CIPS-Net</a>, <a href="/ecg-free-echo/">ECG-Free Echo</a>, and <a href="/lung-digital-twin/">Lung Digital Twin</a>.
                   </p>
 
             {/*
