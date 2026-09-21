@@ -95,14 +95,14 @@ export function Research() {
                {/*  Publication 7: TARU-Net  */}
                <li className="pub-entry">
                   <div className="pub-thumb">
-                     <span className="pub-venue-badge badge-journal">IEEE TRPMS</span>
+                     <span className="pub-venue-badge badge-journal">SPIE JMI</span>
                      <img className="pub-thumb-img" src="/assets/img/publications/taru_net_paper.png" alt="TARU-Net paper thumbnail"  />
                      <div className="pub-thumb-placeholder" style={{"display":"none"}}><i className="fas fa-file-alt"></i></div>
                   </div>
                   <div className="pub-body">
                      <p className="pub-title"><a href="#" target="_blank" rel="noopener">TARU-Net: Topology-Aware Deep Learning for High-Fidelity Lung CT Segmentation and Volume Visualization</a></p>
                      <p className="pub-authors">Partha Acharya, Soutrik Chakraborty, <strong>Nikhileswara Rao Sulake</strong>, Aishik Sen, Subhamoy Mandal, Suman Chakraborty</p>
-                     <p className="pub-venue"><em>IEEE Transactions on Radiation and Plasma Medical Sciences [*Under Review]</em></p>
+                     <p className="pub-venue"><em>SPIE Journal of Medical Imaging [*Under Review, Manuscript ID: JMI-260545P-1]</em></p>
                      <div className="pub-links">
                         {/*  <ParticleButton href="#" >CODE</ParticleButton>  */}
                         {/*  <ParticleButton href="#" >WEBSITE</ParticleButton>  */}
