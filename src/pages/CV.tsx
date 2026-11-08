@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight, Download, ZoomIn, ZoomOut } from 'lucide-rea
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = workerUrl;
 
-const CV_URL = '/assets/Nikhil_Rao_CV.pdf';
+const CV_URL = '/Nikhil_Rao_CV.pdf';
 const GUTTER = 32;
 const ZOOM_STEPS = [0.75, 1, 1.25, 1.5, 2] as const;
 
